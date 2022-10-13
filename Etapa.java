@@ -8,7 +8,9 @@
 public class Etapa
 {
     // instance variables - replace the example below with your own
-    private int x;
+    private String nombre;
+    private int dificultad;
+    private float distancia;
 
     /**
      * Constructor for objects of class Etapa
@@ -16,7 +18,6 @@ public class Etapa
     public Etapa()
     {
         // initialise instance variables
-        x = 0;
     }
 
     /**
