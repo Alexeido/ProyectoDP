@@ -5,10 +5,10 @@
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Etapa
+public class Etapa 
 {
     // instance variables - replace the example below with your own
-    private String nombre;
+    private String nombreEt;
     
     private int dificultad;
     
@@ -17,24 +17,24 @@ public class Etapa
     /**
      * Constructor for objects of class Etapa
      */
-    public Etapa(String nombre,int  dificultad,int distancia)
+    public Etapa(String nombreEt,int  dificultad,int distancia)
     {
-        this.nombre = nombre;
+        this.nombreEt = nombreEt;
         this.dificultad = dificultad;
         this.distancia = distancia;
         
     }
 
 
-    public String getnombre()
+    public String getNombreEt()
     {
-    return nombre;
+    return nombreEt;
     }
-        public int getdificultad()
+        public int getDificultad()
     {
     return dificultad;
     }
-        public double getdistancia()
+        public double getDistancia()
     {
     return distancia;
     }
