@@ -28,7 +28,7 @@ public class Ciclista
     public int getHabilidad()
     {
         return habilidad;
-    }
+    }      
 
     public String getNombreCiclic() {
         return this.nombreCiclic;

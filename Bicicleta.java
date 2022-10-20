@@ -12,9 +12,9 @@ public class Bicicleta
     
     private int peso;
     
-    private int velocidad;
+    private double velocidad;
     
-    private int tiempo;
+    private double tiempo;
     
     private Ciclista ciclista;
     
@@ -30,10 +30,11 @@ public class Bicicleta
         this.peso=peso;
         
     }
-    public void setVelocidad()
+    public void setVelocidad(Ciclista ciclista, Etapa etapa)
     {
         velocidad=(ciclista.getHabilidad()*100/(peso*etapa.getDificultad()));
     }
+<<<<<<< HEAD
 
     public String getNombreBic() {
         return this.nombreBic;
@@ -81,4 +82,10 @@ public class Bicicleta
     }
     
 }
+=======
+    public void setTiempo(Etapa etapa) {
+        tiempo=etapa.getDistancia()/velocidad;        
+    }
+}   
+>>>>>>> 320ad4e6ae0dac251cd1fc5366c634595bf4e9cb
 
