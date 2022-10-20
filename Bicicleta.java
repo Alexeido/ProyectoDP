@@ -30,11 +30,6 @@ public class Bicicleta
         this.peso=peso;
         
     }
-    public void setVelocidad(Ciclista ciclista, Etapa etapa)
-    {
-        velocidad=(ciclista.getHabilidad()*100/(peso*etapa.getDificultad()));
-    }
-<<<<<<< HEAD
 
     public String getNombreBic() {
         return this.nombreBic;
@@ -52,17 +47,21 @@ public class Bicicleta
         this.peso = peso;
     }
 
-    public int getVelocidad() {
+    public double getVelocidad() {
         return this.velocidad;
     }
 
+    public void setVelocidad(Ciclista ciclista, Etapa etapa)
+    {
+        velocidad=(ciclista.getHabilidad()*100/(peso*etapa.getDificultad()));
+    }
 
-    public int getTiempo() {
+    public double getTiempo() {
         return this.tiempo;
     }
 
-    public void setTiempo(int tiempo) {
-        this.tiempo = tiempo;
+    public void setTiempo(Etapa etapa) {
+        tiempo=etapa.getDistancia()/velocidad;        
     }
 
     public Ciclista getCiclista() {
@@ -82,10 +81,4 @@ public class Bicicleta
     }
     
 }
-=======
-    public void setTiempo(Etapa etapa) {
-        tiempo=etapa.getDistancia()/velocidad;        
-    }
-}   
->>>>>>> 320ad4e6ae0dac251cd1fc5366c634595bf4e9cb
 
