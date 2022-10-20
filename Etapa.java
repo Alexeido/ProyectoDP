@@ -8,26 +8,34 @@
 public class Etapa
 {
     // instance variables - replace the example below with your own
-    private int x;
+    private String nombre;
+    
+    private int dificultad;
+    
+    private int distancia;
 
     /**
      * Constructor for objects of class Etapa
      */
-    public Etapa()
+    public Etapa(String nombre,int  dificultad,int distancia)
     {
-        // initialise instance variables
-        x = 0;
+        this.nombre = nombre;
+        this.dificultad = dificultad;
+        this.distancia = distancia;
+        
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
+
+    public String getnombre()
     {
-        // put your code here
-        return x + y;
+    return nombre;
+    }
+        public int getdificultad()
+    {
+    return dificultad;
+    }
+        public int getdistancia()
+    {
+    return distancia;
     }
 }
