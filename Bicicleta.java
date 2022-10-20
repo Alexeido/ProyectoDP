@@ -12,9 +12,9 @@ public class Bicicleta
     
     private int peso;
     
-    private int velocidad;
+    private double velocidad;
     
-    private int tiempo;
+    private double tiempo;
     
     private Ciclista ciclista;
     
@@ -30,10 +30,12 @@ public class Bicicleta
         this.peso=peso;
         
     }
-    public void setVelocidad()
+    public void setVelocidad(Ciclista ciclista, Etapa etapa)
     {
         velocidad=(ciclista.getHabilidad()*100/(peso*etapa.getDificultad()));
     }
-    
-}
+    public void setTiempo(Etapa etapa) {
+        tiempo=etapa.getDistancia()/velocidad;        
+    }
+}   
 

@@ -28,6 +28,6 @@ public class Ciclista
     public int getHabilidad()
     {
         return habilidad;
-    }
+    }      
 
 }
