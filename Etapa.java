@@ -12,7 +12,7 @@ public class Etapa
     
     private int dificultad;
     
-    private int distancia;
+    private double distancia;
 
     /**
      * Constructor for objects of class Etapa
@@ -34,7 +34,7 @@ public class Etapa
     {
     return dificultad;
     }
-        public int getdistancia()
+        public double getdistancia()
     {
     return distancia;
     }
