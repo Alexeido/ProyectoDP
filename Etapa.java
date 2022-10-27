@@ -1,50 +1,76 @@
 
 /**
- * Write a description of class Etapa here.
+ * Clase siemple que almacena el nombre y la dificultad de una etapa
  * 
- * @author (your name) 
+ * @author Alexeido, Thander y Natera
  * @version (a version number or a date)
  */
 
-public class Etapa 
-{
-    // instance variables - replace the example below with your own
-    private String nombreEt;
-    
+public class Etapa {
+    private String nombre;
+
     private int dificultad;
-    
+
     private double distancia;
 
     /**
-     * Constructor for objects of class Etapa
+     * Constructor para la clase Etapa
      */
-    public Etapa(String nombreEt,int  dificultad,int distancia)
-    {
-        this.nombreEt = nombreEt;
+    public Etapa() {
+        this.nombre = "";
+        this.dificultad = 0;
+        this.distancia = 0;
+
+    }
+
+    /**
+     * Constructor parametrizado para la clase Etapa
+     */
+    public Etapa(String nombre, int dificultad, int distancia) {
+        this.nombre = nombre;
         this.dificultad = dificultad;
         this.distancia = distancia;
-        
+
     }
 
+    /**
+     * @return Nombre de la etapa
+     */
+    public String getNombre() {
+        return nombre;
+    }
 
-    public String getNombreEt()
-    {
-    return nombreEt;
+    /**
+     * @return Nivel de dificultad
+     */
+    public int getDificultad() {
+        return dificultad;
     }
-        public int getDificultad()
-    {
-    return dificultad;
+
+    /**
+     * @return Distancia de la etapa
+     */
+    public double getDistancia() {
+        return distancia;
     }
-        public double getDistancia()
-    {
-    return distancia;
+
+    /**
+     * @param nombre El nombre de la etapa cambia por el insertado como parametro
+     */
+    public void setnombre(String nombre) {
+        this.nombre = nombre;
     }
-    public void setNombreEt(String nombreEt) {
-        this.nombreEt = nombreEt;
-    }
+
+    /**
+     * @param dificultad La dificultad de la etapa cambia por la insertada como parametro
+     */
     public void setDificultad(int dificultad) {
         this.dificultad = dificultad;
     }
+    
+    /**
+     * @param distancia La distancia de la etapa cambia por la insertada como parametro
+     */
     public void setDistancia(double distancia) {
         this.distancia = distancia;
     }

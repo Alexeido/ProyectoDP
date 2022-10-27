@@ -1,5 +1,4 @@
-
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  * Representa a los Equipos que competirán tanto por la clasificación por
@@ -7,13 +6,12 @@ import java.util.ArrayList;
  * por la victoria de uno de sus Ciclistas en el campeonato individual de
  * Ciclistas
  * 
- * @author Alejandro Barrena Millán, Raúl MArtín-Romo Sánchez y Pablo Natera
- *         Muñoz
+ * @author Alexeido, Thander y Natera
  * @version (a version number or a date)
  */
 public class Equipo {
     // instance variables - replace the example below with your own
-    private String nombreEq;
+    private String nombre;
     private ArrayList<Ciclista> ciclistas;
     private ArrayList<Ciclista> ciclistasAbandonados;
     private ArrayList<Bicicleta> bicis;
@@ -22,7 +20,7 @@ public class Equipo {
      * Constructor de objetos para la clase Equipo
      */
     public Equipo() {
-        nombreEq = "";
+        nombre = "";
         ciclistas = new ArrayList<Ciclista>();
         ciclistasAbandonados = new ArrayList<Ciclista>();
         bicis = new ArrayList<Bicicleta>();
@@ -31,23 +29,23 @@ public class Equipo {
     /**
      * Constructor parametrizado de objetos para la clase Equipo
      * 
-     * @param nombreEq representa el nombre del equipo
+     * @param Nombre representa el nombre del equipo
      */
 
-    public Equipo(String nombreEq, ArrayList<Ciclista> ciclistas, ArrayList<Ciclista> ciclistasAbandonados,
-            ArrayList<Bicicleta> bicis) {
-        this.nombreEq = nombreEq;
+    public Equipo(String nombre, ArrayList<Ciclista> ciclistas, ArrayList<Ciclista> ciclistasAbandonados,
+        ArrayList<Bicicleta> bicis) {
+        this.nombre = nombre;
         this.ciclistas = ciclistas;
         this.ciclistasAbandonados = ciclistasAbandonados;
         this.bicis = bicis;
     }
 
-    public String getNombreEq() {
-        return this.nombreEq;
+    public String getNombre() {
+        return this.nombre;
     }
 
-    public void setNombreEq(String nombreEq) {
-        this.nombreEq = nombreEq;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public ArrayList<Ciclista> getCiclistas() {
@@ -61,16 +59,35 @@ public class Equipo {
     public ArrayList<Ciclista> getCiclistasAbandonados() {
         return this.ciclistasAbandonados;
     }
-
-    public void setCiclistasAbandonados(ArrayList<Ciclista> ciclistasAbandonados) {
-        this.ciclistasAbandonados = ciclistasAbandonados;
-    }
-
     public ArrayList<Bicicleta> getBicis() {
         return this.bicis;
     }
-
-    public void setBicis(ArrayList<Bicicleta> bicis) {
-        this.bicis = bicis;
+    public void addbicileta(Bicicleta b){
+        bicis.add(b);
+        //Collections.sort(bicis, new PesoComparator());
+        //Collections.sort(bicis,   );
+    }
+    public void addCiclista(Ciclista c){
+        ciclistas.add(c);
+    }
+    public void addCiclistaAbandonado(Ciclista c){
+        ciclistasAbandonados.add(c);
+    }
+    public double getTiempototal(){
+        double result=0;
+        Ciclista aux;
+        for(int i=0;i<=ciclistas.size();i++){
+            aux=ciclistas.get(i);
+            result=result+aux.getTotalTime();
+        }
+        return result;
+    }
+    public void enviarEtapa(Etapa e){
+        Ciclista aux;
+        for(int i=0;i<=ciclistas.size();i++){
+            aux=ciclistas.get(i);
+            aux.correrEtapa(e);     
+        }
     }
 }
+
