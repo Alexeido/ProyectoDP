@@ -77,6 +77,9 @@ public class Bicicleta {
         return (e.getDistancia() / this.getVelocidad(e, c) * 60);
     }
 
+    public void mostrarTodo(){
+     System.out.println("<bicicleta: "+ nombre + "> <peso: "+ peso +">");
+    }
 }
 
 class PesoComparator implements Comparator<Bicicleta> {

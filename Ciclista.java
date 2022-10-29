@@ -133,23 +133,46 @@ public class Ciclista {
         this.team = team;
     }
     
+    /**
+     * @return tiempo total en su historial
+     */
     public double getTotalTime(){
         return this.totalTime;
     }
 
     /**
+     * @param totalTime Establece el tiempototal actual por el que entra como parametro
+     */
+    public void setTotalTime(double totalTime){
+        this.totalTime=totalTime;
+    }
+
+    /*
+     * Muestra la información de un ciclista y de su bicicleta
+     */
+    public void mostrarTodo(){
+         System.out.println("Nombre:"+nombre +"/Con habilidad:" +habilidad +"/Con energia"+energia + " con su biclieta:");
+         bici.mostrarTodo();
+    }
+    
+    /**
      * @param e Etapa a correr
+     * Si el usuario se ha quedado sin energía en la competición y no ha podido acabar tendrá como energía -1
+     * El algoritmo almacenará automaticamente su resultado en Resultados
+     * El algoritmo sumará a su tiempo total el tiempo que ha hecho en esta etapa solo si ha ganado 
      */
     public double correrEtapa(Etapa e) {
         double aux = this.getEnergia() - this.getBicicleta().getETime(e, this);
+        double aux2=aux;
         if(aux>=0){
             this.setEnergia(aux);
-            aux=this.getBicicleta().getETime(e, this);
-            this.totalTime+=aux;
-            this.getHistorial().add(new Resultados(e, aux));
+            aux2=this.getBicicleta().getETime(e, this);
+            this.totalTime+=aux2;
+            this.getHistorial().add(new Resultados(e, aux2));
             
         }
         else{
+            this.setEnergia(-1);
             this.getHistorial().add(new Resultados(e, aux));
             this.totalTime+=this.energia;
         }
@@ -169,7 +192,7 @@ class HabilidadComparator implements Comparator<Ciclista> {
     }
 }
 
-class NombreComparator implements Comparator<Ciclista> {
+class NombreCComparator implements Comparator<Ciclista> {
     public int compare(Ciclista b1, Ciclista b2) {
         return b1.getNombre().compareTo(b2.getNombre());
     }
@@ -187,7 +210,7 @@ class EnergiaComparator implements Comparator<Ciclista> {
 class TiempoAscComparator implements Comparator<Ciclista> {
     public int compare(Ciclista c1, Ciclista c2) {
         if (c1.getTotalTime() == c2.getTotalTime())
-            return  new NombreComparator().compare(c1, c2) ;
+            return  new NombreCComparator().compare(c1, c2) ;
         else if (c1.getTotalTime() >c2.getTotalTime())
             return 1;
         else
@@ -197,7 +220,7 @@ class TiempoAscComparator implements Comparator<Ciclista> {
 class TiempoDescComparator implements Comparator<Ciclista> {
     public int compare(Ciclista c1, Ciclista c2) {
         if (c1.getTotalTime() == c2.getTotalTime())
-            return  new NombreComparator().compare(c1, c2) ;
+            return  new NombreCComparator().compare(c1, c2) ;
         else if (c1.getTotalTime() >c2.getTotalTime())
             return 1;
         else
