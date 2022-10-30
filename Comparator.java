@@ -9,7 +9,7 @@ class NombreCComparator implements Comparator<Ciclista> {
 class EnergiaComparator implements Comparator<Ciclista> {
     public int compare(Ciclista c1, Ciclista c2) {
         if (c1.getEnergia() == c2.getEnergia())
-            return 0;
+            return new NombreCComparator().compare(c1, c2) ;
         else if (c1.getEnergia() >c2.getEnergia())
             return 1;
         else
@@ -39,7 +39,7 @@ class TiempoDescComparator implements Comparator<Ciclista> {
 class HabilidadComparator implements Comparator<Ciclista> {
     public int compare(Ciclista c1, Ciclista c2) {
         if (c1.getHabilidad() == c2.getHabilidad())
-            return 0;
+            return new NombreCComparator().compare(c1,c2);
         else if (c1.getHabilidad() >c2.getHabilidad())
             return 1;
         else
@@ -83,7 +83,7 @@ class TiempoEtapaComparator implements Comparator<Ciclista> {
 class PesoComparator implements Comparator<Bicicleta> {
     public int compare(Bicicleta b1, Bicicleta b2) {
         if (b1.getPeso() == b2.getPeso())
-            return 0;
+            return new NombreComparator().compare(b1,b2);
         else if (b1.getPeso() > b2.getPeso())
             return 1;
         else
@@ -102,9 +102,25 @@ class TiempoMedioComparator implements Comparator<Equipo> {
     public int compare(Equipo e1, Equipo e2) {
         if (e1.getTiempoMedio() == e2.getTiempoMedio())
             return 0;
-        else if (e1.getTiempoMedio() > e2.getTiempoMedio())
+        else if (e1.getTiempoMedio() < e2.getTiempoMedio())
             return 1;
         else
             return -1;
     }
 }
+
+//Comparator etapas
+class ComparadorDificultadEtapa implements Comparator<Etapa>{
+    public int compare(Etapa et1, Etapa et2){
+        if (et1.getDificultad()==et2.getDificultad()){
+            return 0;
+        }
+        else if(et1.getDificultad()< et2.getDificultad()){
+            return 1;
+        }
+        else{
+            return -1;
+        }
+    }
+}
+

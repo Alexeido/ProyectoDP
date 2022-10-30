@@ -9,7 +9,7 @@
 public class Etapa {
     private String nombre;
 
-    private int dificultad;
+    private double dificultad;
 
     private double distancia;
 
@@ -26,7 +26,7 @@ public class Etapa {
     /**
      * Constructor parametrizado para la clase Etapa
      */
-    public Etapa(String nombre, int dificultad, int distancia) {
+    public Etapa(String nombre, double dificultad, double distancia) {
         this.nombre = nombre;
         this.dificultad = dificultad;
         this.distancia = distancia;
@@ -43,7 +43,7 @@ public class Etapa {
     /**
      * @return Nivel de dificultad
      */
-    public int getDificultad() {
+    public double getDificultad() {
         return dificultad;
     }
 
@@ -71,7 +71,7 @@ public class Etapa {
     /**
      * @param distancia La distancia de la etapa cambia por la insertada como parametro
      */
-    public void setDistancia(double distancia) {
+    public void setDistancia(int distancia) {
         this.distancia = distancia;
     }
     public void mostrarTodo(){

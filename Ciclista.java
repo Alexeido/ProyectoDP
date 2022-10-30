@@ -12,7 +12,7 @@
 public class Ciclista {
     private String nombre;
     private Bicicleta bici;
-    private int habilidad;
+    private double habilidad;
     private double energia;
     private ArrayList<Resultados> historial;
     private Equipo team;
@@ -32,20 +32,19 @@ public class Ciclista {
         Eorden = new Etapa();
     }
 
-    public Ciclista(String nombre, Bicicleta bici, int habilidad, int energia, ArrayList<Resultados> historial,
-            Equipo team) {
+    public Ciclista(String nombre, double habilidad, double energia,Equipo team) {
         this.nombre = nombre;
-        this.bici = bici;
         this.habilidad = habilidad;
         this.energia = energia;
-        this.historial = historial;
         this.team = team;
         this.totalTime=0;
         this.tiempoAbandono=0;
+        this.bici = new Bicicleta();
+        this.historial = new ArrayList<Resultados>();
         Eorden = new Etapa();
     }
 
-    public Ciclista(String nombre, Bicicleta bici, int habilidad, int energia, Equipo team) {
+    public Ciclista(String nombre, Bicicleta bici, double habilidad, double energia, Equipo team) {
         this.nombre = nombre;
         this.bici = bici;
         this.habilidad = habilidad;
@@ -87,7 +86,7 @@ public class Ciclista {
     /**
      * @return La habilidad del ciclista
      */
-    public int getHabilidad() {
+    public double getHabilidad() {
         return this.habilidad;
     }
 

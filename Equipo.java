@@ -127,13 +127,8 @@ public class Equipo {
         this.ordenCiclista=ordenCiclista;
     }
 
-    public void mostrarTodo(Equipo equipo){
-        System.out.print(nombre);
-        for (int i=0; i<ciclistas.size(); i++){
-            ciclistas.get(i).mostrarTodo();
-        }
-    }
-     public void mostrarTodoPuntaje(Equipo equipo){
+
+     public void mostrarTodo(){
         System.out.println(nombre + " Cuya media de puntos de sus ciclistas sin abandonar es: " + tiempoMedio );
         for (int i=0; i<ciclistas.size(); i++){
             ciclistas.get(i).mostrarSinBici();//<ciclista:VAN VLEUTEN> <energía: 50.92> <habilidad: 4.96> <tiempo acumulado sin abandonar: 1149.08> <abandonado:false>
