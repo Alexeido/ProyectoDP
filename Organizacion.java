@@ -55,14 +55,10 @@ public class Organizacion {
         equipos.add(equipo);
     }
 
-    public void anadirCiclistas(Equipo equipo) {
-        int i;
-        ArrayList<Ciclista> ciclistaEquipo;
-        i = equipos.indexOf(equipo);
-        ciclistaEquipo = equipo.getCiclistas();
-        for (i = 0; i < ciclistaEquipo.size(); i++) {
-            ciclistasCarrera.add(ciclistaEquipo.get(i));
-        }
+    public void anadirCiclistaCarrera(Equipo equipo) {
+        for (int i=0;i<equipo.getCiclistas().size(); i++) {
+            ciclistasCarrera.add(equipo.getCiclistas().get(i));
+        } 
     }
 
     /**
@@ -117,6 +113,9 @@ public class Organizacion {
     }
 
     public void presentacionCarrera() {
+        for(int i=0;i<equipos.size();i++){
+            anadirCiclistaCarrera(equipos.get(i));
+        }
         System.out.println("Las etapas de esta carrera son las siguientes: ");
         mostrarEtapas();
         System.out.println("Los equipos a participar son los siguientes: ");
