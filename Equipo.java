@@ -14,6 +14,7 @@ public class Equipo {
     private ArrayList<Ciclista> ciclistas;
     private ArrayList<Ciclista> ciclistasAbandonados;
     private ArrayList<Bicicleta> bicis;
+    private double tiempoMedio;
     /**
      *  Almacena el algoritmo de ordenacion que se usará para las bicicletas
      *  
@@ -42,6 +43,7 @@ public class Equipo {
         ciclistas = new ArrayList<Ciclista>();
         ciclistasAbandonados = new ArrayList<Ciclista>();
         bicis = new ArrayList<Bicicleta>();
+        tiempoMedio=0;
         this.ordenBicicleta='0';
         this.ordenCiclista='0';
     }
@@ -53,11 +55,12 @@ public class Equipo {
      */
 
     public Equipo(String nombre, ArrayList<Ciclista> ciclistas, ArrayList<Ciclista> ciclistasAbandonados,
-        ArrayList<Bicicleta> bicis, char ordenCiclista, char ordenBicicleta) {
+        ArrayList<Bicicleta> bicis, double tiempoMedio, char ordenCiclista, char ordenBicicleta) {
         this.nombre = nombre;
         this.ciclistas = ciclistas;
         this.ciclistasAbandonados = ciclistasAbandonados;
         this.bicis = bicis;
+        this.tiempoMedio=tiempoMedio;
         this.ordenBicicleta=ordenBicicleta;
         this.ordenCiclista=ordenCiclista;
     }
@@ -93,14 +96,21 @@ public class Equipo {
     public ArrayList<Bicicleta> getBicis() {
         return this.bicis;
     }
-    public void mostrarTodo(Equipo equipo){
-        int i;
 
-        System.out.print(nombre + "/Media Minutos de Ciclistas sin abandonar");
-        for (i=0; i<ciclistas.size(); i++){
-            ciclistas.get(i).mostrarTodo();
-        }
+      /*
+     * 
+     */
+    public void setTiempoMedio(Equipo equipo){
+        this.tiempoMedio=getTiempototal()/ciclistas.size();
     }
+
+     /*
+     * 
+     */
+    public double getTiempoMedio(){
+        return this.tiempoMedio;
+    }
+    
     public char getOrdenBicicleta(){
         return this.ordenBicicleta;
     }
@@ -116,6 +126,30 @@ public class Equipo {
     public void setOrdenCiclista(char ordenCiclista){
         this.ordenCiclista=ordenCiclista;
     }
+
+    public void mostrarTodo(Equipo equipo){
+        System.out.print(nombre);
+        for (int i=0; i<ciclistas.size(); i++){
+            ciclistas.get(i).mostrarTodo();
+        }
+    }
+     public void mostrarTodoPuntaje(Equipo equipo){
+        System.out.println(nombre + " Cuya media de puntos de sus ciclistas sin abandonar es: " + tiempoMedio );
+        for (int i=0; i<ciclistas.size(); i++){
+            ciclistas.get(i).mostrarSinBici();//<ciclista:VAN VLEUTEN> <energía: 50.92> <habilidad: 4.96> <tiempo acumulado sin abandonar: 1149.08> <abandonado:false>
+        }
+
+        for (int i=0; i<ciclistasAbandonados.size();i++){
+            ciclistas.get(i).mostrarSinBici();
+            System.out.print("<Abandonado>");
+        }
+    }
+    public void mostrarAbandonos(){
+        for(Ciclista ciclista: ciclistasAbandonados){
+            ciclista.mostrarTodo();
+        }
+    }
+    
     public void addbicileta(Bicicleta b){
         bicis.add(b);
         this.reOrdenBicileta(this.ordenBicicleta);
@@ -171,5 +205,6 @@ public class Equipo {
             aux.correrEtapa(e);     
         }
     }
+
 }
 

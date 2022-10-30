@@ -5,7 +5,7 @@
  * @version (a version number or a date)
  */
  
- import java.util.*;
+
 
 
 public class Bicicleta {
@@ -33,14 +33,14 @@ public class Bicicleta {
      * Devuelve la dificultad de la etapa
      */
     public String getNombre() {
-        return nombre;
+        return this.nombre;
     }
 
     /**
      * Devuelve la distancia de la etapa
      */
     public double getPeso() {
-        return peso;
+        return this.peso;
     }
 
     /**
@@ -79,22 +79,5 @@ public class Bicicleta {
 
     public void mostrarTodo(){
      System.out.println("<bicicleta: "+ nombre + "> <peso: "+ peso +">");
-    }
-}
-
-class PesoComparator implements Comparator<Bicicleta> {
-    public int compare(Bicicleta b1, Bicicleta b2) {
-        if (b1.getPeso() == b2.getPeso())
-            return 0;
-        else if (b1.getPeso() > b2.getPeso())
-            return 1;
-        else
-            return -1;
-    }
-}
-
-class NombreComparator implements Comparator<Bicicleta> {
-    public int compare(Bicicleta b1, Bicicleta b2) {
-        return b1.getNombre().compareTo(b2.getNombre());
     }
 }

@@ -16,16 +16,20 @@ public class Ciclista {
     private double energia;
     private ArrayList<Resultados> historial;
     private Equipo team;
+    private Etapa Eorden;
     private double totalTime;
+    private double tiempoAbandono;
 
     public Ciclista() {
         this.nombre = "";
         this.bici = new Bicicleta();
         this.habilidad = -1;
         this.energia = -1;
-        this.historial = new ArrayList<>();
+        this.historial = new ArrayList<Resultados>();
         this.team = new Equipo();
         this.totalTime=0;
+        this.tiempoAbandono=0;
+        Eorden = new Etapa();
     }
 
     public Ciclista(String nombre, Bicicleta bici, int habilidad, int energia, ArrayList<Resultados> historial,
@@ -37,6 +41,8 @@ public class Ciclista {
         this.historial = historial;
         this.team = team;
         this.totalTime=0;
+        this.tiempoAbandono=0;
+        Eorden = new Etapa();
     }
 
     public Ciclista(String nombre, Bicicleta bici, int habilidad, int energia, Equipo team) {
@@ -44,9 +50,10 @@ public class Ciclista {
         this.bici = bici;
         this.habilidad = habilidad;
         this.energia = energia;
-        this.historial = new ArrayList<>();
+        this.historial = new ArrayList<Resultados>();
         this.team = team;
         this.totalTime=0;
+        Eorden = new Etapa();
     }
 
     /**
@@ -125,14 +132,23 @@ public class Ciclista {
     public Equipo getTeam() {
         return this.team;
     }
-
+    public double getiempoAbandonotTeam() {
+        return this.tiempoAbandono;
+    }
     /**
      * @param team Establece el equipo actual al que entra como parametro
      */
     public void setTeam(Equipo team) {
         this.team = team;
     }
+
+    public Etapa getEtapa(){
+        return Eorden;
+    }
     
+    public void setEtapa(Etapa Eorden){
+        this.Eorden = Eorden;
+    }
     /**
      * @return tiempo total en su historial
      */
@@ -151,79 +167,62 @@ public class Ciclista {
      * Muestra la información de un ciclista y de su bicicleta
      */
     public void mostrarTodo(){
-         System.out.println("Nombre:"+nombre +"/Con habilidad:" +habilidad +"/Con energia"+energia + " con su biclieta:");
+         System.out.print("Nombre:"+nombre +"/Con habilidad:" +habilidad +"/Con energia"+energia + " con su biclieta:");
          bici.mostrarTodo();
     }
-    
+
+    /*
+     * Muestra la información de un ciclista
+     */
+    public void mostrarSinBici(){
+        System.out.print("<Nombre:"+nombre +"> <con habilidad:" +habilidad +"> <con energia"+energia + "> <tiempo acumulado sin abandonar"+ totalTime+ ">");
+   }
+
+    /*
+     * Muestra la puntuacion de cada ciclista
+     */
+    public void mostrarPuntuacion(){
+        System.out.println("Nombre: "+ nombre + " Tiene como tiempo total :"+ totalTime);
+        for(Resultados puntaje: historial){
+            puntaje.mostrarResultadoEtapa();
+        }
+    }
+
+
+    public void mostrarResultadoEtapa(Etapa etapa){
+        for(int i=0;i<=historial.size();i++){
+            if (historial.get(i).getSitio()==etapa){
+                System.out.print(nombre+ " - Tiempo: "+ historial.get(i).getTiempo());
+            }
+        }
+    }
     /**
      * @param e Etapa a correr
-     * Si el usuario se ha quedado sin energía en la competición y no ha podido acabar tendrá como energía -1
+     * Si el usuario se ha quedado sin energía en la competición y no ha podido acabar tendrá energia negativa
      * El algoritmo almacenará automaticamente su resultado en Resultados
      * El algoritmo sumará a su tiempo total el tiempo que ha hecho en esta etapa solo si ha ganado 
      */
     public double correrEtapa(Etapa e) {
         double aux = this.getEnergia() - this.getBicicleta().getETime(e, this);
         double aux2=aux;
+        double time;
         if(aux>=0){
             this.setEnergia(aux);
             aux2=this.getBicicleta().getETime(e, this);
+            time=aux2;
             this.totalTime+=aux2;
             this.getHistorial().add(new Resultados(e, aux2));
             
         }
         else{
-            this.setEnergia(-1);
+            this.setEnergia(aux);
             this.getHistorial().add(new Resultados(e, aux));
+            this.tiempoAbandono=this.getBicicleta().getETime(e, this)-aux;
+            time=this.getBicicleta().getETime(e, this)-aux;
             this.totalTime+=this.energia;
         }
-        return aux;
+        return time;
 
     }
 }
 
-class HabilidadComparator implements Comparator<Ciclista> {
-    public int compare(Ciclista c1, Ciclista c2) {
-        if (c1.getHabilidad() == c2.getHabilidad())
-            return 0;
-        else if (c1.getHabilidad() >c2.getHabilidad())
-            return 1;
-        else
-            return -1;
-    }
-}
-
-class NombreCComparator implements Comparator<Ciclista> {
-    public int compare(Ciclista b1, Ciclista b2) {
-        return b1.getNombre().compareTo(b2.getNombre());
-    }
-}
-class EnergiaComparator implements Comparator<Ciclista> {
-    public int compare(Ciclista c1, Ciclista c2) {
-        if (c1.getEnergia() == c2.getEnergia())
-            return 0;
-        else if (c1.getEnergia() >c2.getEnergia())
-            return 1;
-        else
-            return -1;
-    }
-}
-class TiempoAscComparator implements Comparator<Ciclista> {
-    public int compare(Ciclista c1, Ciclista c2) {
-        if (c1.getTotalTime() == c2.getTotalTime())
-            return  new NombreCComparator().compare(c1, c2) ;
-        else if (c1.getTotalTime() >c2.getTotalTime())
-            return 1;
-        else
-            return -1;
-    }
-}
-class TiempoDescComparator implements Comparator<Ciclista> {
-    public int compare(Ciclista c1, Ciclista c2) {
-        if (c1.getTotalTime() == c2.getTotalTime())
-            return  new NombreCComparator().compare(c1, c2) ;
-        else if (c1.getTotalTime() >c2.getTotalTime())
-            return 1;
-        else
-            return -1;
-    }
-}

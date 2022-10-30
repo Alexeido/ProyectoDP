@@ -11,7 +11,7 @@ public class Organizacion {
     private ArrayList<Etapa> etapas;
     private ArrayList<Equipo> equipos;
     private ArrayList<Ciclista> ciclistasCarrera;
-    private ArrayList<Ciclista> ciclistasAbandono;
+    private ArrayList<Ciclista> abandonadosCarrera;
 
     /**
      * Constructor para la calse Organizacion
@@ -21,17 +21,18 @@ public class Organizacion {
         etapas = new ArrayList<Etapa>();
         equipos = new ArrayList<Equipo>();
         ciclistasCarrera= new ArrayList<Ciclista>();
+        abandonadosCarrera=new ArrayList<Ciclista>();
     }
 
     /**
      * Constructor para la calse Organizacion
      */
     public Organizacion(ArrayList<Etapa> etapas, ArrayList<Equipo> equipos,
-            ArrayList<Ciclista> ciclistasCarrera, ArrayList<Ciclista> ciclistasAbandono) {
+            ArrayList<Ciclista> ciclistasCarrera, ArrayList<Ciclista> abandonadosCarrera) {
         this.etapas = etapas;
         this.equipos = equipos;
         this.ciclistasCarrera = ciclistasCarrera;
-        this.ciclistasAbandono = ciclistasAbandono;
+        this.abandonadosCarrera=abandonadosCarrera;
     }
 
     /**
@@ -58,33 +59,51 @@ public class Organizacion {
         etapas.add(etapa);
     }
 
-    public void abandonar(Ciclista cilista) {
-        ciclistasCarrera.remove(cilista);
+    public void abandonar(Ciclista ciclista) {
+        ciclistasCarrera.remove(ciclista);
+        abandonadosCarrera.add(ciclista);
+        ciclista.getTeam().addCiclistaAbandonado(ciclista);
     }
     
     public void avanzarCarrera(){
+        Equipo auxE;
+        Ciclista auxC;
+        Etapa auxT;
         System.out.println("Las etapas de esta carrera son las siguientes: ");
         mostrarEtapas();
         System.out.println("Los corredores de esta carrera son los siguientes: ");
         mostrarCiclistas();
-        for(int i=0; i< etapas.size();){
-            System.out.println("Comienza la etapa: "+etapas.get(i).getNombre());
+        for(int i=0; i< etapas.size();i++){
+            auxT=etapas.get(i) ;
+            System.out.println("Comienza la etapa: "+auxT.getNombre());
                  for(int n=0; n< ciclistasCarrera.size();n++){
+                    auxC=ciclistasCarrera.get(n);
                     System.out.println("Informacion del clista numero "+n);
-                    ciclistasCarrera.get(n).mostrarTodo();
-                    System.out.print("/La velocidad que es capaz de alcanzar en esta etapa es" + ciclistasCarrera.get(n).getBicicleta().getVelocidad(etapas.get(i), ciclistasCarrera.get(n)));     
-                    double aux=ciclistasCarrera.get(n).correrEtapa(etapas.get(i));
-                    System.out.println("El ciclista tardad "+ ciclistasCarrera.get(n).getHistorial().get(i).getTiempo() + " en completar la carrera");
-                    System.out.print("La energia que le queda al corredor es : " + aux);
-                    if(aux<=0){
-                        abandonar(ciclistasCarrera.get(n));
-                        ciclistasCarrera.get(n).getTeam().addCiclistaAbandonado(ciclistasCarrera.get(n));
+                    auxC.mostrarTodo();
+                    System.out.print("/La velocidad que es capaz de alcanzar en esta etapa es" + auxC.getBicicleta().getVelocidad(auxT, auxC));     
+                    double aux=auxC.correrEtapa(auxT);
+                    if(auxC.getEnergia()<0){
+                        System.out.println("El ciclista tarda "+ aux + " en completar la carrera");
+                        System.out.print("La energia que le queda al corredor es : " + auxC.getEnergia());
                     }
-                    else
-                        i++;
+                    else{
+                        System.out.println("El ciclista tarda se quedo sin energia a  "+ -1*auxC.getEnergia() + " minutos del final");
+                        System.out.println("El ciclista avanzo :  "+ aux + " antes de abandonar");
+                        System.out.println("El ciclista termino con :  "+ auxC.getEnergia() + " de energia");
+                    }
                  } 
-
+                 //ordenar vector de ciclistas en base al tiempo que han tardado en la etapa i y mostrar su tiempo
+                System.out.print("La clasificacion en esta etapa por orden es: ");
+                //aqui ordenar
+                for(Ciclista ciclista: ciclistasCarrera){
+                    ciclista.mostrarResultadoEtapa(auxT);
+                    if(ciclista.getEnergia()<0);{
+                        abandonar(ciclista);
+                    }
+                }
         }
+        //se ha terminado la carrera toca dar los premios
+        entregaPremios();
     }
     /**
      * Muestra los equipos que van a competir
@@ -117,50 +136,37 @@ public class Organizacion {
      * Muestra los ciclistas que han abandonado
      */
     public void mostrarAbandonos(){
-        for(Ciclista ciclista: ciclistasAbandono){
-            ciclista.mostrarTodo();
+        for(Equipo equipo: equipos){
+            equipo.mostrarAbandonos();
         }
+
     }
-    
     public void entregaPremios() {
-        for(int i=0;i<=ciclistasCarrera.size();i++){
-        Collections.sort(ciclistasCarrera , new TiempoAscComparator());
+        if (ciclistasCarrera.size()>0) {
+            Collections.sort(ciclistasCarrera , new TiempoAscComparator());
+            Collections.sort(abandonadosCarrera , new TiempoAscComparator());
+            System.out.print("Los ciclistas que clasificado ordenados por su puntuacion son: ");
+            for(int i=0;i<=ciclistasCarrera.size();i++){
+                for(Ciclista ciclista: ciclistasCarrera){
+                    ciclista.mostrarPuntuacion();
+                }
+            }
+            if(abandonadosCarrera.size()>0){
+            System.out.print("Los ciclistas que han abandonado son: ");
+                for(int i=0;i<=abandonadosCarrera.size();i++){
+                    for(Ciclista ciclista: ciclistasCarrera){
+                        ciclista.mostrarPuntuacion();
+                    }
+                }
+            }      
         }
-        for(int i=0;i<=ciclistasAbandono.size();i++){
-        Collections.sort(ciclistasAbandono , new TiempoAscComparator());
+        else{
+            System.out.print("No hay competidores o todos han abandonado");
         }
-        Ciclista ciclistaGanador;
-        Equipo equipoGanador;
-
-        if (ciclistasCarrera.size() == 0) {
-            System.out.print("No hay ganadores");
-        } else {
-            ciclistaGanador=ciclistasCarrera.get(0);
-        }
-
+            
     }
 }
 
-class TiempoMedioAscComparator implements Comparator<Ciclista> {
-    public int compare(Ciclista c1, Ciclista c2) {
-        if (c1.getTotalTime() == c2.getTotalTime())
-            return  new NombreCComparator().compare(c1, c2) ;
-        else if (c1.getTotalTime() >c2.getTotalTime())
-            return 1;
-        else
-            return -1;
-    }
-}
-class TiempoMedioDescComparator implements Comparator<Ciclista> {
-    public int compare(Ciclista c1, Ciclista c2) {
-        if (c1.getTotalTime() == c2.getTotalTime())
-            return  new NombreCComparator().compare(c1, c2) ;
-        else if (c1.getTotalTime() >c2.getTotalTime())
-            return 1;
-        else
-            return -1;
-    }
-}
 
 
 

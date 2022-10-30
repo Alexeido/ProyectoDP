@@ -53,5 +53,7 @@ public class Resultados {
     public void setTiempo(double tiempo) {
         this.tiempo = tiempo;
     }
-
+    public void mostrarResultadoEtapa(){
+        System.out.println("Carrera ("+sitio.getNombre() + ") Tiempo: " + tiempo + " Minutos "); 
+    }
 }
