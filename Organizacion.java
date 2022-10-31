@@ -137,7 +137,8 @@ public class Organizacion {
                 auxC.mostrarSinBici();
                 System.out.println("La velocidad que es capaz de alcanzar en esta etapa es "
                         +String.format("%.2f",auxC.getBicicleta().getVelocidad(auxT, auxC)) );
-                double aux = auxC.correrEtapa(auxT);  
+                double aux = auxC.correrEtapa(auxT);
+                auxC.setEtapa(auxT);  
                 if (auxC.getEnergia() >= 0) {
                     System.out.println("El ciclista tarda " +String.format("%.2f",aux)  + " en completar la carrera");
                     System.out.print("La energia que le queda al corredor es : " + String.format("%.2f",auxC.getEnergia())+'\n'+'\n');
@@ -147,8 +148,7 @@ public class Organizacion {
                     System.out.println("El ciclista termino con :  " + String.format("%.2f",auxC.getEnergia()) + " de energia"+'\n'+'\n');
                 }
             }
-            // ordenar vector de ciclistas en base al tiempo que han tardado en la etapa i y
-            // mostrar su tiempo\
+            Collections.sort(ciclistasCarrera, new TiempoEtapaComparator());
             System.out.println(" ****************************************************" +'\n' +"**************** FIN DE LA ETAPA ****************" + '\n'  +"****************************************************");
             System.out.println('\n'+"La clasificacion en esta etapa por orden es: ");
             //Collections.sort(ciclistasCarrera, new TiempoAscComparator());

@@ -9,7 +9,6 @@
 
 
 public class Bicicleta {
-    // instance variables - replace the example below with your own
     private String nombre;
     private double peso;
 
@@ -30,28 +29,28 @@ public class Bicicleta {
     }
 
     /**
-     * Devuelve la dificultad de la etapa
+     * @return la dificultad de la etapa
      */
     public String getNombre() {
         return this.nombre;
     }
 
     /**
-     * Devuelve la distancia de la etapa
+     * @return la distancia de la etapa
      */
     public double getPeso() {
         return this.peso;
     }
 
     /**
-     * Establece el nombre de la etapa
+     * @param nombre Establece el nombre de la bicicleta al que entra como parametro
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
     /**
-     * Establece la dificultad de la etapa
+     * @param peso Establece el peso de la bicicleta al que entra como parametro
      */
     public void setPeso(double peso) {
         this.peso = peso;
@@ -64,7 +63,7 @@ public class Bicicleta {
      *         actual
      */
     public double getVelocidad(Etapa e, Ciclista c) {
-        return ((c.getHabilidad() * 100) / this.peso * e.getDificultad());
+        return ((c.getHabilidad() * 100) / (this.peso * e.getDificultad()));
     }
 
     /**
@@ -77,6 +76,9 @@ public class Bicicleta {
         return (e.getDistancia() / this.getVelocidad(e, c) * 60);
     }
 
+    /**
+     *  Muestra los atributos de la instancia
+     */
     public void mostrarTodo(){
      System.out.println("<bicicleta: "+ nombre + "> <peso: "+ peso +">");
     }

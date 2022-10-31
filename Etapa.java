@@ -74,6 +74,7 @@ public class Etapa {
     public void setDistancia(int distancia) {
         this.distancia = distancia;
     }
+    
     public void mostrarTodo(){
          System.out.println("<etapa:"+nombre+"> <dificultad: " + dificultad+ "> <distancia: "+ distancia +">");
     }

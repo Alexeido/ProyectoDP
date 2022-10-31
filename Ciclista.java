@@ -18,8 +18,10 @@ public class Ciclista {
     private Equipo team;
     private Etapa Eorden;
     private double totalTime;
-    private double tiempoAbandono;
 
+    /**
+     *  Constructor por defecto de la clase Ciclista
+     */
     public Ciclista() {
         this.nombre = "";
         this.bici = new Bicicleta();
@@ -28,22 +30,39 @@ public class Ciclista {
         this.historial = new ArrayList<Resultados>();
         this.team = new Equipo();
         this.totalTime=0;
-        this.tiempoAbandono=0;
         Eorden = new Etapa();
     }
 
+    /**
+     * 
+     * Constructor parametrizado de la clase Ciclista
+     * 
+     * @param nombre        Inicializa el nombre de la instancia por este
+     * @param habilidad     Inicializa la habilidad de la instancia por esta
+     * @param energia       Inicializa la energía de la instancia por esta
+     * @param team          Inicializa el equipo de la instancia por este
+     */
     public Ciclista(String nombre, double habilidad, double energia,Equipo team) {
         this.nombre = nombre;
         this.habilidad = habilidad;
         this.energia = energia;
         this.team = team;
         this.totalTime=0;
-        this.tiempoAbandono=0;
         this.bici = new Bicicleta();
         this.historial = new ArrayList<Resultados>();
         Eorden = new Etapa();
     }
 
+    /**
+     * 
+     * Constructor parametrizado de la clase Ciclista
+     * 
+     * @param nombre        Inicializa el nombre de la instancia por este
+     * @param bici          Inicializa la bicicleta de la instancia por esta
+     * @param habilidad     Inicializa la habilidad de la instancia por esta
+     * @param energia       Inicializa la energía de la instancia por esta
+     * @param team          Inicializa el equipo de la instancia por este
+     */
     public Ciclista(String nombre, Bicicleta bici, double habilidad, double energia, Equipo team) {
         this.nombre = nombre;
         this.bici = bici;
@@ -131,9 +150,7 @@ public class Ciclista {
     public Equipo getTeam() {
         return this.team;
     }
-    public double getiempoAbandonotTeam() {
-        return this.tiempoAbandono;
-    }
+
     /**
      * @param team Establece el equipo actual al que entra como parametro
      */
@@ -141,10 +158,16 @@ public class Ciclista {
         this.team = team;
     }
 
+    /**
+     * @return Devuelve la etapa en la que se estan comparando los ciclistas 
+     */
     public Etapa getEtapa(){
         return Eorden;
     }
     
+    /**
+     * @param Eorden Establece la etapa en la que se compararán
+     */
     public void setEtapa(Etapa Eorden){
         this.Eorden = Eorden;
     }
@@ -192,6 +215,9 @@ public class Ciclista {
     }
 
 
+    /**
+     * @param etapa Etapa de la que se mostrará la información
+     */
     public void mostrarResultadoEtapa(Etapa etapa){
         boolean encontrado=false;
         for(int i=0;i<=historial.size() && !encontrado ;i++){
@@ -222,7 +248,6 @@ public class Ciclista {
         else{
             this.setEnergia(aux);
             this.getHistorial().add(new Resultados(e, aux));
-            this.tiempoAbandono=this.getBicicleta().getETime(e, this)-aux;
             time=this.getBicicleta().getETime(e, this)-aux;
             this.totalTime+=this.energia;
         }

@@ -1,5 +1,3 @@
-
-
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,34 +11,27 @@ import org.junit.jupiter.api.Test;
  */
 public class EquipoTest
 {
+    Equipo dSMWomen= new Equipo("DSM Women", 'E', 'P');
+    Ciclista ciclista1 = new Ciclista("WIEBES",  4.97, 1190,dSMWomen);
+    Ciclista ciclista2 = new Ciclista("LIPPERT", 5.0, 1160,dSMWomen);
+    Etapa etapa1 = new Etapa("sencilla larga", 0.9, 200);
+    Etapa etapa2 = new Etapa("compleja corta", 1.1, 150);
+    Bicicleta bicicleta1= new Bicicleta("TREK Madone SLR 9 eTap Gen 7",7.35);
+    Bicicleta bicicleta2= new Bicicleta("TREK Emonda SLR 9 eTap",7.65); 
     /**
      * Default constructor for test class EquipoTest
      */
     public EquipoTest()
     {
-        Equipo movistarWomen = new Equipo("Movistar Women", 'H', 'P');
-        Equipo dSMWomen= new Equipo("DSM Women", 'E', 'P');
-        Equipo trekSegafredoWomen = new Equipo("Trek Segafredo Women",'H','P');
-        Ciclista cliclista1 = new Ciclista("WIEBES",  4.97, 1190,dSMWomen);
-        Ciclista cliclista2 = new Ciclista("LIPPERT", 5.0, 1160,dSMWomen);
-        Ciclista cliclista3 = new Ciclista("LABOUS", 5.01, 1150,dSMWomen);
-        Ciclista cliclista4 = new Ciclista("VAN VLEUTEN", 4.96,1200,movistarWomen);
-        Ciclista cliclista5 = new Ciclista("NORSGAARD", 5.02,1145,movistarWomen);
-        Ciclista cliclista6 = new Ciclista("SIERRA", 5.03, 1130,movistarWomen);
-        Ciclista cliclista7 = new Ciclista("BALSAMO", 4.98,1180,trekSegafredoWomen);
-        Ciclista cliclista8 = new Ciclista("LONGO-BORGHINI", 4.99,1175,trekSegafredoWomen);
-        Ciclista cliclista9 = new Ciclista("CORDON-RAGOT", 5.04, 1120,trekSegafredoWomen);
-        dSMWomen.addCiclista(cliclista1);
-        dSMWomen.addCiclista(cliclista2);
-        dSMWomen.addCiclista(cliclista3);
-        movistarWomen.addCiclista(cliclista4);
-        movistarWomen.addCiclista(cliclista5);
-        movistarWomen.addCiclista(cliclista6);   
-        trekSegafredoWomen.addCiclista(cliclista7);
-        trekSegafredoWomen.addCiclista(cliclista8);
-        trekSegafredoWomen.addCiclista(cliclista9);
-
-        
+        dSMWomen.addCiclista(ciclista1);
+        dSMWomen.addCiclista(ciclista2);
+        ciclista1.setBicicleta(bicicleta1);
+        ciclista2.setBicicleta(bicicleta2);
+        ciclista1.correrEtapa(etapa1);
+        ciclista2.correrEtapa(etapa1);
+        ciclista1.correrEtapa(etapa2);
+        ciclista2.correrEtapa(etapa2);
+        dSMWomen.setTiempoMedio();
     }
 
     /**
@@ -62,9 +53,15 @@ public class EquipoTest
     public void tearDown()
     {
     }
+    
     @Test
-    public void testabandonados(){
-        //int a=movistarWomen.getCiclistas().size();
-        // b=movistarWomen.getCiclistas().size();
+    public void testSetTiempoMedio(){ 
+        assertEquals(String.format("%.2f",dSMWomen.getTiempoMedio()),"311,42");
+    }
+    
+    @Test
+    public void testEnviarEtapa(){
+        assertTrue(ciclista1.getEnergia() < 1190);
+        assertTrue(ciclista2.getEnergia() < 1160);
     }
 }
