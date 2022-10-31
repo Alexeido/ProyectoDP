@@ -36,20 +36,20 @@ public class DatosCampeonatoAbandonos
         organizacion.anadirEquipo(dSMWomen);
                 
         //constructor de bicicletas pide ( String nombre, double peso)
-		dSMWomen.addbicileta(new Bicicleta("SCOTT CONTESSA ADDICT eRIDE 15",7.4)); 
+        dSMWomen.addbicileta(new Bicicleta("SCOTT CONTESSA ADDICT eRIDE 15",7.4)); 
         dSMWomen.addbicileta(new Bicicleta("SCOTT CONTESSA ADDICT 15",7.6));
         dSMWomen.addbicileta(new Bicicleta("SCOTT CONTESSA ADDICT RC 15",7.8));
         //constructor de ciclistas pide (String nombre , double habilidad , double energia, Equipo equipo)
-		dSMWomen.addCiclista(new Ciclista("WIEBES",  4.97, 1190,dSMWomen));
+        dSMWomen.addCiclista(new Ciclista("WIEBES",  4.97, 1190,dSMWomen));
         dSMWomen.addCiclista(new Ciclista("LIPPERT", 5.0, 1160,dSMWomen));
         dSMWomen.addCiclista(new Ciclista("LABOUS", 5.01, 1150,dSMWomen));
      
         //constructor de bicicletas pide ( String nombre, double peso)
-		trekSegafredoWomen.addbicileta(new Bicicleta("TREK Madone SLR 9 eTap Gen 7",7.35));
+        trekSegafredoWomen.addbicileta(new Bicicleta("TREK Madone SLR 9 eTap Gen 7",7.35));
         trekSegafredoWomen.addbicileta(new Bicicleta("TREK Emonda SLR 9 eTap",7.65));
         trekSegafredoWomen.addbicileta(new Bicicleta("TREK Domane SLR 9 eTap Gen 4",7.85));
         //constructor de ciclistas pide (String nombre , double habilidad , double energia, Equipo equipo)
-		trekSegafredoWomen.addCiclista(new Ciclista("BALSAMO", 4.98,1180,trekSegafredoWomen));
+        trekSegafredoWomen.addCiclista(new Ciclista("BALSAMO", 4.98,1180,trekSegafredoWomen));
         trekSegafredoWomen.addCiclista(new Ciclista("LONGO-BORGHINI", 4.99,1175,trekSegafredoWomen));
         trekSegafredoWomen.addCiclista(new Ciclista("CORDON-RAGOT", 5.04, 1120,trekSegafredoWomen));
         

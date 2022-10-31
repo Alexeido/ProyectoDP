@@ -1,4 +1,5 @@
 import java.util.*;
+import java.lang.*;
 
 /**
  * Representa a los Equipos que competirán tanto por la clasificación por
@@ -100,7 +101,7 @@ public class Equipo {
       /*
      * 
      */
-    public void setTiempoMedio(Equipo equipo){
+    public void setTiempoMedio(){
         this.tiempoMedio=getTiempototal()/ciclistas.size();
     }
 
@@ -127,13 +128,16 @@ public class Equipo {
         this.ordenCiclista=ordenCiclista;
     }
 
-
+       public void asignarbici(){
+        for(int i=0;i<ciclistas.size();i++){
+            ciclistas.get(i).setBicicleta(bicis.get(i));
+        }
+    }
      public void mostrarTodo(){
-        System.out.println(nombre + " Cuya media de puntos de sus ciclistas sin abandonar es: " + tiempoMedio );
+        System.out.println(nombre + " Cuya media de puntos de sus ciclistas sin abandonar es: " + String.format("%.2f",tiempoMedio) );
         for (int i=0; i<ciclistas.size(); i++){
             ciclistas.get(i).mostrarSinBici();//<ciclista:VAN VLEUTEN> <energía: 50.92> <habilidad: 4.96> <tiempo acumulado sin abandonar: 1149.08> <abandonado:false>
         }
-
         for (int i=0; i<ciclistasAbandonados.size();i++){
             ciclistas.get(i).mostrarSinBici();
             System.out.print("<Abandonado>");
@@ -187,7 +191,7 @@ public class Equipo {
     public double getTiempototal(){
         double result=0;
         Ciclista aux;
-        for(int i=0;i<=ciclistas.size();i++){
+        for(int i=0;i<ciclistas.size();i++){
             aux=ciclistas.get(i);
             result=result+aux.getTotalTime();
         }

@@ -1,4 +1,5 @@
 import java.util.*;
+import java.lang.*;
 
 //Comparator ciclistas
 class NombreCComparator implements Comparator<Ciclista> {
@@ -30,7 +31,7 @@ class TiempoDescComparator implements Comparator<Ciclista> {
     public int compare(Ciclista c1, Ciclista c2) {
         if (c1.getTotalTime() == c2.getTotalTime())
             return  new NombreCComparator().compare(c1, c2) ;
-        else if (c1.getTotalTime() >c2.getTotalTime())
+        else if (c1.getTotalTime() <c2.getTotalTime())
             return 1;
         else
             return -1;
@@ -102,7 +103,7 @@ class TiempoMedioComparator implements Comparator<Equipo> {
     public int compare(Equipo e1, Equipo e2) {
         if (e1.getTiempoMedio() == e2.getTiempoMedio())
             return 0;
-        else if (e1.getTiempoMedio() < e2.getTiempoMedio())
+        else if (e1.getTiempoMedio() > e2.getTiempoMedio())
             return 1;
         else
             return -1;

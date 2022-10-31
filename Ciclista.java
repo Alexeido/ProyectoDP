@@ -166,7 +166,7 @@ public class Ciclista {
      * Muestra la información de un ciclista y de su bicicleta
      */
     public void mostrarTodo(){
-         System.out.print("Nombre:"+nombre +"/Con habilidad:" +habilidad +"/Con energia"+energia + " con su biclieta:");
+         System.out.println('\n'+"Nombre:"+nombre +"/Con habilidad:" +String.format("%.2f",habilidad) +"/Con energia"+String.format("%.2f",energia)  + " con su biclieta:");
          bici.mostrarTodo();
     }
 
@@ -174,14 +174,14 @@ public class Ciclista {
      * Muestra la información de un ciclista
      */
     public void mostrarSinBici(){
-        System.out.print("<Nombre:"+nombre +"> <con habilidad:" +habilidad +"> <con energia"+energia + "> <tiempo acumulado sin abandonar"+ totalTime+ ">");
+        System.out.println("<Nombre: "+nombre +"> <con habilidad: " +String.format("%.2f",habilidad) +"> <con energia: "+String.format("%.2f",energia) + "> <tiempo acumulado sin abandonar: "+String.format("%.2f",totalTime) + ">");
    }
 
     /*
      * Muestra la puntuacion de cada ciclista
      */
     public void mostrarPuntuacion(){
-        System.out.println("Nombre: "+ nombre + " Tiene como tiempo total :"+ totalTime);
+        System.out.println("Nombre: "+ nombre + " Tiene como tiempo total :"+ String.format("%.2f",totalTime));
         for(Resultados puntaje: historial){
             puntaje.mostrarResultadoEtapa();
         }
@@ -189,11 +189,13 @@ public class Ciclista {
 
 
     public void mostrarResultadoEtapa(Etapa etapa){
-        for(int i=0;i<=historial.size();i++){
-            if (historial.get(i).getSitio()==etapa){
-                System.out.print(nombre+ " - Tiempo: "+ historial.get(i).getTiempo());
+        boolean encontrado=false;
+        for(int i=0;i<=historial.size() && !encontrado ;i++){
+            if (historial.get(i).getSitio().getNombre()==etapa.getNombre()){
+                System.out.println(nombre+ " - Tiempo: "+ String.format("%.2f",historial.get(i).getTiempo()));
+                encontrado=true;
             }
-        }
+        }   
     }
     /**
      * @param e Etapa a correr
@@ -222,6 +224,11 @@ public class Ciclista {
         }
         return time;
 
+    }
+    public void mostrarhistorial(){
+        for(int i=0;i<historial.size();i++){
+            historial.get(i).mostrarResultadoEtapa();
+        }
     }
 }
 
