@@ -2,7 +2,7 @@
  * Clase simple que almacena una bicicleta 
  * 
  * @author Alexeido, Thander y Natera
- * @version (a version number or a date)
+ * @version 31-10-2022
  */
  
 
@@ -22,6 +22,8 @@ public class Bicicleta {
 
     /**
      * Constructor parameterized for objects of class Bicicleta
+     * @param nombre Nombre de la bicicleta
+     * @param peso Peso de la bicicleta
      */
     public Bicicleta(String nombre, double peso) {
         this.nombre = nombre;
@@ -77,7 +79,7 @@ public class Bicicleta {
     }
 
     /**
-     *  Muestra los atributos de la instancia
+     *  Muestra los atributos de la bicicleta
      */
     public void mostrarTodo(){
      System.out.println("<bicicleta: "+ nombre + "> <peso: "+ peso +">");

@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Test;
 /**
  * The test class EquipoTest.
  *
- * @author  (your name)
- * @version (a version number or a date)
+ * @author Alexeido, Thander y Natera
+ * @version 31-10-2022
  */
 public class EquipoTest
 {

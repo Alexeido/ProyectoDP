@@ -3,7 +3,7 @@
  * Clase que almacena un ciclista y sus metodos para correr etapas y compararse entre otros ciclistas 
  * 
  * @author Alexeido, Thander y Natera
- * @version (a version number or a date)
+ * @version 31-10-2022
  */
  
  import java.util.*;
@@ -254,6 +254,10 @@ public class Ciclista {
         return time;
 
     }
+
+    /**
+     * Muestra los resultados del ciclista en todas las etapas
+     */
     public void mostrarhistorial(){
         for(int i=0;i<historial.size();i++){
             historial.get(i).mostrarResultadoEtapa();

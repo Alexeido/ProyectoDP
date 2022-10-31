@@ -5,10 +5,10 @@ import java.lang.*;
  * La organización se encarga de gestionar toda la carrera
  * 
  * @author Alexeido, Thander y Natera
- * @version (a version number or a date)
+ * @version 31-10-2022
  */
 public class Organizacion {
-    // instance variables - replace the example below with your own
+    // instance variables 
     private ArrayList<Etapa> etapas;
     private ArrayList<Equipo> equipos;
     private ArrayList<Ciclista> ciclistasCarrera;
@@ -27,6 +27,10 @@ public class Organizacion {
         this.compararetapa = new ComparadorDificultadEtapa();
     }
 
+    /**
+     * Constructor parametrizado para la calse Organizacion
+     * @param etapa Tipo de comparador a usar
+     */
     public Organizacion(ComparadorDificultadEtapa etapa) {
         // initialise instance variables
         this.etapas = new ArrayList<Etapa>();
@@ -37,7 +41,11 @@ public class Organizacion {
     }
 
     /**
-     * Constructor para la calse Organizacion
+     * Constructor parametrizado para la calse Organizacion
+     * @param etapas Etapas de la carrera
+     * @param equipos Equipos que van a participar
+     * @param ciclistasCarrera Ciclistas que van a participar
+     * @param abandonadosCarrera Ciclistas que han abandonado la carrera
      */
     public Organizacion(ArrayList<Etapa> etapas, ArrayList<Equipo> equipos,
             ArrayList<Ciclista> ciclistasCarrera, ArrayList<Ciclista> abandonadosCarrera) {
@@ -51,24 +59,35 @@ public class Organizacion {
 
     /**
      * Añade un equipo a la Arraylistis de equipos
+     * @param equipo Equipo a incribir en la carrera
      */
     public void anadirEquipo(Equipo equipo) {
         equipos.add(equipo);
     }
 
+    /**
+     * Añade los ciclistas de un equipo a la ArrayList de ciclistas que compiten
+     * @param equipo Equipo que va a inscribir ciclistas
+     */
     public void anadirCiclistaCarrera(Equipo equipo) {
         for (int i=0;i<equipo.getCiclistas().size(); i++) {
             ciclistasCarrera.add(equipo.getCiclistas().get(i));
         } 
     }
+
     /**
      * Añade una etapa a la Arraylistis de etapas
+     * @param etapa Etapa a añadir
      */
     public void anadirEtapa(Etapa etapa) {
         etapas.add(etapa);
         Collections.sort(etapas, compararetapa);
     }
 
+    /**
+     * Quita un ciclista de las Arraylist de ciclistasCarrera y y lo añade la de ciclistas abandonados de la carrera y del propio equipo
+     * @param ciclista Ciclista que va a abandonar
+     */
     public void abandonar(Ciclista ciclista) {
         ciclistasCarrera.remove(ciclista);
         abandonadosCarrera.add(ciclista);
@@ -112,6 +131,9 @@ public class Organizacion {
 
     }
  
+    /**
+     * Presenta los equipos que van a competir y sus ciclistas
+     */
     public void presentacionCarrera() {
         for(int i=0;i<equipos.size();i++){
             anadirCiclistaCarrera(equipos.get(i));
@@ -119,12 +141,15 @@ public class Organizacion {
         }
         //asignarbici();    
         mostrarEtapas();
-        System.out.println('\n'+'\n'+'\n'+"Los equipos de esta carrera son los siguientes: "+'\n'+'\n');
+        System.out.println('\n'+"Los equipos de esta carrera son los siguientes: "+'\n'+'\n');
         mostrarEquipos();
-        System.out.println('\n'+'\n'+'\n'+"Los corredores de esta carrera son los siguientes: "+'\n'+'\n');
+        System.out.println('\n'+"Los corredores de esta carrera son los siguientes: "+'\n'+'\n');
         mostrarCiclistas();
     }
 
+    /**
+     * Se desarrolla el trancurso de la carrera mostrando el esado de los ciclistas tras cada etapa
+     */
     public void desarroyoCarrera() {
         Ciclista auxC;
         Etapa auxT;
@@ -169,6 +194,9 @@ public class Organizacion {
         // se ha terminado la carrera toca dar los premios
     }
 
+    /**
+     * Muestra la clasificacion de los equipos y ciclistas
+     */
     public void entregaPremios() {
         if (ciclistasCarrera.size() > 0) {
             Collections.sort(ciclistasCarrera, new TiempoAscComparator());
@@ -201,6 +229,9 @@ public class Organizacion {
 
     }
 
+    /**
+     * Se lleva a cabo toda la carrera
+     */
     public void gestionarCampeonato() {
         presentacionCarrera();
         desarroyoCarrera();

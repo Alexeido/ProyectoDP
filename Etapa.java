@@ -3,7 +3,7 @@
  * Clase siemple que almacena el nombre y la dificultad de una etapa
  * 
  * @author Alexeido, Thander y Natera
- * @version (a version number or a date)
+ * @version 31-10-2022
  */
 
 public class Etapa {
@@ -75,6 +75,9 @@ public class Etapa {
         this.distancia = distancia;
     }
     
+    /**
+     * Muestra la información de la etapa
+     */
     public void mostrarTodo(){
          System.out.println("<etapa:"+nombre+"> <dificultad: " + dificultad+ "> <distancia: "+ distancia +">");
     }

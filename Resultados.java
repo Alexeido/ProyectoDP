@@ -3,7 +3,7 @@
  * Clase siemple que almacena el resultado de una etapa concreta
  * 
  * @author Alexeido, Thander y Natera
- * @version (a version number or a date)
+ * @version 31-10-2022
  */
 
 public class Resultados {
@@ -12,13 +12,18 @@ public class Resultados {
     private double tiempo;
 
     /**
-     * Constructor for objects of class Resultados
+     * Constructor de objetos de la calse Resultados
      */
     public Resultados() {
         sitio = new Etapa();
         tiempo = 0;
     }
 
+    /**
+     * Constructor parametrizado de objetos de la calse Resultados
+     * @param sitio Etapa recorrida
+     * @param tiempo Tiempo tardado en recorrer la etapa
+     */
     public Resultados(Etapa sitio, double tiempo) {
         this.sitio = sitio;
         this.tiempo = tiempo;
@@ -53,6 +58,10 @@ public class Resultados {
     public void setTiempo(double tiempo) {
         this.tiempo = tiempo;
     }
+
+    /**
+     * Muestra los resultados de la etapa
+     */
     public void mostrarResultadoEtapa(){
         System.out.println("Carrera ("+sitio.getNombre() + ") Tiempo: " + String.format("%.2f",tiempo) + " minutos "); 
     }
