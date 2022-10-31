@@ -29,6 +29,7 @@ public class BicicletaTest
     @BeforeEach
     public void setUp()
     {
+        
         bici=new Bicicleta("TREK Domane SLR 9 eTap Gen 4",7.85);
         
     }

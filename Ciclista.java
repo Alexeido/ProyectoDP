@@ -174,7 +174,11 @@ public class Ciclista {
      * Muestra la información de un ciclista
      */
     public void mostrarSinBici(){
-        System.out.println("<Nombre: "+nombre +"> <con habilidad: " +String.format("%.2f",habilidad) +"> <con energia: "+String.format("%.2f",energia) + "> <tiempo acumulado sin abandonar: "+String.format("%.2f",totalTime) + ">");
+        String abandonado="<Sin abandono>" ;
+        if(energia<0){
+            abandonado=" <abandonado> ";
+        }
+        System.out.println("<Nombre: "+nombre +"> <con habilidad: " +String.format("%.2f",habilidad) +"> <con energia: "+String.format("%.2f",energia) + "> <tiempo acumulado sin abandonar: "+String.format("%.2f",totalTime) + "> "+ abandonado );
    }
 
     /*

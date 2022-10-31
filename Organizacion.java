@@ -130,7 +130,7 @@ public class Organizacion {
         Etapa auxT;
         for (int i = 0; i < etapas.size(); i++) {
             auxT = etapas.get(i);
-            System.out.println('\n'+"Comienza la etapa: " + auxT.getNombre()+'\n'+'\n'+'\n'+'\n' );
+            System.out.println('\n'+"****************************************************" +'\n' +"**************** COMIENZA LA ETAPA " +auxT.getNombre().toUpperCase()+ " ****************" + '\n'  +"****************************************************"+'\n' );
             for (int n = 0; n < ciclistasCarrera.size(); n++) {
                 auxC = ciclistasCarrera.get(n);
                 System.out.println('\n'+"Informacion del clista numero " + (1+n));
@@ -150,7 +150,7 @@ public class Organizacion {
             // ordenar vector de ciclistas en base al tiempo que han tardado en la etapa i y
             // mostrar su tiempo\
             System.out.println(" ****************************************************" +'\n' +"**************** FIN DE LA ETAPA ****************" + '\n'  +"****************************************************");
-            System.out.println('\n'+'\n'+'\n'+"La clasificacion en esta etapa por orden es: ");
+            System.out.println('\n'+"La clasificacion en esta etapa por orden es: ");
             //Collections.sort(ciclistasCarrera, new TiempoAscComparator());
 
             for(int p=0;p<ciclistasCarrera.size();p++) {
@@ -183,7 +183,7 @@ public class Organizacion {
             System.out.println(" ****************************************************" +'\n'+"**************** LOS CICLISTAS QUE HAN ABADONADO SON ****************" +'\n'+ "****************************************************");
                 for (int i = 0; i < abandonadosCarrera.size(); i++) {
                         abandonadosCarrera.get(i).mostrarSinBici();
-                        ciclistasCarrera.get(i).mostrarhistorial();
+                        abandonadosCarrera.get(i).mostrarhistorial();
                 }
             }
             Collections.sort(equipos, new TiempoMedioComparator());

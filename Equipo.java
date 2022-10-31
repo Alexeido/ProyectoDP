@@ -139,8 +139,8 @@ public class Equipo {
             ciclistas.get(i).mostrarSinBici();//<ciclista:VAN VLEUTEN> <energía: 50.92> <habilidad: 4.96> <tiempo acumulado sin abandonar: 1149.08> <abandonado:false>
         }
         for (int i=0; i<ciclistasAbandonados.size();i++){
-            ciclistas.get(i).mostrarSinBici();
-            System.out.print("<Abandonado>");
+            ciclistasAbandonados.get(i).mostrarSinBici();
+            
         }
     }
     public void mostrarAbandonos(){
@@ -185,8 +185,9 @@ public class Equipo {
         }
     }
     public void addCiclistaAbandonado(Ciclista c){
-        ciclistasAbandonados.add(c);
         ciclistas.remove(c);
+        ciclistasAbandonados.add(c);
+        
     }
     public double getTiempototal(){
         double result=0;

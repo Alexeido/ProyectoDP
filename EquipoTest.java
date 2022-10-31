@@ -22,25 +22,25 @@ public class EquipoTest
         Equipo dSMWomen= new Equipo("DSM Women", 'E', 'P');
         Equipo trekSegafredoWomen = new Equipo("Trek Segafredo Women",'H','P');
         Ciclista cliclista1 = new Ciclista("WIEBES",  4.97, 1190,dSMWomen);
-        Ciclista cliclista2 = new Ciclista();
-        Ciclista cliclista3 = new Ciclista();
-        Ciclista cliclista4 = new Ciclista();
-        Ciclista cliclista5 = new Ciclista();
-        Ciclista cliclista6 = new Ciclista();
-        Ciclista cliclista7 = new Ciclista();
-        Ciclista cliclista8 = new Ciclista();
-        Ciclista cliclista9 = new Ciclista();
-        
-
+        Ciclista cliclista2 = new Ciclista("LIPPERT", 5.0, 1160,dSMWomen);
+        Ciclista cliclista3 = new Ciclista("LABOUS", 5.01, 1150,dSMWomen);
+        Ciclista cliclista4 = new Ciclista("VAN VLEUTEN", 4.96,1200,movistarWomen);
+        Ciclista cliclista5 = new Ciclista("NORSGAARD", 5.02,1145,movistarWomen);
+        Ciclista cliclista6 = new Ciclista("SIERRA", 5.03, 1130,movistarWomen);
+        Ciclista cliclista7 = new Ciclista("BALSAMO", 4.98,1180,trekSegafredoWomen);
+        Ciclista cliclista8 = new Ciclista("LONGO-BORGHINI", 4.99,1175,trekSegafredoWomen);
+        Ciclista cliclista9 = new Ciclista("CORDON-RAGOT", 5.04, 1120,trekSegafredoWomen);
         dSMWomen.addCiclista(cliclista1);
-        dSMWomen.addCiclista(new Ciclista("LIPPERT", 5.0, 1160,dSMWomen));
-        dSMWomen.addCiclista(new Ciclista("LABOUS", 5.01, 1150,dSMWomen));
-        movistarWomen.addCiclista(new Ciclista("VAN VLEUTEN", 4.96,1200,movistarWomen));
-        movistarWomen.addCiclista(new Ciclista("NORSGAARD", 5.02,1145,movistarWomen));
-        movistarWomen.addCiclista(new Ciclista("SIERRA", 5.03, 1130,movistarWomen));   
-        trekSegafredoWomen.addCiclista(new Ciclista("BALSAMO", 4.98,1180,trekSegafredoWomen));
-        trekSegafredoWomen.addCiclista(new Ciclista("LONGO-BORGHINI", 4.99,1175,trekSegafredoWomen));
-        trekSegafredoWomen.addCiclista(new Ciclista("CORDON-RAGOT", 5.04, 1120,trekSegafredoWomen));
+        dSMWomen.addCiclista(cliclista2);
+        dSMWomen.addCiclista(cliclista3);
+        movistarWomen.addCiclista(cliclista4);
+        movistarWomen.addCiclista(cliclista5);
+        movistarWomen.addCiclista(cliclista6);   
+        trekSegafredoWomen.addCiclista(cliclista7);
+        trekSegafredoWomen.addCiclista(cliclista8);
+        trekSegafredoWomen.addCiclista(cliclista9);
+
+        
     }
 
     /**
@@ -61,6 +61,10 @@ public class EquipoTest
     @AfterEach
     public void tearDown()
     {
-        //ciclista.getTeam().addCiclistaAbandonado(ciclista);
+    }
+    @Test
+    public void testabandonados(){
+        //int a=movistarWomen.getCiclistas().size();
+        // b=movistarWomen.getCiclistas().size();
     }
 }
