@@ -1,0 +1,8 @@
+Alejandro Barrena Millán
+Raul-Martín Romo Sanchez
+Pablo Natera Muñoz
+Ejecutar de CiclismoDemo public static void main(String[] args)
+Requisitos Extras:
+Uso correcto de la funcionalidad ofrecida por las Colecciones y los Comparadores
+Pruebas unitarias del proyecto con JUnit
+Uso de la funcionalidad de Git proporcionada por BlueJ

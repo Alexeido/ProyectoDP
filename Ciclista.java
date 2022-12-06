@@ -9,7 +9,7 @@
  import java.util.*;
 
 
-public class Ciclista {
+public abstract class Ciclista {
     private String nombre;
     private Bicicleta bici;
     private double habilidad;
@@ -18,6 +18,7 @@ public class Ciclista {
     private Equipo team;
     private Etapa Eorden;
     private double totalTime;
+    private double destreza;
 
     /**
      *  Constructor por defecto de la clase Ciclista
@@ -248,13 +249,18 @@ public class Ciclista {
         else{
             this.setEnergia(aux);
             this.getHistorial().add(new Resultados(e, aux));
-            time=this.getBicicleta().getETime(e, this)-aux;
-            this.totalTime+=this.energia;
+            time=this.getBicicleta().getETime(e, this)+aux;
+            this.totalTime+= (-1*aux)+this.getEnergia();
         }
         return time;
 
     }
-
+    public void setDestreza(Double destreza){
+        this.destreza=destreza;
+    }
+    public double getDestreza(){
+        return this.destreza;
+    }
     /**
      * Muestra los resultados del ciclista en todas las etapas
      */

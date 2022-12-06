@@ -159,7 +159,7 @@ public class Organizacion {
             for (int n = 0; n < ciclistasCarrera.size(); n++) {
                 auxC = ciclistasCarrera.get(n);
                 System.out.println('\n'+"Informacion del clista numero " + (1+n));
-                auxC.mostrarSinBici();
+                auxC.mostrarTodo();
                 System.out.println("La velocidad que es capaz de alcanzar en esta etapa es "
                         +String.format("%.2f",auxC.getBicicleta().getVelocidad(auxT, auxC)) );
                 double aux = auxC.correrEtapa(auxT);
@@ -187,6 +187,10 @@ public class Organizacion {
                     p--;
                 }
             }
+            for(int v=0;v<equipos.size();v++){
+            equipos.get(v).asignarbici();
+            }
+        
         }
         for (Equipo equipo : equipos) {
             equipo.setTiempoMedio();
@@ -222,6 +226,7 @@ public class Organizacion {
             for (Equipo equipo : equipos) {
                 equipo.mostrarTodo();
             }
+                        System.out.print("pekka 14 o 15 con espejo");
         } else {
             System.out.print("No hay competidores o todos han abandonado");
 

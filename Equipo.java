@@ -173,6 +173,7 @@ public class Equipo {
      * Asigna una bicicleta a cada ciclista
      */
     public void asignarbici() {
+        reOrdenCiclista(ordenCiclista);
         for (int i = 0; i < ciclistas.size(); i++) {
             ciclistas.get(i).setBicicleta(bicis.get(i));
         }
