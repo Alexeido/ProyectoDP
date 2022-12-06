@@ -1,9 +1,8 @@
-
 /**
- * Write a description of class CiclistaEstrella here.
+ * Clase simple que almacena una bicicleta 
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Alexeido, Thander y Natera
+ * @version 
  */
 public class CiclistaEstrella extends Ciclista
 {
@@ -12,11 +11,12 @@ public class CiclistaEstrella extends Ciclista
     /**
      * Constructor for objects of class CiclistaEstrella
      */
-    public CiclistaEstrella(String nombre, double habilidad, double energia,Equipo team)
+    public CiclistaEstrella(String nombre, CiclistaHabilidad habilidad, double energia,Equipo team)
     {
         // initialise instance variables
         super(nombre,habilidad,energia,team);
-        super.setDestreza(((habilidad + 6) / 140) * 10);        
+        super.setDestreza(((getHabilidad() + 6) / 140) * 10); 
+        this.popularidad=6;       
     }
 
     /**
@@ -27,8 +27,12 @@ public class CiclistaEstrella extends Ciclista
      */
     public void aumentarpuplaridad()
     {
-        // put your code here
         popularidad +=4;
+    }
+
+    public void disminuirpuplaridad()
+    {
+        popularidad --;
     }
 
     public int getPopularidad(){

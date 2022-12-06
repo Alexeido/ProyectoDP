@@ -6,31 +6,40 @@
  * @version 31-10-2022
  */
 
+
 public class Etapa {
     private String nombre;
-
-    private double dificultad;
-
-    private double distancia;
+    private EtapaDificultad dificultad;
+    /*Grados de dificultad
+    *   VACIA = 0;
+    *   CORTA  = 150;
+    *   INTERMEDIA = 200;
+    *   LARAG = 225;
+    */
+    private EtapaDistancia distancia;
+    /*Grados de distancia
+    *   VACIA = 0;
+    *   SENCILLA = 0.9;
+    *   NORMAL = 1.0;
+    *   COMPLEJA = 1.1;
+    */
 
     /**
      * Constructor para la clase Etapa
      */
-    public Etapa() {
+    public Etapa(){
         this.nombre = "";
-        this.dificultad = 0;
-        this.distancia = 0;
-
+        setDificultad(EtapaDificultad.VACIA);
+        setDistancia(EtapaDistancia.VACIA);
     }
 
     /**
      * Constructor parametrizado para la clase Etapa
      */
-    public Etapa(String nombre, double dificultad, double distancia) {
+    public Etapa(String nombre, EtapaDificultad dificultad, EtapaDistancia distancia) {
         this.nombre = nombre;
-        this.dificultad = dificultad;
-        this.distancia = distancia;
-
+        setDificultad(dificultad);
+        setDistancia(distancia);
     }
 
     /**
@@ -44,6 +53,13 @@ public class Etapa {
      * @return Nivel de dificultad
      */
     public double getDificultad() {
+        return dificultad.getValor();
+    }
+
+    /**
+     * @return El enum de la dificultad
+     */
+    public EtapaDificultad getEtapaDificultad() {
         return dificultad;
     }
 
@@ -51,6 +67,13 @@ public class Etapa {
      * @return Distancia de la etapa
      */
     public double getDistancia() {
+        return distancia.getValor();
+    }
+
+    /**
+     * @return El enum de la etapa
+     */
+    public EtapaDistancia getEtapaDistancia() {
         return distancia;
     }
 
@@ -64,14 +87,14 @@ public class Etapa {
     /**
      * @param dificultad La dificultad de la etapa cambia por la insertada como parametro
      */
-    public void setDificultad(int dificultad) {
+    public void setDificultad(EtapaDificultad dificultad) {
         this.dificultad = dificultad;
     }
     
     /**
      * @param distancia La distancia de la etapa cambia por la insertada como parametro
      */
-    public void setDistancia(int distancia) {
+    public void setDistancia(EtapaDistancia distancia) {
         this.distancia = distancia;
     }
     

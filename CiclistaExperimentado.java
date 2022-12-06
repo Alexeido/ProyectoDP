@@ -1,9 +1,8 @@
-
 /**
- * Write a description of class CiclistaExperimentado here.
+ * Clase simple que almacena una bicicleta 
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Alexeido, Thander y Natera
+ * @version 
  */
 public class CiclistaExperimentado extends Ciclista
 {
@@ -13,11 +12,11 @@ public class CiclistaExperimentado extends Ciclista
      * Constructor for objects of class CiclistaExperimentado
      */
 
-    public CiclistaExperimentado(String nombre, double habilidad, double energia,Equipo team)
+    public CiclistaExperimentado(String nombre, CiclistaHabilidad habilidad, double energia,Equipo team)
     {
         // initialise instance variables
         super(nombre,habilidad,energia,team);
-        super.setDestreza(((habilidad + 4) / 130) * 10);       
+        super.setDestreza(((getHabilidad() + 4) / 130) * 10);       
     }
     /**
      * An example of a method - replace this comment with your own

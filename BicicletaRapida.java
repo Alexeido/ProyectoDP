@@ -1,9 +1,8 @@
-
 /**
- * Write a description of class BicicletaRapida here.
+ * Clase simple que almacena una bicicleta 
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Alexeido, Thander y Natera
+ * @version 
  */
 public class BicicletaRapida extends Bicicleta
 {
@@ -12,7 +11,7 @@ public class BicicletaRapida extends Bicicleta
     /**
      * Constructor for objects of class BicicletaRapida
      */
-    public BicicletaRapida(String nombre, double peso,double velocidadextra)
+    public BicicletaRapida(String nombre, BicicletaPeso peso,double velocidadextra)
     {
         // initialise instance variables
         super(nombre,peso);

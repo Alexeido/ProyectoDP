@@ -1,4 +1,9 @@
-//Comparator equipos
+/**
+ * Clase simple que almacena una bicicleta 
+ * 
+ * @author Alexeido, Thander y Natera
+ * @version 
+ */
 import java.util.*;
 import java.lang.*;
 

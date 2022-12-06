@@ -10,14 +10,20 @@
 
 public class Bicicleta {
     private String nombre;
-    private double peso;
+    /*Grados de peso
+    *   VACIA = 0;
+    *   LIGERA = 7.35
+    *   NORMAL = 7.50
+    *   PESADA = 7.85
+    */
+    private BicicletaPeso peso;
 
     /**
      * Constructor for objects of class Bicicleta
      */
     public Bicicleta() {
         nombre = "";
-        peso = -1;
+        setPeso(BicicletaPeso.VACIA);
     }
 
     /**
@@ -25,22 +31,29 @@ public class Bicicleta {
      * @param nombre Nombre de la bicicleta
      * @param peso Peso de la bicicleta
      */
-    public Bicicleta(String nombre, double peso) {
+    public Bicicleta(String nombre, BicicletaPeso peso) {
         this.nombre = nombre;
-        this.peso = peso;
+        setPeso(peso);
     }
 
     /**
-     * @return la dificultad de la etapa
+     * @return el nombre de la Bicicleta
      */
     public String getNombre() {
         return this.nombre;
     }
 
     /**
-     * @return la distancia de la etapa
+     * @return el peso de la bicicleta
      */
     public double getPeso() {
+        return this.peso.getValor();
+    }
+
+    /**
+     * @return la distancia de la etapa
+     */
+    public BicicletaPeso getBicicletaPeso() {
         return this.peso;
     }
 
@@ -54,7 +67,7 @@ public class Bicicleta {
     /**
      * @param peso Establece el peso de la bicicleta al que entra como parametro
      */
-    public void setPeso(double peso) {
+    public void setPeso(BicicletaPeso peso) {
         this.peso = peso;
     }
 
@@ -65,7 +78,7 @@ public class Bicicleta {
      *         actual
      */
     public double getVelocidad(Etapa e, Ciclista c) {
-        return ((c.getHabilidad() * 100) / (this.peso * e.getDificultad()));
+        return ((c.getHabilidad() * 100) / (this.getPeso() * e.getDificultad()));
     }
 
     /**

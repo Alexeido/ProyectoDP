@@ -1,4 +1,3 @@
-
 /**
  * Clase que almacena un ciclista y sus metodos para correr etapas y compararse entre otros ciclistas 
  * 
@@ -12,13 +11,20 @@
 public abstract class Ciclista {
     private String nombre;
     private Bicicleta bici;
-    private double habilidad;
+    private CiclistaHabilidad habilidad;
+    /*Grados de habilidad
+    *   VACIA  = 0.00
+    *   LENTA  = 4.00
+    *   NORMAL = 6.00
+    *   BUENA  = 8.00
+    */
     private double energia;
-    private ArrayList<Resultados> historial;
+    private HashMap <Etapa, Double> historial;  //Guarda las etapas y el tiempo que ha hecho en esa etapa en un hashmap
     private Equipo team;
     private Etapa Eorden;
     private double totalTime;
     private double destreza;
+    
 
     /**
      *  Constructor por defecto de la clase Ciclista
@@ -26,12 +32,12 @@ public abstract class Ciclista {
     public Ciclista() {
         this.nombre = "";
         this.bici = new Bicicleta();
-        this.habilidad = -1;
+        setHabilidad(CiclistaHabilidad.VACIA);
         this.energia = -1;
-        this.historial = new ArrayList<Resultados>();
+        this.historial = new HashMap <Etapa, Double>();
         this.team = new Equipo();
         this.totalTime=0;
-        Eorden = new Etapa();
+        this.Eorden = new Etapa();
     }
 
     /**
@@ -43,15 +49,15 @@ public abstract class Ciclista {
      * @param energia       Inicializa la energía de la instancia por esta
      * @param team          Inicializa el equipo de la instancia por este
      */
-    public Ciclista(String nombre, double habilidad, double energia,Equipo team) {
+    public Ciclista(String nombre, CiclistaHabilidad habilidad, double energia,Equipo team) {
         this.nombre = nombre;
-        this.habilidad = habilidad;
+        setHabilidad(habilidad);
         this.energia = energia;
         this.team = team;
         this.totalTime=0;
         this.bici = new Bicicleta();
-        this.historial = new ArrayList<Resultados>();
-        Eorden = new Etapa();
+        this.historial = new HashMap<>();
+        this.Eorden = new Etapa();
     }
 
     /**
@@ -64,15 +70,15 @@ public abstract class Ciclista {
      * @param energia       Inicializa la energía de la instancia por esta
      * @param team          Inicializa el equipo de la instancia por este
      */
-    public Ciclista(String nombre, Bicicleta bici, double habilidad, double energia, Equipo team) {
+    public Ciclista(String nombre, Bicicleta bici, CiclistaHabilidad habilidad, double energia, Equipo team) {
         this.nombre = nombre;
         this.bici = bici;
-        this.habilidad = habilidad;
+        setHabilidad(habilidad);
         this.energia = energia;
-        this.historial = new ArrayList<Resultados>();
+        this.historial = new HashMap<>();
         this.team = team;
         this.totalTime=0;
-        Eorden = new Etapa();
+        this.Eorden = new Etapa();
     }
 
     /**
@@ -104,16 +110,23 @@ public abstract class Ciclista {
     }
 
     /**
-     * @return La habilidad del ciclista
+     * @return El valor de la habilidad del ciclista
      */
     public double getHabilidad() {
+        return this.habilidad.getValor();
+    }
+
+    /**
+     * @return La habilidad del ciclista
+     */
+    public CiclistaHabilidad getCiclistaHabilidad() {
         return this.habilidad;
     }
 
     /**
      * @param habilidad Establece la habilidad actual a la que entra como parametro
      */
-    public void setHabilidad(int habilidad) {
+    public void setHabilidad(CiclistaHabilidad habilidad) {
         this.habilidad = habilidad;
     }
 
@@ -134,15 +147,30 @@ public abstract class Ciclista {
     /**
      * @return El historial de carreras
      */
-    public ArrayList<Resultados> getHistorial() {
+    public HashMap<Etapa, Double> getHistorial() {
         return this.historial;
     }
 
     /**
      * @param historial Establece el historial actual al que entra como parametro
      */
-    public void setHistorial(ArrayList<Resultados> historial) {
+    public void setHistorial(HashMap<Etapa, Double> historial) {
         this.historial = historial;
+    }
+    
+    /**
+     * @param   carrera Etapa en la que comprobamos el tiempo
+     * @return  El tiempo en la etapa que llega como parametro
+     */
+    public Double getHistorialTiempo(Etapa carrera) {
+        return this.historial.get(carrera);
+    }
+
+    /**
+     * @param historial Establece el historial actual al que entra como parametro
+     */
+    public void addHistorial(Etapa carrera, Double tiempo) {
+        this.historial.put(carrera, tiempo);
     }
 
     /**
@@ -163,7 +191,7 @@ public abstract class Ciclista {
      * @return Devuelve la etapa en la que se estan comparando los ciclistas 
      */
     public Etapa getEtapa(){
-        return Eorden;
+        return this.Eorden;
     }
     
     /**
@@ -210,8 +238,8 @@ public abstract class Ciclista {
      */
     public void mostrarPuntuacion(){
         System.out.println("Nombre: "+ nombre + " Tiene como tiempo total :"+ String.format("%.2f",totalTime));
-        for(Resultados puntaje: historial){
-            puntaje.mostrarResultadoEtapa();
+        for(Etapa sitio: historial.keySet()){
+            System.out.println("Carrera ("+sitio.getNombre() + ") Tiempo: " + String.format("%.2f",this.historial.get(sitio)) + " minutos "); 
         }
     }
 
@@ -220,13 +248,12 @@ public abstract class Ciclista {
      * @param etapa Etapa de la que se mostrará la información
      */
     public void mostrarResultadoEtapa(Etapa etapa){
-        boolean encontrado=false;
-        for(int i=0;i<=historial.size() && !encontrado ;i++){
-            if (historial.get(i).getSitio().getNombre()==etapa.getNombre()){
-                System.out.println(nombre+ " - Tiempo: "+ String.format("%.2f",historial.get(i).getTiempo()));
-                encontrado=true;
-            }
-        }   
+        if(historial.get(etapa)!=null){
+            System.out.println(etapa.getNombre()+ " - Tiempo: "+ String.format("%.2f",this.historial.get(etapa)));
+        }
+        else{
+            System.out.println("El ciclista "+this.nombre+ " no ha corrido la etapa "+ etapa.getNombre());
+        }
     }
     /**
      * @param e Etapa a correr
@@ -243,12 +270,12 @@ public abstract class Ciclista {
             aux2=this.getBicicleta().getETime(e, this);
             time=aux2;
             this.totalTime+=aux2;
-            this.getHistorial().add(new Resultados(e, aux2));
+            this.addHistorial(e, aux2);
             
         }
         else{
             this.setEnergia(aux);
-            this.getHistorial().add(new Resultados(e, aux));
+            this.addHistorial(e, aux);
             time=this.getBicicleta().getETime(e, this)+aux;
             this.totalTime+= (-1*aux)+this.getEnergia();
         }
@@ -265,9 +292,11 @@ public abstract class Ciclista {
      * Muestra los resultados del ciclista en todas las etapas
      */
     public void mostrarhistorial(){
-        for(int i=0;i<historial.size();i++){
-            historial.get(i).mostrarResultadoEtapa();
+        for(Etapa sitio: historial.keySet()){
+            System.out.println("Carrera ("+sitio.getNombre() + ") Tiempo: " + String.format("%.2f",this.historial.get(sitio)) + " minutos "); 
         }
+
+        //Tambien está System.out.println(historial);
     }
 }
 

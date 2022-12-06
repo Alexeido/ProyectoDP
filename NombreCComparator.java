@@ -1,3 +1,9 @@
+/**
+ * Clase simple que almacena una bicicleta 
+ * 
+ * @author Alexeido, Thander y Natera
+ * @version 
+ */
 import java.util.*;
 import java.lang.*;
 
@@ -49,27 +55,14 @@ class HabilidadComparator implements Comparator<Ciclista> {
 }
 class TiempoEtapaComparator implements Comparator<Ciclista> {
     public int compare(Ciclista c1, Ciclista c2) {
-        if(c1.getEtapa() != c2.getEtapa()){
+        if(c1.getEtapa() != c2.getEtapa() || 
+        c1.getHistorialTiempo(c1.getEtapa())==null || 
+        c2.getHistorialTiempo(c2.getEtapa())==null){
             return 0;
         }
         else{
-            double T1=-1;
-            double T2=-1;
-            Boolean enc=false;
-            for(int i=0; i<c1.getHistorial().size()&&!enc;i++){
-                if(c1.getHistorial().get(i).getSitio()==c1.getEtapa()){
-                    T1=c1.getHistorial().get(i).getTiempo();
-                    enc=true;
-                }
-            }
-            enc=false;
-            for(int i=0; i<c2.getHistorial().size()&&!enc;i++){
-                if(c2.getHistorial().get(i).getSitio()==c2.getEtapa()){
-                    T2=c2.getHistorial().get(i).getTiempo();
-                    enc=true;
-                }
-            }
-        
+            double T1= c1.getHistorialTiempo(c1.getEtapa());
+            double T2= c2.getHistorialTiempo(c2.getEtapa());
             if (T1 == T2)
                 return 0;
             else if (T1>T2)
