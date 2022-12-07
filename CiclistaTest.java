@@ -22,17 +22,17 @@ public class CiclistaTest
     public CiclistaTest()
     {
         //Constructor de etapas
-        etapa1 = new Etapa("sencilla larga", 0.9, 225);
-        etapa2 = new Etapa("compleja intermedia", 1.1, 200);
-        etapa3 = new Etapa("normal intermedia", 1.0, 200);
+        etapa1 = new Etapa("sencilla larga", EtapaDificultad.SENCILLA, EtapaDistancia.CORTA);
+        etapa2 = new Etapa("compleja intermedia", EtapaDificultad.NORMAL, EtapaDistancia.INTERMEDIA);
+        etapa3 = new Etapa("normal intermedia", EtapaDificultad.COMPLEJA, EtapaDistancia.LARGA);
         //constructor de bicicletas pide ( String nombre, double peso)
-        Bicicleta1 = new Bicicleta("SCOTT CONTESSA ADDICT eRIDE 15",7.4); 
-        Bicicleta2 = new Bicicleta("SCOTT CONTESSA ADDICT 15",7.6);
-        Bicicleta3 = new Bicicleta("SCOTT CONTESSA ADDICT RC 15",7.8);
+        Bicicleta1= new Bicicleta("TREK Madone SLR 9 eTap Gen 7",BicicletaPeso.LIGERA);
+        Bicicleta2= new Bicicleta("TREK Emonda SLR 9 eTap",BicicletaPeso.NORMAL);
+        Bicicleta3= new Bicicleta("TREK Domane SLR 9 eTap Gen 4",BicicletaPeso.PESADA);
         //constructor de ciclistas pide (String nombre , double habilidad , double energia, Equipo equipo)
-        Ciclista1 = new Ciclista("WIEBES",  4.97, 1190,new Equipo());
-        Ciclista2 = new Ciclista("LIPPERT", 5.0, 1160,new Equipo());
-        Ciclista3 = new Ciclista("LABOUS", 5.01, 1150,new Equipo());
+        Ciclista1 = new CiclistaNovato("WIEBES",  CiclistaHabilidad.LENTA, 1190,new Equipo());
+        Ciclista2 = new CiclistaExperimentado("LIPPERT", CiclistaHabilidad.NORMAL, 1160,new Equipo());
+        Ciclista3 = new CiclistaEstrella("LABOUS", CiclistaHabilidad.BUENA, 1150,new Equipo());
         
         
     }

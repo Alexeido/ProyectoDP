@@ -1,5 +1,5 @@
 /**
- * Clase simple que almacena una bicicleta 
+ * Clase simple que almacena una Bicicleta 
  * 
  * @author Alexeido, Thander y Natera
  * @version 
@@ -23,7 +23,7 @@ public class Equipo {
     private ArrayList<Bicicleta> bicis;
     private double tiempoMedio;
     /**
-     * Almacena el algoritmo de ordenacion que se usará para las bicicletas
+     * Almacena el algoritmo de ordenacion que se usará para las Bicicletas
      * 
      * 'P' = Ordenación por peso
      * 'N' = Ordenación por nombre
@@ -63,7 +63,7 @@ public class Equipo {
      * @param bicis Bicicletas del equipo
      * @param tiempoMedio Tiempo medio del equipo
      * @param ordenCiclista char que indica según que se van a ordenar los ciclistas
-     * @param ordenBicicleta char que indica según que se van a ordenar las bicicletas
+     * @param ordenBicicleta char que indica según que se van a ordenar las Bicicletas
      */
     public Equipo(String nombre, ArrayList<Ciclista> ciclistas, ArrayList<Ciclista> ciclistasAbandonados,
             ArrayList<Bicicleta> bicis, double tiempoMedio, char ordenCiclista, char ordenBicicleta) {
@@ -80,7 +80,7 @@ public class Equipo {
      * Constructor parametrizado de objetos para la clase Equipo
      * @param nombre Nombre del equipo 
      * @param ordenCiclista char que indica según que se van a ordenar los ciclistas
-     * @param ordenBicicleta char que indica según que se van a ordenar las bicicletas
+     * @param ordenBicicleta char que indica según que se van a ordenar las Bicicletas
      */
     public Equipo(String nombre, char ordenCiclista, char ordenBicicleta) {
         this.nombre = nombre;
@@ -127,7 +127,7 @@ public class Equipo {
     }
 
     /**
-     * @return ArrayLiist de bicicletas
+     * @return ArrayLiist de Bicicletas
      */
     public ArrayList<Bicicleta> getBicis() {
         return this.bicis;
@@ -148,7 +148,7 @@ public class Equipo {
     }
 
     /**
-     * @return Orden de las bicicletas
+     * @return Orden de las Bicicletas
      */
     public char getOrdenBicicleta() {
         return this.ordenBicicleta;
@@ -176,7 +176,7 @@ public class Equipo {
     }
 
     /*
-     * Asigna una bicicleta a cada ciclista
+     * Asigna una Bicicleta a cada ciclista
      */
     public void asignarbici() {
         reOrdenCiclista(ordenCiclista);
@@ -211,12 +211,12 @@ public class Equipo {
     }
 
     /**
-     * Añade una bicilceta al vector de bicicletas y ordena el vector
+     * Añade una bicilceta al vector de Bicicletas y ordena el vector
      * @param b Bicicleta a añadir
      */
-    public void addbicileta(Bicicleta b) {
+    public void addBicicleta(Bicicleta b) {
         bicis.add(b);
-        this.reOrdenBicileta(this.ordenBicicleta);
+        this.reOrdenBicicleta(this.ordenBicicleta);
     }
 
     /**
@@ -251,10 +251,10 @@ public class Equipo {
     }
 
     /**
-     * Reordena el vector de bicicletas
+     * Reordena el vector de Bicicletas
      * @param ordenBicicleta char que indica según que se va a ordenar
      */
-    public void reOrdenBicileta(char ordenBicicleta) {
+    public void reOrdenBicicleta(char ordenBicicleta) {
         if (ordenBicicleta == 'P') {
             Collections.sort(bicis, new PesoComparator());
         }

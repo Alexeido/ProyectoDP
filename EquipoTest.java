@@ -12,12 +12,12 @@ import org.junit.jupiter.api.Test;
 public class EquipoTest
 {
     Equipo dSMWomen= new Equipo("DSM Women", 'E', 'P');
-    Ciclista ciclista1 = new Ciclista("WIEBES",  4.97, 1190,dSMWomen);
-    Ciclista ciclista2 = new Ciclista("LIPPERT", 5.0, 1160,dSMWomen);
-    Etapa etapa1 = new Etapa("sencilla larga", 0.9, 200);
-    Etapa etapa2 = new Etapa("compleja corta", 1.1, 150);
-    Bicicleta bicicleta1= new Bicicleta("TREK Madone SLR 9 eTap Gen 7",7.35);
-    Bicicleta bicicleta2= new Bicicleta("TREK Emonda SLR 9 eTap",7.65); 
+    Ciclista ciclista1 = new CiclistaEstrella("WIEBES",CiclistaHabilidad.BUENA  , 1190,dSMWomen);
+    Ciclista ciclista2 = new CiclistaExperimentado("LIPPERT",CiclistaHabilidad.NORMAL, 1160,dSMWomen);
+    Etapa etapa1 = new Etapa("sencilla larga", EtapaDificultad.NORMAL, EtapaDistancia.INTERMEDIA);
+    Etapa etapa2 = new Etapa("compleja corta", EtapaDificultad.COMPLEJA, EtapaDistancia.LARGA);
+    Bicicleta bicicleta1= new Bicicleta("TREK Madone SLR 9 eTap Gen 7",BicicletaPeso.LIGERA);
+    Bicicleta bicicleta2= new Bicicleta("TREK Emonda SLR 9 eTap",BicicletaPeso.PESADA); 
     /**
      * Default constructor for test class EquipoTest
      */
