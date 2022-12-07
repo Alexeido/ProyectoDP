@@ -212,7 +212,7 @@ public class Organizacion {
             eliminados=0;
             for (int p = 0; p < ciclistasCarrera.size(); p++) {
                 if(ciclistasCarrera.get(p).getEnergia()>=0){
-                    System.out.print("@@@ Posicion("+p+"): ");
+                    System.out.print("@@@ Posicion("+(p+1)+"): ");
                     ciclistasCarrera.get(p).mostrarResultadoEtapa(etapa);
                 }
                 else{
@@ -243,11 +243,12 @@ public class Organizacion {
         if (ciclistasCarrera.size() > 0) {
             Collections.sort(ciclistasCarrera, new TiempoAscComparator());
             Collections.sort(abandonadosCarrera, new TiempoAscComparator());
-            System.out.println(" ****************************************************" + '\n'
-                    + "**************** FIN DE LA COMPETTICION ****************" + '\n'
-                    + "****************************************************");
+            System.out.println( '\n');
+            System.out.println("********************************************************" + '\n'
+                    +           "**************** FIN DE LA COMPETTICION ****************" + '\n'
+                    +           "********************************************************");
             for (int i = 0; i < ciclistasCarrera.size(); i++) {
-                System.out.println("@@@ Posicion("+i+1+"): "+ciclistasCarrera.get(i).getNombre()+ " - "+
+                System.out.println("@@@ Posicion("+(i+1)+"): "+ciclistasCarrera.get(i).getNombre()+ " - "+
                 "Tiempo Total: "+String.format("%.2f",ciclistasCarrera.get(i).getTotalTime())+" @@@");
                 ciclistasCarrera.get(i).mostrarhistorial();
                 System.out.println('\n');
@@ -270,7 +271,7 @@ public class Organizacion {
             System.out.println("****************************************************");
            int i=1;
             for (Equipo equipo : equipos) {
-                System.out.println("@@@ Posicion ("+i+") "+equipo.getNombre()+" con "+equipo.getTiempoMedio()+ " minutos de media @@@"+ '\n');
+                System.out.println("@@@ Posicion ("+i+") "+equipo.getNombre()+" con "+String.format("%.2f", equipo.getTiempoMedio())+ " minutos de media @@@"+ '\n');
                 equipo.mostrarTodo();
                 i++;
             }
