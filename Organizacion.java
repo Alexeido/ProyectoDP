@@ -9,22 +9,21 @@ import java.lang.*;
  */
 public class Organizacion {
     // instance variables 
-    private ArrayList<Etapa> etapas;
+                            //private ArrayList<Etapa> etapas;
+    private TreeSet<Etapa> etapas;
     private ArrayList<Equipo> equipos;
     private ArrayList<Ciclista> ciclistasCarrera;
     private ArrayList<Ciclista> abandonadosCarrera;
-    private ComparadorDificultadEtapa compararetapa;
 
     /**
      * Constructor para la calse Organizacion
      */
     public Organizacion() {
         // initialise instance variables
-        this.etapas = new ArrayList<Etapa>();
+        this.etapas = new TreeSet<Etapa>();
         this.equipos = new ArrayList<Equipo>();
         this.ciclistasCarrera = new ArrayList<Ciclista>();
         this.abandonadosCarrera = new ArrayList<Ciclista>();
-        this.compararetapa = new ComparadorDificultadEtapa();
     }
 
     /**
@@ -33,11 +32,10 @@ public class Organizacion {
      */
     public Organizacion(ComparadorDificultadEtapa etapa) {
         // initialise instance variables
-        this.etapas = new ArrayList<Etapa>();
+        this.etapas = new TreeSet<Etapa>(etapa);
         this.equipos = new ArrayList<Equipo>();
         this.ciclistasCarrera = new ArrayList<Ciclista>();
         this.abandonadosCarrera = new ArrayList<Ciclista>();
-        this.compararetapa = etapa;
     }
 
     /**
@@ -47,13 +45,12 @@ public class Organizacion {
      * @param ciclistasCarrera Ciclistas que van a participar
      * @param abandonadosCarrera Ciclistas que han abandonado la carrera
      */
-    public Organizacion(ArrayList<Etapa> etapas, ArrayList<Equipo> equipos,
+    public Organizacion(TreeSet<Etapa> etapas, ArrayList<Equipo> equipos,
             ArrayList<Ciclista> ciclistasCarrera, ArrayList<Ciclista> abandonadosCarrera) {
         this.etapas = etapas;
         this.equipos = equipos;
         this.ciclistasCarrera = ciclistasCarrera;
         this.abandonadosCarrera = abandonadosCarrera;
-        this.compararetapa = new ComparadorDificultadEtapa();
 
     }
 
@@ -81,7 +78,6 @@ public class Organizacion {
      */
     public void anadirEtapa(Etapa etapa) {
         etapas.add(etapa);
-        Collections.sort(etapas, compararetapa);
     }
 
     /**
@@ -152,18 +148,16 @@ public class Organizacion {
      */
     public void desarroyoCarrera() {
         Ciclista auxC;
-        Etapa auxT;
-        for (int i = 0; i < etapas.size(); i++) {
-            auxT = etapas.get(i);
-            System.out.println('\n'+"****************************************************" +'\n' +"**************** COMIENZA LA ETAPA " +auxT.getNombre().toUpperCase()+ " ****************" + '\n'  +"****************************************************"+'\n' );
+        for (Etapa etapa : etapas)  {
+            System.out.println('\n'+"****************************************************" +'\n' +"**************** COMIENZA LA ETAPA " +etapa.getNombre().toUpperCase()+ " ****************" + '\n'  +"****************************************************"+'\n' );
             for (int n = 0; n < ciclistasCarrera.size(); n++) {
                 auxC = ciclistasCarrera.get(n);
                 System.out.println('\n'+"Informacion del clista numero " + (1+n));
                 auxC.mostrarTodo();
                 System.out.println("La velocidad que es capaz de alcanzar en esta etapa es "
-                        +String.format("%.2f",auxC.getBicicleta().getVelocidad(auxT, auxC)) );
-                double aux = auxC.correrEtapa(auxT);
-                auxC.setEtapa(auxT);  
+                        +String.format("%.2f",auxC.getBicicleta().getVelocidad(etapa, auxC)) );
+                double aux = auxC.correrEtapa(etapa);
+                auxC.setEtapa(etapa);  
                 if (auxC.getEnergia() >= 0) {
                     System.out.println("El ciclista tarda " +String.format("%.2f",aux)  + " en completar la carrera");
                     System.out.print("La energia que le queda al corredor es : " + String.format("%.2f",auxC.getEnergia())+'\n'+'\n');
@@ -179,7 +173,7 @@ public class Organizacion {
             //Collections.sort(ciclistasCarrera, new TiempoAscComparator());
 
             for(int p=0;p<ciclistasCarrera.size();p++) {
-                ciclistasCarrera.get(p).mostrarResultadoEtapa(auxT);
+                ciclistasCarrera.get(p).mostrarResultadoEtapa(etapa);
             }
             for(int p=0;p<ciclistasCarrera.size();p++) {
                 if (ciclistasCarrera.get(p).getEnergia() < 0){
