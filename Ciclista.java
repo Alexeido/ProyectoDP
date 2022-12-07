@@ -249,7 +249,10 @@ public abstract class Ciclista {
      */
     public void mostrarResultadoEtapa(Etapa etapa){
         if(historial.get(etapa)!=null){
-            System.out.println(this.getNombre()+ " - Tiempo: "+String.format("%.2f",this.historial.get(etapa))+ " minutos @@@");
+            if(historial.get(etapa)>=0)
+                System.out.println(this.getNombre()+ " - Tiempo: "+String.format("%.2f",this.historial.get(etapa))+ " minutos @@@");
+            else
+                System.out.println("### Ha abandonado "+this.getNombre()+ " - Tiempo: "+String.format("%.2f",this.historial.get(etapa))+ " minutos - Ademas ha abandonado para el resto del Campeonato !!!");
         }
         else{
             System.out.println("El ciclista "+this.getNombre()+ " no ha corrido la etapa @@@");

@@ -180,16 +180,17 @@ public class Equipo {
      * Muestra la informacion del equipo y sus ciclistas
      */
     public void mostrarTodo() {
-        System.out.println(nombre + " Cuya media de puntos de sus ciclistas sin abandonar es: "
-                + String.format("%.2f", tiempoMedio));
+        System.out.println("%%% "+nombre.toUpperCase() + " %%% Media Minutos de Ciclistas sin abandonar: "
+                + String.format("%.2f", tiempoMedio)+" %%%"+'\n');
         for (int i = 0; i < ciclistas.size(); i++) {
             ciclistas.get(i).mostrarSinBici();// <ciclista:VAN VLEUTEN> <energía: 50.92> <habilidad: 4.96> <tiempo
                                               // acumulado sin abandonar: 1149.08> <abandonado:false>
         }
         for (int i = 0; i < ciclistasAbandonados.size(); i++) {
             ciclistasAbandonados.get(i).mostrarSinBici();
-
         }
+        System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"+'\n'+
+        "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
     }
 
     /*

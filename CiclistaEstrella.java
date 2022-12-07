@@ -58,13 +58,13 @@ public class CiclistaEstrella extends Ciclista
     public void mostrarEnergia(){
         super.mostrarEnergia();
         if(lastmove==1){
-            System.out.println("La popularidad del ciclista " + super.getNombre() +" ha aumentado y ahora su nivel de popularidad es de: "+ this.popularidad +'\n'+'\n');
+            System.out.println("La popularidad del ciclista " + super.getNombre() +" ha aumentado y ahora su nivel de popularidad es de: "+ this.popularidad);
         }
         else if( lastmove==-1){
-            System.out.println("La popularidad del ciclista " + super.getNombre() +" ha disminuido y ahora su nivel de popularidad es de: "+ this.popularidad +'\n'+'\n');
+            System.out.println("La popularidad del ciclista " + super.getNombre() +" ha disminuido y ahora su nivel de popularidad es de: "+ this.popularidad);
         }
         else{
-            System.out.println("La popularidad del ciclista " + super.getNombre() +" no ha variado y ahora su nivel de popularidad es de: "+ this.popularidad +'\n'+'\n');
+            System.out.println("La popularidad del ciclista " + super.getNombre() +" no ha variado y ahora su nivel de popularidad es de: "+ this.popularidad);
         }
     }
 
