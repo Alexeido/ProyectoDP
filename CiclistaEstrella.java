@@ -1,16 +1,25 @@
 /**
- * Clase simple que almacena una bicicleta 
+ * Subclase de ciclista
  * 
  * @author Alexeido, Thander y Natera
- * @version 
+ * @version 1.0
  */
 public class CiclistaEstrella extends Ciclista
 {
-    // instance variables - replace the example below with your own
+    
     private int popularidad;
-    private int lastmove; //Si en su última carrera ha aumentado su popularidad +1, si ha disminuido -1, si no tiene última carrera 0
+    //Variable que se actualiza dependiendo de la última carrera, si ha aumentado su popularidad +1, si ha disminuido -1, si no tiene última carrera 0
+    private int lastmove; 
+    
+
     /**
-     * Constructor for objects of class CiclistaEstrella
+     * 
+     * Constructor de la subclase CiclistaEstrella 
+     * 
+     * @param nombre        Nombre para la subclase
+     * @param habilidad     Habilidad para la subclase
+     * @param energia       Energia para la subclase
+     * @param team          Equipo para la subclase
      */
     public CiclistaEstrella(String nombre, CiclistaHabilidad habilidad, double energia,Equipo team)
     {
@@ -21,11 +30,9 @@ public class CiclistaEstrella extends Ciclista
         lastmove=0;
     }
 
+
     /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
+     * Aumenta la popularidad del ciclista en 4 uds y actualiza el valor de la última actualización de popularidad
      */
     public void aumentarpuplaridad()
     {
@@ -33,19 +40,26 @@ public class CiclistaEstrella extends Ciclista
         lastmove=1;
     }
 
+    
+    /**
+     * Disminuye la popularidad del ciclista en 1 ud y actualiza el valor de la última actualización de popularidad
+     */
     public void disminuirpuplaridad()
     {
         popularidad --;
         lastmove=-1;
     }
 
+    
+    /**
+     * Devuelve el valor de la popularidad
+     */
     public int getPopularidad(){
         return this.popularidad;
     }
 
-    
-    /* 
-     *  Muestra el ciclista sin su bicicleta llamando al super
+    /* (non-Javadoc)
+     * @see Ciclista#mostrarSinBici()
      */
     @Override
     public void mostrarSinBici(){
@@ -54,6 +68,11 @@ public class CiclistaEstrella extends Ciclista
         System.out.println("<popularidad: "+ this.getPopularidad()+ ">");
         
     }
+
+
+    /* (non-Javadoc)
+     * @see Ciclista#mostrarEnergia()
+     */
     @Override
     public void mostrarEnergia(){
         super.mostrarEnergia();
@@ -68,6 +87,10 @@ public class CiclistaEstrella extends Ciclista
         }
     }
 
+    
+    /* (non-Javadoc)
+     * @see Ciclista#correrEtapa(Etapa)
+     */
     @Override
     public double correrEtapa(Etapa e){
         double aux, aux2;

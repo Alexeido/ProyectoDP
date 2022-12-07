@@ -1,8 +1,8 @@
 /**
- * Clase simple que almacena una bicicleta 
+ * Superclase simple que almacena una bicicleta 
  * 
  * @author Alexeido, Thander y Natera
- * @version 31-10-2022
+ * @version 1.0
  */
  
 
@@ -10,6 +10,7 @@
 
 public class Bicicleta {
     private String nombre;
+
     /*Grados de peso
     *   VACIA = 0;
     *   LIGERA = 7.35

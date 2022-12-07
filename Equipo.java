@@ -1,36 +1,21 @@
 /**
- * Clase simple que almacena una Bicicleta 
- * 
- * @author Alexeido, Thander y Natera
- * @version 
- */
-import java.util.*;
-import java.lang.*;
-
-/**
- * Representa a los Equipos que competirán tanto por la clasificación por
- * Equipos como
- * por la victoria de uno de sus Ciclistas en el campeonato individual de
- * Ciclistas
+ * Clase que representa a los Equipos que competirán
  * 
  * @author Alexeido, Thander y Natera
  * @version 31-10-2022
  */
+
+import java.util.*;
+import java.lang.*;
+
+
 public class Equipo {
     private String nombre;
     private ArrayList<Ciclista> ciclistas;
     private ArrayList<Ciclista> ciclistasAbandonados;
     private ArrayList<Bicicleta> bicis;
     private double tiempoMedio;
-    /**
-     * Almacena el algoritmo de ordenacion que se usará para las Bicicletas
-     * 
-     * 'P' = Ordenación por peso
-     * 'N' = Ordenación por nombre
-     *
-     */
     private Comparator<Bicicleta> ordenBicicleta;
-
     private Comparator<Ciclista> ordenCiclista;
 
     /**
@@ -53,8 +38,8 @@ public class Equipo {
      * @param ciclistasAbandonados Ciclistas abandonados del equipo
      * @param bicis Bicicletas del equipo
      * @param tiempoMedio Tiempo medio del equipo
-     * @param ordenCiclista char que indica según que se van a ordenar los ciclistas
-     * @param ordenBicicleta char que indica según que se van a ordenar las Bicicletas
+     * @param ordenCiclista  indica el orden de los ciclistas
+     * @param ordenBicicleta indica el orden de las bicicletas
      */
     public Equipo(String nombre, ArrayList<Ciclista> ciclistas, ArrayList<Ciclista> ciclistasAbandonados,
             ArrayList<Bicicleta> bicis, double tiempoMedio, Comparator<Ciclista> ordenCiclista, Comparator<Bicicleta> ordenBicicleta) {
@@ -70,8 +55,8 @@ public class Equipo {
     /**
      * Constructor parametrizado de objetos para la clase Equipo
      * @param nombre Nombre del equipo 
-     * @param ordenCiclista char que indica según que se van a ordenar los ciclistas
-     * @param ordenBicicleta char que indica según que se van a ordenar las Bicicletas
+     * @param ordenCiclista  indica el orden de los ciclistas
+     * @param ordenBicicleta indica el orden de las bicicletas
      */
     public Equipo(String nombre, Comparator<Ciclista> ordenCiclista, Comparator<Bicicleta> ordenBicicleta) {
         this.nombre = nombre;
@@ -146,22 +131,22 @@ public class Equipo {
     }
 
     /**
-     * @param ordenBicicleta char que indica según que se va a ordenar
+     * @param ordenBicicleta Comparator según el que se va a ordenar
      */
     public void setOrdenBicicleta(Comparator<Bicicleta> ordenBicicleta) {
         this.ordenBicicleta = ordenBicicleta;
     }
 
     /**
-     * @return Orden de los ciclistas
+     * @return Comparator de los ciclistas
      */
     public Comparator<Ciclista> getOrdenCiclista() {
         return this.ordenCiclista;
     }
 
     /**
-     * @param ordenCiclista char que indica según que se va a ordenar
-     */
+     * @param ordenCiclista Comparator según el que se va a ordenar
+     */ 
     public void setOrdenCiclista(Comparator<Ciclista> ordenCiclista) {
         this.ordenCiclista = ordenCiclista;
     }
@@ -260,7 +245,7 @@ public class Equipo {
     }
 
     /**
-     * Envia un ciclista a correr una etapa
+     * Envia a todos los ciclistas a correr una etapa
      * @param e Etapa a correr
      */
     public void enviarEtapa(Etapa e) {

@@ -1,15 +1,17 @@
 /**
- * Clase simple que almacena una bicicleta 
+ * Subclase que almacena una bicicleta 
  * 
  * @author Alexeido, Thander y Natera
- * @version 
+ * @version 1.0
  */
 public class BicicletaPrototipo extends Bicicleta
 {
     // instance variables - replace the example below with your own
 
     /**
-     * Constructor for objects of class BicicletaPrototipo
+     * @param nombre    Nombre para la subclase
+     * @param peso      Peso para la subclase
+     * Constructor parametrized for objects of subclass BicicletaPrototipo
      */
     public BicicletaPrototipo(String nombre, BicicletaPeso peso)
     {
@@ -18,19 +20,18 @@ public class BicicletaPrototipo extends Bicicleta
 
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
+    
+    /* (non-Javadoc)
+     * @see Bicicleta#getETime(Etapa, Ciclista)
      */
     @Override
     public double getETime(Etapa e, Ciclista c) {
         return (e.getDistancia() / (super.getVelocidad(e, c) *c.getDestreza()));
     }
 
-    /**
-     *  Muestra los atributos de la bicicleta
+    
+    /* (non-Javadoc)
+     * @see Bicicleta#mostrarTodo()
      */
     @Override
     public void mostrarTodo(){

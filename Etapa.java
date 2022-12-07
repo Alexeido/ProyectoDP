@@ -104,6 +104,7 @@ public class Etapa {
     public void mostrarTodo(){
          System.out.println("<Etapa: "+nombre+">  "  + dificultad +"  "+ distancia );
     }
+    
     @Override
     public String toString(){
         return this.getNombre();

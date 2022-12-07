@@ -2,14 +2,19 @@
  * Clase simple que almacena una bicicleta 
  * 
  * @author Alexeido, Thander y Natera
- * @version 
+ * @version 1.0
  */
 public class BicicletaRapida extends Bicicleta
 {
-    // instance variables - repla,ce the example below with your own
     private double velocidadextra;
+
+
     /**
-     * Constructor for objects of class BicicletaRapida
+     * 
+     * Constructor for object of subclass BicicletaRapida
+     * @param nombre            Nombre para la subclase
+     * @param peso              Peso para la subclase
+     * @param velocidadextra    Velocidad Extra para la bicicletaRapida
      */
     public BicicletaRapida(String nombre, BicicletaPeso peso,double velocidadextra)
     {
@@ -17,17 +22,25 @@ public class BicicletaRapida extends Bicicleta
         super(nombre,peso);
         this.velocidadextra =velocidadextra;
     }
+
+    /* (non-Javadoc)
+     * @see Bicicleta#getVelocidad(Etapa, Ciclista)
+     */
     @Override
         public double getVelocidad(Etapa e, Ciclista c){
         return velocidadextra+super.getVelocidad(e,c);
     }
+
+    /* (non-Javadoc)
+     * @see Bicicleta#getETime(Etapa, Ciclista)
+     */
     @Override
     public double getETime(Etapa e, Ciclista c) {
         return (e.getDistancia() / this.getVelocidad(e, c) * 60);
     }
 
-    /**
-     *  Muestra los atributos de la bicicleta
+    /* (non-Javadoc)
+     * @see Bicicleta#mostrarTodo()
      */
     @Override
     public void mostrarTodo(){

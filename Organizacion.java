@@ -66,7 +66,7 @@ public class Organizacion {
     }
 
     /**
-     * Añade los ciclistas de un equipo a la ArrayList de ciclistas que compiten
+     * Anade los ciclistas de un equipo a la ArrayList de ciclistas que compiten
      * 
      * @param equipo Equipo que va a inscribir ciclistas
      */
@@ -126,7 +126,7 @@ public class Organizacion {
     }
 
     /**
-     * Muestra los ciclistas que estan participando en la carrera
+     * Muestra los ciclistas que estan participando en la carrera sin su bicicleta
      */
     public void mostrarCiclistasSinBici() {
         for (Ciclista ciclista : ciclistasCarrera) {
@@ -145,13 +145,13 @@ public class Organizacion {
     }
 
     /**
-     * Presenta los equipos que van a competir y sus ciclistas
+     * Presenta las etapas del campeonato, los equipos y sus ciclistas
      */
     public void presentacionCarrera() {
         Collections.sort(equipos, new EquipoNombreComparator());
-        System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||" + '\n'
-        + "||||||||||||||||||| ETAPAS DEL CAMPEONATO ||||||||||||||||||||||" + '\n'
-        + "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+        System.out.println( "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||" + '\n'
+        +                   "||||||||||||||||||| ETAPAS DEL CAMPEONATO ||||||||||||||||||||||" + '\n'
+        +                   "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
         for (int i = 0; i < equipos.size(); i++) {
             anadirCiclistaCarrera(equipos.get(i));
             equipos.get(i).asignarbici();
@@ -161,15 +161,14 @@ public class Organizacion {
         // asignarbici();
         mostrarEtapas();
         System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"+'\n'+'\n');
-        System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" + '\n'
-        + "%%%%%%%%% EQUIPOS DEL CAMPEONATO %%%%%%%%%%" + '\n'
-        + "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+        System.out.println( "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" + '\n'
+        +                   "%%%%%%%%% EQUIPOS DEL CAMPEONATO %%%%%%%%%%" + '\n'
+        +                   "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
         mostrarEquipos();
     }
 
     /**
-     * Se desarrolla el trancurso de la carrera mostrando el esado de los ciclistas
-     * tras cada etapa
+     * Se desarrolla el trancurso de la carrera mostrando el esado de los ciclistas tras cada etapa
      */
     public void desarroyoCarrera() {
         Ciclista auxC;
@@ -254,9 +253,9 @@ public class Organizacion {
                 System.out.println('\n');
             }
             if (abandonadosCarrera.size() > 0) {
-                System.out.println(" ***********************************************************" + '\n'
-                        + "**************** CICLISTAS QUE ABANDONARON ****************" + '\n'
-                        + "***********************************************************");
+                System.out.println( "***********************************************************" + '\n'
+                        +           "**************** CICLISTAS QUE ABANDONARON ****************" + '\n'
+                        +           "***********************************************************");
                 for (int i = 0; i < abandonadosCarrera.size(); i++) {
                     System.out.println("--- ciclista Abandonado: "+abandonadosCarrera.get(i).getNombre()+ 
                     " - Puntos Totales Anulados: "+String.format("%.2f", abandonadosCarrera.get(i).getTotalTime())+" ---");
@@ -275,7 +274,7 @@ public class Organizacion {
                 equipo.mostrarTodo();
                 i++;
             }
-            System.out.print("pekka 14 o 15 con espejo");
+            System.out.print("pekka 14 o 16 con espejo maxeado");
         } else {
             System.out.print("No hay competidores o todos han abandonado");
 

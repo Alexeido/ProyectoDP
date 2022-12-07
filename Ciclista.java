@@ -195,7 +195,7 @@ public abstract class Ciclista {
     }
     
     /**
-     * @param Eorden Establece la etapa en la que se compararán
+     * @param Eorden Establece la etapa en la que se compararán dos ciclistas
      */
     public void setEtapa(Etapa Eorden){
         this.Eorden = Eorden;
@@ -246,6 +246,8 @@ public abstract class Ciclista {
 
     /**
      * @param etapa Etapa de la que se mostrará la información
+     * 
+     * Muestra el resultaddo del ciclista
      */
     public void mostrarResultadoEtapa(Etapa etapa){
         if(historial.get(etapa)!=null){
@@ -258,6 +260,8 @@ public abstract class Ciclista {
             System.out.println("El ciclista "+this.getNombre()+ " no ha corrido la etapa @@@");
         }
     }
+
+
     /**
      * @param e Etapa a correr
      * Si el usuario se ha quedado sin energía en la competición y no ha podido acabar tendrá energia negativa
@@ -285,22 +289,33 @@ public abstract class Ciclista {
         return time;
 
     }
+    /**
+     * @param destreza Valor al que se establece la destreza
+     * 
+     */
     public void setDestreza(Double destreza){
         this.destreza=destreza;
     }
+
+    /**
+     * @return Destreza del ciclista
+     */
     public double getDestreza(){
         return this.destreza;
     }
     /**
      * Muestra los resultados del ciclista en todas las etapas
+     * Tambien está System.out.println(historial);
      */
     public void mostrarhistorial(){
         for(Etapa sitio: historial.keySet()){
             System.out.println("Carrera ("+sitio.getNombre() + ") Tiempo: " + String.format("%.2f",this.historial.get(sitio)) + " minutos "); 
         }
 
-        //Tambien está System.out.println(historial);
     }
+    /**
+     * Muestra por pantalla la energia del ciclista
+     */
     public void mostrarEnergia(){
         System.out.println("La energia que le queda al corredor es : " + String.format("%.2f",this.getEnergia()));
     }

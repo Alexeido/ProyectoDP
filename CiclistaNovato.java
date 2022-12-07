@@ -1,5 +1,5 @@
 /**
- * Clase simple que almacena una bicicleta 
+ * Subclase de ciclista
  * 
  * @author Alexeido, Thander y Natera
  * @version 
