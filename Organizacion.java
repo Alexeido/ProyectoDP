@@ -8,8 +8,8 @@ import java.lang.*;
  * @version 31-10-2022
  */
 public class Organizacion {
-    // instance variables 
-                            //private ArrayList<Etapa> etapas;
+    // instance variables
+    // private ArrayList<Etapa> etapas;
     private TreeSet<Etapa> etapas;
     private ArrayList<Equipo> equipos;
     private ArrayList<Ciclista> ciclistasCarrera;
@@ -28,6 +28,7 @@ public class Organizacion {
 
     /**
      * Constructor parametrizado para la calse Organizacion
+     * 
      * @param etapa Tipo de comparador a usar
      */
     public Organizacion(ComparadorDificultadEtapa etapa) {
@@ -40,9 +41,10 @@ public class Organizacion {
 
     /**
      * Constructor parametrizado para la calse Organizacion
-     * @param etapas Etapas de la carrera
-     * @param equipos Equipos que van a participar
-     * @param ciclistasCarrera Ciclistas que van a participar
+     * 
+     * @param etapas             Etapas de la carrera
+     * @param equipos            Equipos que van a participar
+     * @param ciclistasCarrera   Ciclistas que van a participar
      * @param abandonadosCarrera Ciclistas que han abandonado la carrera
      */
     public Organizacion(TreeSet<Etapa> etapas, ArrayList<Equipo> equipos,
@@ -56,6 +58,7 @@ public class Organizacion {
 
     /**
      * Añade un equipo a la Arraylistis de equipos
+     * 
      * @param equipo Equipo a incribir en la carrera
      */
     public void anadirEquipo(Equipo equipo) {
@@ -64,16 +67,18 @@ public class Organizacion {
 
     /**
      * Añade los ciclistas de un equipo a la ArrayList de ciclistas que compiten
+     * 
      * @param equipo Equipo que va a inscribir ciclistas
      */
     public void anadirCiclistaCarrera(Equipo equipo) {
-        for (int i=0;i<equipo.getCiclistas().size(); i++) {
+        for (int i = 0; i < equipo.getCiclistas().size(); i++) {
             ciclistasCarrera.add(equipo.getCiclistas().get(i));
-        } 
+        }
     }
 
     /**
      * Añade una etapa a la Arraylistis de etapas
+     * 
      * @param etapa Etapa a añadir
      */
     public void anadirEtapa(Etapa etapa) {
@@ -81,7 +86,9 @@ public class Organizacion {
     }
 
     /**
-     * Quita un ciclista de las Arraylist de ciclistasCarrera y y lo añade la de ciclistas abandonados de la carrera y del propio equipo
+     * Quita un ciclista de las Arraylist de ciclistasCarrera y y lo añade la de
+     * ciclistas abandonados de la carrera y del propio equipo
+     * 
      * @param ciclista Ciclista que va a abandonar
      */
     public void abandonar(Ciclista ciclista) {
@@ -96,6 +103,7 @@ public class Organizacion {
     public void mostrarEquipos() {
         for (Equipo equipo : equipos) {
             equipo.mostrarTodo();
+            System.out.println('\n');
         }
     }
 
@@ -118,6 +126,15 @@ public class Organizacion {
     }
 
     /**
+     * Muestra los ciclistas que estan participando en la carrera
+     */
+    public void mostrarCiclistasSinBici() {
+        for (Ciclista ciclista : ciclistasCarrera) {
+            ciclista.mostrarSinBici();
+        }
+    }
+
+    /**
      * Muestra los ciclistas que han abandonado
      */
     public void mostrarAbandonos() {
@@ -126,65 +143,80 @@ public class Organizacion {
         }
 
     }
- 
+
     /**
      * Presenta los equipos que van a competir y sus ciclistas
      */
     public void presentacionCarrera() {
-        for(int i=0;i<equipos.size();i++){
+        Collections.sort(equipos, new EquipoNombreComparator());
+        for (int i = 0; i < equipos.size(); i++) {
             anadirCiclistaCarrera(equipos.get(i));
             equipos.get(i).asignarbici();
         }
-        //asignarbici();    
+        Collections.sort(ciclistasCarrera, new NombreCComparatorDesc());
+
+        // asignarbici();
         mostrarEtapas();
-        System.out.println('\n'+"Los equipos de esta carrera son los siguientes: "+'\n'+'\n');
+        System.out.println('\n' + "Los equipos de esta carrera son los siguientes: " + '\n' + '\n');
         mostrarEquipos();
-        System.out.println('\n'+"Los corredores de esta carrera son los siguientes: "+'\n'+'\n');
-        mostrarCiclistas();
     }
 
     /**
-     * Se desarrolla el trancurso de la carrera mostrando el esado de los ciclistas tras cada etapa
+     * Se desarrolla el trancurso de la carrera mostrando el esado de los ciclistas
+     * tras cada etapa
      */
     public void desarroyoCarrera() {
         Ciclista auxC;
-        for (Etapa etapa : etapas)  {
-            System.out.println('\n'+"****************************************************" +'\n' +"**************** COMIENZA LA ETAPA " +etapa.getNombre().toUpperCase()+ " ****************" + '\n'  +"****************************************************"+'\n' );
+        for (Etapa etapa : etapas) {
+            System.out.println('\n' + "****************************************************" + '\n'
+                    + "**************** Ciclistas que van a competir en " + etapa.getNombre().toUpperCase()
+                    + " ****************" + '\n' + "****************************************************" + '\n');
+            this.mostrarCiclistasSinBici();
+            System.out.println();
+            System.out.println('\n' + "****************************************************" + '\n'
+                    + "**************** COMIENZA LA ETAPA " + etapa.getNombre().toUpperCase() + " ****************"
+                    + '\n' + "****************************************************" + '\n');
+
             for (int n = 0; n < ciclistasCarrera.size(); n++) {
                 auxC = ciclistasCarrera.get(n);
-                System.out.println('\n'+"Informacion del clista numero " + (1+n));
+                System.out.println('\n' + "@@@ ciclista  " + (1 + n)+" de "+ciclistasCarrera.size());
                 auxC.mostrarTodo();
-                System.out.println("La velocidad que es capaz de alcanzar en esta etapa es "
-                        +String.format("%.2f",auxC.getBicicleta().getVelocidad(etapa, auxC)) );
+                System.out.println("++++ Con estas condiciones el ciclista "+ auxC.getNombre()+ " con la biciclceta " + auxC.getBicicleta().getNombre()+ " alcanza una velocidad de "
+                        + String.format("%.2f", auxC.getBicicleta().getVelocidad(etapa, auxC))+ " km/hora +++");
                 double aux = auxC.correrEtapa(etapa);
-                auxC.setEtapa(etapa);  
+                auxC.setEtapa(etapa);
                 if (auxC.getEnergia() >= 0) {
-                    System.out.println("El ciclista tarda " +String.format("%.2f",aux)  + " en completar la carrera");
-                    System.out.print("La energia que le queda al corredor es : " + String.format("%.2f",auxC.getEnergia())+'\n'+'\n');
+                    System.out.println("+++ El ciclista "+ auxC.getNombre()+" termina la etapa en " + String.format("%.2f", aux) + " minutos +++");
+                    auxC.mostrarEnergia();
                 } else {
-                    System.out.println("El ciclista tarda se quedo sin energia a  " +  String.format("%.2f", -1 *auxC.getEnergia())+ " minutos del final");
-                    System.out.println("El ciclista avanzo :  " + String.format("%.2f",aux)  + " antes de abandonar");
-                    System.out.println("El ciclista termino con :  " + String.format("%.2f",auxC.getEnergia()) + " de energia"+'\n'+'\n');
+                    System.out.println("+++ El ciclista "+ auxC.getNombre()+" se quedo sin energia a falta de "
+                            + String.format("%.2f", -1 * auxC.getEnergia()) + " minutos minutos para terminar !!!");
+                    System.out.println("+++ En el momento de quedarse sin energia llevaba en la carrera " + String.format("%.2f", aux) + " minutos !!!");
+                    System.out.println("+++ La energia del ciclista "+ auxC.getNombre()+ " tras la carrera es de " + String.format("%.2f", auxC.getEnergia())
+                            + " +++");
                 }
+                System.out.println("@@@"+ '\n'+'\n'+'\n');
             }
             Collections.sort(ciclistasCarrera, new TiempoEtapaComparator());
-            System.out.println(" ****************************************************" +'\n' +"**************** FIN DE LA ETAPA ****************" + '\n'  +"****************************************************");
-            System.out.println('\n'+"La clasificacion en esta etapa por orden es: ");
-            //Collections.sort(ciclistasCarrera, new TiempoAscComparator());
+            System.out.println(" ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" + '\n'
+                    + "+++++++++++++++++++++++++ Clasificacion final de la carrera "+etapa+" +++++++++++++++++++++++++++++++++" + '\n'
+                    + "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+            // Collections.sort(ciclistasCarrera, new TiempoAscComparator());
 
-            for(int p=0;p<ciclistasCarrera.size();p++) {
+            for (int p = 0; p < ciclistasCarrera.size(); p++) {
+                System.out.print("@@@ Posicion("+p+"): ");
                 ciclistasCarrera.get(p).mostrarResultadoEtapa(etapa);
             }
-            for(int p=0;p<ciclistasCarrera.size();p++) {
-                if (ciclistasCarrera.get(p).getEnergia() < 0){
+            for (int p = 0; p < ciclistasCarrera.size(); p++) {
+                if (ciclistasCarrera.get(p).getEnergia() < 0) {
                     abandonar(ciclistasCarrera.get(p));
                     p--;
                 }
             }
-            for(int v=0;v<equipos.size();v++){
-            equipos.get(v).asignarbici();
+            for (int v = 0; v < equipos.size(); v++) {
+                equipos.get(v).asignarbici();
             }
-        
+
         }
         for (Equipo equipo : equipos) {
             equipo.setTiempoMedio();
@@ -199,28 +231,33 @@ public class Organizacion {
         if (ciclistasCarrera.size() > 0) {
             Collections.sort(ciclistasCarrera, new TiempoAscComparator());
             Collections.sort(abandonadosCarrera, new TiempoAscComparator());
-            System.out.println(" ****************************************************" +'\n'+"**************** FIN DE LA COMPETTICION ****************" +'\n'+ "****************************************************");
-            System.out.println('\n'+"Los ciclistas que clasificado sin abandonar ordenados por su puntuacion son: "+'\n');
+            System.out.println(" ****************************************************" + '\n'
+                    + "**************** FIN DE LA COMPETTICION ****************" + '\n'
+                    + "****************************************************");
+            System.out.println(
+                    '\n' + "Los ciclistas que clasificado sin abandonar ordenados por su puntuacion son: " + '\n');
             for (int i = 0; i < ciclistasCarrera.size(); i++) {
-                    ciclistasCarrera.get(i).mostrarSinBici();
-                    ciclistasCarrera.get(i).mostrarhistorial();
+                ciclistasCarrera.get(i).mostrarSinBici();
+                ciclistasCarrera.get(i).mostrarhistorial();
             }
             if (abandonadosCarrera.size() > 0) {
-            System.out.println(" ****************************************************" +'\n'+"**************** LOS CICLISTAS QUE HAN ABADONADO SON ****************" +'\n'+ "****************************************************");
+                System.out.println(" ****************************************************" + '\n'
+                        + "**************** LOS CICLISTAS QUE HAN ABADONADO SON ****************" + '\n'
+                        + "****************************************************");
                 for (int i = 0; i < abandonadosCarrera.size(); i++) {
-                        abandonadosCarrera.get(i).mostrarSinBici();
-                        abandonadosCarrera.get(i).mostrarhistorial();
+                    abandonadosCarrera.get(i).mostrarSinBici();
+                    abandonadosCarrera.get(i).mostrarhistorial();
                 }
             }
             Collections.sort(equipos, new TiempoMedioComparator());
             System.out.println("****************************************************");
-            System.out.println("******** CLASIFICACIÓN FINAL DE EQUIPOS *********" );
+            System.out.println("******** CLASIFICACIÓN FINAL DE EQUIPOS *********");
             System.out.println("****************************************************");
-            System.out.println("La clasificacion por equipos en orden es: "+'\n'+'\n');
+            System.out.println("La clasificacion por equipos en orden es: " + '\n' + '\n');
             for (Equipo equipo : equipos) {
                 equipo.mostrarTodo();
             }
-                        System.out.print("pekka 14 o 15 con espejo");
+            System.out.print("pekka 14 o 15 con espejo");
         } else {
             System.out.print("No hay competidores o todos han abandonado");
 

@@ -217,26 +217,26 @@ public abstract class Ciclista {
     /*
      * Muestra la información de un ciclista y de su bicicleta
      */
-    public void mostrarTodo(){
-         System.out.println('\n'+"Nombre:"+nombre +"/Con habilidad:" +String.format("%.2f",habilidad) +"/Con energia"+String.format("%.2f",energia)  + " con su biclieta:");
+    protected void mostrarTodo(){
+         mostrarSinBici();
          bici.mostrarTodo();
     }
 
     /*
      * Muestra la información de un ciclista
      */
-    public void mostrarSinBici(){
+    protected void mostrarSinBici(){
         String abandonado="<Sin abandono>" ;
         if(energia<0){
             abandonado=" <abandonado> ";
         }
-        System.out.println("<Nombre: "+nombre +"> <con habilidad: " +String.format("%.2f",habilidad) +"> <con energia: "+String.format("%.2f",energia) + "> <tiempo acumulado sin abandonar: "+String.format("%.2f",totalTime) + "> "+ abandonado );
+        System.out.print(nombre +"> <con energia: "+String.format("%.2f",energia)+"> "+ habilidad.toString()  + " <tiempo acumulado sin abandonar: "+String.format("%.2f",totalTime) + "> "+ abandonado );
    }
 
     /*
      * Muestra la puntuacion de cada ciclista
      */
-    public void mostrarPuntuacion(){
+    protected void mostrarPuntuacion(){
         System.out.println("Nombre: "+ nombre + " Tiene como tiempo total :"+ String.format("%.2f",totalTime));
         for(Etapa sitio: historial.keySet()){
             System.out.println("Carrera ("+sitio.getNombre() + ") Tiempo: " + String.format("%.2f",this.historial.get(sitio)) + " minutos "); 
@@ -249,10 +249,10 @@ public abstract class Ciclista {
      */
     public void mostrarResultadoEtapa(Etapa etapa){
         if(historial.get(etapa)!=null){
-            System.out.println(etapa.getNombre()+ " - Tiempo: "+ String.format("%.2f",this.historial.get(etapa)));
+            System.out.println(this.getNombre()+ " - Tiempo: "+String.format("%.2f",this.historial.get(etapa))+ " minutos @@@");
         }
         else{
-            System.out.println("El ciclista "+this.nombre+ " no ha corrido la etapa "+ etapa.getNombre());
+            System.out.println("El ciclista "+this.getNombre()+ " no ha corrido la etapa @@@");
         }
     }
     /**
@@ -297,6 +297,9 @@ public abstract class Ciclista {
         }
 
         //Tambien está System.out.println(historial);
+    }
+    public void mostrarEnergia(){
+        System.out.println("La energia que le queda al corredor es : " + String.format("%.2f",this.getEnergia()));
     }
 }
 

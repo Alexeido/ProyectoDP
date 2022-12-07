@@ -25,6 +25,14 @@ public class BicicletaRapida extends Bicicleta
     public double getETime(Etapa e, Ciclista c) {
         return (e.getDistancia() / this.getVelocidad(e, c) * 60);
     }
+
+    /**
+     *  Muestra los atributos de la bicicleta
+     */
+    @Override
+    public void mostrarTodo(){
+     System.out.println("<BicicletaRapida: "+ super.getNombre() + "> "+ super.getBicicletaPeso());
+    }
 }
 
 

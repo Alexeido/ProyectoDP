@@ -28,9 +28,9 @@ public class DatosCampeonatoCompletoFinal
         
 
         //constructor de equipos pide (String nombre, comparador de ciclistas y si orden ascendente o descendente, comparador de bicicletas y si orden ascendente o descendente)
-        Equipo movistarWomen = new Equipo("Movistar Women", 'H', 'P'); //ciclistas comparados ascendentemente por habilidad (si iguales por nombre), bicicletas comparadas ascendentemente por peso (si iguales por nombre));
-        Equipo dSMWomen= new Equipo("DSM Women", 'E', 'P'); //ciclistas comparados ascendentemente por energía (si iguales por nombre), bicicletas comparadas ascendentemente por peso (si iguales por nombre)););
-        Equipo trekSegafredoWomen = new Equipo("Trek Segafredo Women",'H','P'); //ciclistas comparados descendentemente por habilidad (si iguales por nombre), bicicletas comparadas descendentemente por peso (si iguales por nombre)););
+        Equipo movistarWomen = new Equipo("Movistar Women", new HabilidadComparatorAsc(), new PesoComparatorAsc()); //ciclistas comparados ascendentemente por habilidad (si iguales por nombre), bicicletas comparadas ascendentemente por peso (si iguales por nombre));
+        Equipo dSMWomen= new Equipo("DSM Women", new EnergiaComparatorDesc(), new PesoComparatorAsc()); //ciclistas comparados ascendentemente por energía (si iguales por nombre), bicicletas comparadas ascendentemente por peso (si iguales por nombre)););
+        Equipo trekSegafredoWomen = new Equipo("Trek Segafredo Women",new HabilidadComparatorDesc(),new PesoComparatorAsc()); //ciclistas comparados descendentemente por habilidad (si iguales por nombre), bicicletas comparadas descendentemente por peso (si iguales por nombre)););
         
         organizacion.anadirEquipo(movistarWomen);
         organizacion.anadirEquipo(trekSegafredoWomen);

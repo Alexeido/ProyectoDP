@@ -33,7 +33,8 @@ public enum BicicletaPeso{
     }
     @Override
     public String toString(){
-        return "<dist: " + getNombre() + " (valor: "+ getValor()+ ")>";
+        return "<Peso: " + getNombre() + " (valor: "+ getValor()+ ")>";
     }
+    
 
 }

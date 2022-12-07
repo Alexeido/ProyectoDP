@@ -26,6 +26,14 @@ public class BicicletaPrototipo extends Bicicleta
      */
     @Override
     public double getETime(Etapa e, Ciclista c) {
-        return (e.getDistancia() / super.getVelocidad(e, c) *60*c.getDestreza());
+        return (e.getDistancia() / (super.getVelocidad(e, c) *c.getDestreza()));
+    }
+
+    /**
+     *  Muestra los atributos de la bicicleta
+     */
+    @Override
+    public void mostrarTodo(){
+     System.out.println("<BicicletaPrototipo: "+ super.getNombre() + "> "+ super.getBicicletaPeso());
     }
 }

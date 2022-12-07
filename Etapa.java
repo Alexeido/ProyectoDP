@@ -102,6 +102,10 @@ public class Etapa {
      * Muestra la información de la etapa
      */
     public void mostrarTodo(){
-         System.out.println("<etapa:"+nombre+"> <dificultad: " + dificultad+ "> <distancia: "+ distancia +">");
+         System.out.println("<Etapa: "+nombre+">  "  + dificultad +"  "+ distancia );
+    }
+    @Override
+    public String toString(){
+        return this.getNombre();
     }
 }

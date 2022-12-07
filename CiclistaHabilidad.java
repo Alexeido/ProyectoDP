@@ -33,7 +33,7 @@ public enum CiclistaHabilidad{
     }
     @Override
     public String toString(){
-        return "<dist: " + getNombre() + " (valor: "+ getValor()+ ")>";
+        return "<Habilidad: " + getNombre() + " (valor: "+ getValor()+ ")>";
     }
 
 }

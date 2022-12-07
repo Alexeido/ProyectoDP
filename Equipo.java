@@ -29,18 +29,9 @@ public class Equipo {
      * 'N' = Ordenación por nombre
      *
      */
-    private char ordenBicicleta;
-    /**
-     * Almacena el algoritmo de ordenacion que se usará para los ciclistas
-     * 
-     * 'H' = Ordenación por Habilidad
-     * 'N' = Ordenación por nombre
-     * 'E' = Ordenación por Energía
-     * 'A' = Ordenación por Tiempo ascendente
-     * 'D' = Ordenacion por Tiempo Descendente
-     *
-     */
-    private char ordenCiclista;
+    private Comparator<Bicicleta> ordenBicicleta;
+
+    private Comparator<Ciclista> ordenCiclista;
 
     /**
      * Constructor de objetos para la clase Equipo
@@ -51,8 +42,8 @@ public class Equipo {
         ciclistasAbandonados = new ArrayList<Ciclista>();
         bicis = new ArrayList<Bicicleta>();
         tiempoMedio = 0;
-        this.ordenBicicleta = '0';
-        this.ordenCiclista = '0';
+        this.ordenBicicleta = new PesoComparatorAsc();
+        this.ordenCiclista = new NombreCComparator();
     }
 
     /**
@@ -66,7 +57,7 @@ public class Equipo {
      * @param ordenBicicleta char que indica según que se van a ordenar las Bicicletas
      */
     public Equipo(String nombre, ArrayList<Ciclista> ciclistas, ArrayList<Ciclista> ciclistasAbandonados,
-            ArrayList<Bicicleta> bicis, double tiempoMedio, char ordenCiclista, char ordenBicicleta) {
+            ArrayList<Bicicleta> bicis, double tiempoMedio, Comparator<Ciclista> ordenCiclista, Comparator<Bicicleta> ordenBicicleta) {
         this.nombre = nombre;
         this.ciclistas = ciclistas;
         this.ciclistasAbandonados = ciclistasAbandonados;
@@ -82,7 +73,7 @@ public class Equipo {
      * @param ordenCiclista char que indica según que se van a ordenar los ciclistas
      * @param ordenBicicleta char que indica según que se van a ordenar las Bicicletas
      */
-    public Equipo(String nombre, char ordenCiclista, char ordenBicicleta) {
+    public Equipo(String nombre, Comparator<Ciclista> ordenCiclista, Comparator<Bicicleta> ordenBicicleta) {
         this.nombre = nombre;
         this.ordenBicicleta = ordenBicicleta;
         this.ordenCiclista = ordenCiclista;
@@ -150,28 +141,28 @@ public class Equipo {
     /**
      * @return Orden de las Bicicletas
      */
-    public char getOrdenBicicleta() {
+    public Comparator<Bicicleta> getOrdenBicicleta() {
         return this.ordenBicicleta;
     }
 
     /**
      * @param ordenBicicleta char que indica según que se va a ordenar
      */
-    public void setOrdenBicicleta(char ordenBicicleta) {
+    public void setOrdenBicicleta(Comparator<Bicicleta> ordenBicicleta) {
         this.ordenBicicleta = ordenBicicleta;
     }
 
     /**
      * @return Orden de los ciclistas
      */
-    public char getOrdenCiclista() {
+    public Comparator<Ciclista> getOrdenCiclista() {
         return this.ordenCiclista;
     }
 
     /**
      * @param ordenCiclista char que indica según que se va a ordenar
      */
-    public void setOrdenCiclista(char ordenCiclista) {
+    public void setOrdenCiclista(Comparator<Ciclista> ordenCiclista) {
         this.ordenCiclista = ordenCiclista;
     }
 
@@ -232,35 +223,16 @@ public class Equipo {
      * Reordena el vector de ciclistas
      * @param ordenCiclista char que indica según que se va a ordenar
      */
-    public void reOrdenCiclista(char ordenCiclista) {
-        if (ordenCiclista == 'H') {
-            Collections.sort(ciclistas, new HabilidadComparator());
-        }
-        if (ordenCiclista == 'N') {
-            Collections.sort(ciclistas, new NombreCComparator());
-        }
-        if (ordenCiclista == 'E') {
-            Collections.sort(ciclistas, new EnergiaComparator());
-        }
-        if (ordenCiclista == 'A') {
-            Collections.sort(ciclistas, new TiempoAscComparator());
-        }
-        if (ordenCiclista == 'D') {
-            Collections.sort(ciclistas, new TiempoDescComparator());
-        }
+    public void reOrdenCiclista(Comparator<Ciclista> ordenCiclista) {
+        Collections.sort(ciclistas, ordenCiclista);
     }
 
     /**
      * Reordena el vector de Bicicletas
      * @param ordenBicicleta char que indica según que se va a ordenar
      */
-    public void reOrdenBicicleta(char ordenBicicleta) {
-        if (ordenBicicleta == 'P') {
-            Collections.sort(bicis, new PesoComparator());
-        }
-        if (ordenBicicleta == 'N') {
-            Collections.sort(bicis, new NombreComparator());
-        }
+    public void reOrdenBicicleta(Comparator<Bicicleta> ordenBicicleta) {
+            Collections.sort(bicis, ordenBicicleta);
     }
 
     /**

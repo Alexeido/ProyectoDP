@@ -25,4 +25,15 @@ public class CiclistaNovato extends Ciclista
      * @return     the sum of x and y 
      */
 
+    
+    /* 
+     *  Muestra el ciclista sin su bicicleta llamando al super
+     */
+    @Override
+    public void mostrarSinBici(){
+        System.out.print ("<CiclistaNovato: ");
+        super.mostrarSinBici();
+        System.out.println();
+    }
+
 }

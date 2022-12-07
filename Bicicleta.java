@@ -95,6 +95,6 @@ public class Bicicleta {
      *  Muestra los atributos de la bicicleta
      */
     public void mostrarTodo(){
-     System.out.println("<bicicleta: "+ nombre + "> <peso: "+ peso +">");
+     System.out.println("<Bicicleta: "+ nombre + "> "+ peso +">");
     }
 }

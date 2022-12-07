@@ -6,11 +6,11 @@
  */
 import java.util.*;
 import java.lang.*;
-//Comparator etapas
+//Comparator por dificultad
 class ComparadorDificultadEtapa implements Comparator<Etapa>{
     public int compare(Etapa et1, Etapa et2){
         if (et1.getDificultad()==et2.getDificultad()){
-            return 0;
+            return et1.getNombre().compareTo(et2.getNombre());
         }
         else if(et1.getDificultad() > et2.getDificultad()){
             return 1;
@@ -20,3 +20,4 @@ class ComparadorDificultadEtapa implements Comparator<Etapa>{
         }
     }
 }
+
