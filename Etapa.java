@@ -8,6 +8,7 @@
 import java.io.*;
 import java.io.IOException;
 import java.nio.*;
+import java.util.*;
 
 public class Etapa {
     private String nombre;
@@ -116,7 +117,28 @@ public class Etapa {
         }
     }
 
+    @Override
     public String toString() {
-        return "<Etapa: " + getNombre() + " dificultad: " + getDificultad() + " distancia: " + getDistancia();
+        return "<Etapa: " + getNombre() + " dificultad: " + getEtapaDificultad() + " distancia: " + getEtapaDistancia();
     }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+        if (!(o instanceof Etapa)) {
+            return false;
+        }
+        Etapa etapa = (Etapa) o;
+        return Objects.equals(nombre, etapa.nombre) && Objects.equals(dificultad, etapa.dificultad) && Objects.equals(distancia, etapa.distancia);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nombre, dificultad, distancia);
+    }
+
+
+ 
 }

@@ -54,4 +54,6 @@ public class BicicletaPrototipo extends Bicicleta {
     public String toString() {
         return "<BicicletaPrototipo: " + super.getNombre() + "> " + super.getBicicletaPeso();
     }
+
+    
 }

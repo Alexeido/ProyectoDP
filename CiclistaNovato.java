@@ -52,4 +52,8 @@ public class CiclistaNovato extends Ciclista {
         return "<Nombre: " + super.getNombre() + " energia: " + super.getEnergia() + " equipo: " + super.getTeam()
                 + " tiempo total: " + super.getTotalTime() + super.getBicicleta();
     }
+
+
+
+    
 }

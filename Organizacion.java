@@ -418,4 +418,22 @@ public class Organizacion {
             System.err.println("There was a problem writing to ");
         }
     }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+        if (!(o instanceof Organizacion)) {
+            return false;
+        }
+        Organizacion organizacion = (Organizacion) o;
+        return Objects.equals(etapas, organizacion.etapas) && Objects.equals(equipos, organizacion.equipos) && Objects.equals(ciclistasCarrera, organizacion.ciclistasCarrera) && Objects.equals(abandonadosCarrera, organizacion.abandonadosCarrera) && Objects.equals(ficheroOut, organizacion.ficheroOut);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(etapas, equipos, ciclistasCarrera, abandonadosCarrera, ficheroOut);
+    }
+
 }

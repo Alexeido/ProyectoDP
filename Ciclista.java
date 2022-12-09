@@ -371,4 +371,22 @@ public abstract class Ciclista {
         return "<Nombre: " + getNombre() + " energia: " + getEnergia() + " equipo: " + getTeam() + " tiempo total: "
                 + getTotalTime() + getBicicleta();
     }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+        if (!(o instanceof Ciclista)) {
+            return false;
+        }
+        Ciclista ciclista = (Ciclista) o;
+        return Objects.equals(nombre, ciclista.nombre) && Objects.equals(bici, ciclista.bici) && Objects.equals(habilidad, ciclista.habilidad) && energia == ciclista.energia && Objects.equals(historial, ciclista.historial) && Objects.equals(team, ciclista.team) && Objects.equals(Eorden, ciclista.Eorden) && totalTime == ciclista.totalTime && destreza == ciclista.destreza;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nombre, bici, habilidad, energia, historial, team, Eorden, totalTime, destreza);
+    }
+
 }

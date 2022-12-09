@@ -8,6 +8,7 @@
 
 import java.io.*;
 import java.io.IOException;
+import java.util.*;
 import java.nio.*;
 
 public class Bicicleta {
@@ -107,8 +108,27 @@ public class Bicicleta {
             System.err.println("There was a problem writing to ");
         }
     }
-
+    
     public String toString() {
-        return "<Bicicleta: " + nombre + "> " + peso + ">";
+        return "<Bicicleta: " + getNombre() + "> " + getPeso() + ">";
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+        if (!(o instanceof Bicicleta)) {
+            return false;
+        }
+        Bicicleta bicicleta = (Bicicleta) o;
+        return Objects.equals(nombre, bicicleta.nombre) && Objects.equals(peso, bicicleta.peso);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nombre, peso);
+    }
+    
+    
+
 }

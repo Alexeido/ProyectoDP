@@ -287,4 +287,23 @@ public class Equipo {
     public String toString() {
         return "<Nombre: " + getNombre() + " tiempo medio: " + getTiempoMedio();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+        if (!(o instanceof Equipo)) {
+            return false;
+        }
+        Equipo equipo = (Equipo) o;
+        return Objects.equals(nombre, equipo.nombre) && Objects.equals(ciclistas, equipo.ciclistas) && Objects.equals(ciclistasAbandonados, equipo.ciclistasAbandonados) && Objects.equals(bicis, equipo.bicis) && tiempoMedio == equipo.tiempoMedio && Objects.equals(ordenBicicleta, equipo.ordenBicicleta) && Objects.equals(ordenCiclista, equipo.ordenCiclista);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nombre, ciclistas, ciclistasAbandonados, bicis, tiempoMedio, ordenBicicleta, ordenCiclista);
+    }
+
 }
+
+
