@@ -5,7 +5,9 @@
  * @author Alexeido, Thander y Natera
  * @version 31-10-2022
  */
-
+import java.io.*;
+import java.io.IOException;
+import java.nio.*; 
 
 public class Etapa {
     private String nombre;
@@ -101,7 +103,18 @@ public class Etapa {
     /**
      * Muestra la información de la etapa
      */
-    public void mostrarTodo(){
-         System.out.println("<etapa:"+nombre+"> <dificultad: " + dificultad+ "> <distancia: "+ distancia +">");
+    public void mostrarTodo(BufferedWriter ficheroOut){
+        try{
+            System.out.println("<Etapa: "+nombre+">  "  + dificultad +"  "+ distancia );
+            ficheroOut.write("<Etapa: "+nombre+">  "  + dificultad +"  "+ distancia );
+         }
+         catch(IOException e){
+            System.err.println("There was a problem writing to ");
+        }  
+    }
+    
+    @Override
+    public String toString(){
+        return this.getNombre();
     }
 }

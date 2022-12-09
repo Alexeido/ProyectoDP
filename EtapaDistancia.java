@@ -7,9 +7,9 @@
 
   public enum EtapaDistancia{
     VACIA ("VACIA", 0),
-    CORTA ("CORTA", 250.0),
-    INTERMEDIA ("INTERMEDIA", 275.0),
-    LARGA ("LARGA", 300.0);
+    CORTA ("CORTA", 150.0),
+    INTERMEDIA ("INTERMEDIA", 200.0),
+    LARGA ("LARGA", 225.0);
 
     private String nombre;
     private double valor;
@@ -28,7 +28,7 @@
     }
     @Override
     public String toString(){
-        return "<dist: " + getNombre() + " (valor: "+ getValor()+ ")>";
+        return "<Distancia: " + getNombre() + " (valor: "+ getValor()+ ")>";
     }
 
 }

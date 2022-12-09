@@ -5,7 +5,10 @@
  * @version 31-10-2022
  */
  
- import java.util.*;
+import java.util.*;
+import java.io.*;
+import java.io.IOException;
+import java.nio.*; 
 
 
 public abstract class Ciclista {
@@ -195,7 +198,7 @@ public abstract class Ciclista {
     }
     
     /**
-     * @param Eorden Establece la etapa en la que se compararán
+     * @param Eorden Establece la etapa en la que se compararán dos ciclistas
      */
     public void setEtapa(Etapa Eorden){
         this.Eorden = Eorden;
@@ -217,44 +220,76 @@ public abstract class Ciclista {
     /*
      * Muestra la información de un ciclista y de su bicicleta
      */
-    public void mostrarTodo(){
-         System.out.println('\n'+"Nombre:"+nombre +"/Con habilidad:" +String.format("%.2f",habilidad) +"/Con energia"+String.format("%.2f",energia)  + " con su biclieta:");
-         bici.mostrarTodo();
+    protected void mostrarTodo(BufferedWriter ficheroOut){
+         mostrarSinBici(ficheroOut);
+         bici.mostrarTodo(ficheroOut);
     }
 
     /*
      * Muestra la información de un ciclista
      */
-    public void mostrarSinBici(){
-        String abandonado="<Sin abandono>" ;
-        if(energia<0){
-            abandonado=" <abandonado> ";
+    protected void mostrarSinBici(BufferedWriter ficheroOut){
+        try{
+            String abandonado="<Sin abandono>" ;
+            if(energia<0){
+                abandonado=" <abandonado> ";
+            }
+            System.out.print(nombre +"> <con energia: "+String.format("%.2f",energia)+"> "+ habilidad.toString()  + " <tiempo acumulado sin abandonar: "+String.format("%.2f",totalTime) + "> "+ abandonado );
+            ficheroOut.write(nombre +"> <con energia: "+String.format("%.2f",energia)+"> "+ habilidad.toString()  + " <tiempo acumulado sin abandonar: "+String.format("%.2f",totalTime) + "> "+ abandonado );
         }
-        System.out.println("<Nombre: "+nombre +"> <con habilidad: " +String.format("%.2f",habilidad) +"> <con energia: "+String.format("%.2f",energia) + "> <tiempo acumulado sin abandonar: "+String.format("%.2f",totalTime) + "> "+ abandonado );
+        catch(IOException e){
+            System.err.println("There was a problem writing to ");
+        }  
    }
 
     /*
      * Muestra la puntuacion de cada ciclista
      */
-    public void mostrarPuntuacion(){
+    protected void mostrarPuntuacion(BufferedWriter ficheroOut){
+        try{
         System.out.println("Nombre: "+ nombre + " Tiene como tiempo total :"+ String.format("%.2f",totalTime));
+        ficheroOut.write("Nombre: "+ nombre + " Tiene como tiempo total :"+ String.format("%.2f",totalTime));
         for(Etapa sitio: historial.keySet()){
             System.out.println("Carrera ("+sitio.getNombre() + ") Tiempo: " + String.format("%.2f",this.historial.get(sitio)) + " minutos "); 
+            ficheroOut.write("Carrera ("+sitio.getNombre() + ") Tiempo: " + String.format("%.2f",this.historial.get(sitio)) + " minutos "); 
+        }
+        }
+        catch(IOException e){
+            System.err.println("There was a problem writing to ");
         }
     }
 
 
     /**
      * @param etapa Etapa de la que se mostrará la información
+     * 
+     * Muestra el resultaddo del ciclista
      */
-    public void mostrarResultadoEtapa(Etapa etapa){
+    public void mostrarResultadoEtapa(Etapa etapa,BufferedWriter ficheroOut){
+        try{
+
+        
         if(historial.get(etapa)!=null){
-            System.out.println(etapa.getNombre()+ " - Tiempo: "+ String.format("%.2f",this.historial.get(etapa)));
+            if(historial.get(etapa)>=0){
+                System.out.println(this.getNombre()+ " - Tiempo: "+String.format("%.2f",this.historial.get(etapa))+ " minutos @@@");
+                ficheroOut.write(this.getNombre()+ " - Tiempo: "+String.format("%.2f",this.historial.get(etapa))+ " minutos @@@");
+                }
+            else{
+                System.out.println("### Ha abandonado "+this.getNombre()+ " - Tiempo: "+String.format("%.2f",this.historial.get(etapa))+ " minutos - Ademas ha abandonado para el resto del Campeonato !!!");
+                ficheroOut.write("### Ha abandonado "+this.getNombre()+ " - Tiempo: "+String.format("%.2f",this.historial.get(etapa))+ " minutos - Ademas ha abandonado para el resto del Campeonato !!!");
+            }
         }
         else{
-            System.out.println("El ciclista "+this.nombre+ " no ha corrido la etapa "+ etapa.getNombre());
+            System.out.println("El ciclista "+this.getNombre()+ " no ha corrido la etapa @@@");
+            ficheroOut.write("El ciclista "+this.getNombre()+ " no ha corrido la etapa @@@");
+        }
+        }
+        catch(IOException e){
+            System.err.println("There was a problem writing to ");
         }
     }
+
+
     /**
      * @param e Etapa a correr
      * Si el usuario se ha quedado sin energía en la competición y no ha podido acabar tendrá energia negativa
@@ -282,21 +317,46 @@ public abstract class Ciclista {
         return time;
 
     }
+    /**
+     * @param destreza Valor al que se establece la destreza
+     * 
+     */
     public void setDestreza(Double destreza){
         this.destreza=destreza;
     }
+
+    /**
+     * @return Destreza del ciclista
+     */
     public double getDestreza(){
         return this.destreza;
     }
     /**
      * Muestra los resultados del ciclista en todas las etapas
+     * Tambien está System.out.println(historial);
      */
-    public void mostrarhistorial(){
-        for(Etapa sitio: historial.keySet()){
-            System.out.println("Carrera ("+sitio.getNombre() + ") Tiempo: " + String.format("%.2f",this.historial.get(sitio)) + " minutos "); 
+    public void mostrarHistorial(BufferedWriter ficheroOut){
+        try{
+            for(Etapa sitio: historial.keySet()){
+                System.out.println("Carrera ("+sitio.getNombre() + ") Tiempo: " + String.format("%.2f",this.historial.get(sitio)) + " minutos "); 
+                ficheroOut.write("Carrera ("+sitio.getNombre() + ") Tiempo: " + String.format("%.2f",this.historial.get(sitio)) + " minutos "); 
+            }
         }
-
-        //Tambien está System.out.println(historial);
+        catch(IOException e){
+            System.err.println("There was a problem writing to ");
+        }
+    }
+    /**
+     * Muestra por pantalla la energia del ciclista
+     */
+    public void mostrarEnergia(BufferedWriter ficheroOut){
+        try{
+        System.out.println("La energia que le queda al corredor es : " + String.format("%.2f",this.getEnergia()));
+        ficheroOut.write("La energia que le queda al corredor es : " + String.format("%.2f",this.getEnergia()));
+        }
+        catch(IOException e){
+            System.err.println("There was a problem writing to ");
+        }
     }
 }
 

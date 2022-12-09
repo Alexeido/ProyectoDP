@@ -33,7 +33,7 @@ public enum EtapaDificultad{
     }
     @Override
     public String toString(){
-        return "<dist: " + getNombre() + " (valor: "+ getValor()+ ")>";
+        return "<Dificultad: " + getNombre() + " (valor: "+ getValor()+ ")>";
     }
 
 }

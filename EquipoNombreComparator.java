@@ -8,8 +8,8 @@ import java.util.*;
 import java.lang.*;
 
 //Comparator ciclistas
-class NombreCComparator implements Comparator<Ciclista> {
-    public int compare(Ciclista b1, Ciclista b2) {
+class EquipoNombreComparator implements Comparator<Equipo> {
+    public int compare(Equipo b1, Equipo b2) {
         return b1.getNombre().compareTo(b2.getNombre());
     }
 }

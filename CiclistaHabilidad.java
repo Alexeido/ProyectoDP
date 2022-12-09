@@ -1,5 +1,5 @@
 /**
- * Clase simple que almacena una bicicleta 
+ * Enum simple que almacena valores de la Habilidad 
  * 
  * @author Alexeido, Thander y Natera
  * @version 
@@ -14,26 +14,43 @@ public enum CiclistaHabilidad{
     private String nombre;
     private double valor;
 
+    /**
+     * Constructor del enum CiclistaHabilidad
+     */
     CiclistaHabilidad(){
         this.nombre="";
         this.valor=0;
     }
 
+
+    /**
+     * Constructor del enum CiclistaHabilidad
+     * @param nombre    Nombre del enum
+     * @param valor     Valor del enum
+     */
     CiclistaHabilidad(String nombre, double valor){
         this.nombre=nombre;
         this.valor=valor;
     }
  
+    /**
+     * @return Nombre enum
+     */
     public String getNombre(){
         return nombre;
     }
 
+    /**
+     * @return Valor enum
+     */
     public double getValor(){
         return valor;
     }
+
+
     @Override
     public String toString(){
-        return "<dist: " + getNombre() + " (valor: "+ getValor()+ ")>";
+        return "<Habilidad: " + getNombre() + " (valor: "+ getValor()+ ")>";
     }
 
 }

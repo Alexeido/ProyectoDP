@@ -1,15 +1,19 @@
 /**
- * Clase simple que almacena una bicicleta 
+ * Superclase simple que almacena una bicicleta 
  * 
  * @author Alexeido, Thander y Natera
- * @version 31-10-2022
+ * @version 1.0
  */
  
+import java.io.*;
+import java.io.IOException;
+import java.nio.*; 
 
 
 
 public class Bicicleta {
     private String nombre;
+
     /*Grados de peso
     *   VACIA = 0;
     *   LIGERA = 7.35
@@ -94,7 +98,13 @@ public class Bicicleta {
     /**
      *  Muestra los atributos de la bicicleta
      */
-    public void mostrarTodo(){
-     System.out.println("<bicicleta: "+ nombre + "> <peso: "+ peso +">");
+    public void mostrarTodo(BufferedWriter ficheroOut){
+        try{
+            System.out.println("<Bicicleta: "+ nombre + "> "+ peso +">");
+            ficheroOut.write("<Bicicleta: "+ nombre + "> "+ peso +">");
+        }
+        catch(IOException e){
+            System.err.println("There was a problem writing to ");
+        }  
     }
 }

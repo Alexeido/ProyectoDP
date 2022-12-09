@@ -1,5 +1,5 @@
 /**
- * Clase simple que almacena una bicicleta 
+ * Subclase de ciclista
  * 
  * @author Alexeido, Thander y Natera
  * @version 
@@ -24,5 +24,16 @@ public class CiclistaNovato extends Ciclista
      * @param  y   a sample parameter for a method
      * @return     the sum of x and y 
      */
+
+    
+    /* 
+     *  Muestra el ciclista sin su bicicleta llamando al super
+     */
+    @Override
+    public void mostrarSinBici(){
+        System.out.print ("<CiclistaNovato: ");
+        super.mostrarSinBici();
+        System.out.println();
+    }
 
 }

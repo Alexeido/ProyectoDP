@@ -8,9 +8,9 @@ import java.util.*;
 import java.lang.*;
 
 //Comparator ciclistas
-class NombreCComparator implements Comparator<Ciclista> {
+class NombreCComparatorDesc implements Comparator<Ciclista> {
     public int compare(Ciclista b1, Ciclista b2) {
-        return b1.getNombre().compareTo(b2.getNombre());
+        return -1*b1.getNombre().compareTo(b2.getNombre());
     }
 }
 

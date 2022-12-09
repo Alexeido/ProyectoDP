@@ -13,16 +13,16 @@ import org.junit.jupiter.api.Test;
  */
 public class BicicletaTest
 {
-        Bicicleta bicicleta1= new Bicicleta("TREK Madone SLR 9 eTap Gen 7",7.35);
-        Bicicleta bicicleta2= new Bicicleta("TREK Emonda SLR 9 eTap",7.65);
-        Bicicleta bicicleta3= new Bicicleta("TREK Domane SLR 9 eTap Gen 4",7.85);
+        Bicicleta bicicleta1= new Bicicleta("TREK Madone SLR 9 eTap Gen 7",BicicletaPeso.LIGERA);
+        Bicicleta bicicleta2= new Bicicleta("TREK Emonda SLR 9 eTap",BicicletaPeso.NORMAL);
+        Bicicleta bicicleta3= new Bicicleta("TREK Domane SLR 9 eTap Gen 4",BicicletaPeso.PESADA);
         Equipo movistarWomen = new Equipo("Movistar Women", 'H', 'P');
-        Ciclista cliclista1 = new Ciclista("WIEBES",  4.97, 1190,movistarWomen);
-        Ciclista cliclista2 = new Ciclista("LIPPERT", 5.0, 1160,movistarWomen);
-        Ciclista cliclista3 = new Ciclista("LABOUS", 5.01, 1150,movistarWomen);
-        Etapa etapa1 = new Etapa("sencilla larga", 0.9, 225);
-        Etapa etapa2 = new Etapa("compleja intermedia", 1.1, 200);
-        Etapa etapa3 = new Etapa("normal intermedia", 1.0, 200);
+        Ciclista cliclista1 = new CiclistaNovato("WIEBES",  CiclistaHabilidad.LENTA , 1190,movistarWomen);
+        Ciclista cliclista2 = new CiclistaExperimentado("LIPPERT", CiclistaHabilidad.NORMAL, 1160,movistarWomen);
+        Ciclista cliclista3 = new CiclistaEstrella("LABOUS", CiclistaHabilidad.BUENA, 1150,movistarWomen);
+        Etapa etapa1 = new Etapa("sencilla larga", EtapaDificultad.NORMAL, EtapaDistancia.CORTA);
+        Etapa etapa2 = new Etapa("compleja intermedia", EtapaDificultad.SENCILLA, EtapaDistancia.INTERMEDIA);
+        Etapa etapa3 = new Etapa("normal intermedia", EtapaDificultad.COMPLEJA, EtapaDistancia.LARGA);
     /**
      * Default constructor for test class BicicletaTest
      */
