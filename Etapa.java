@@ -7,29 +7,31 @@
  */
 import java.io.*;
 import java.io.IOException;
-import java.nio.*; 
+import java.nio.*;
 
 public class Etapa {
     private String nombre;
     private EtapaDificultad dificultad;
-    /*Grados de dificultad
-    *   VACIA = 0;
-    *   CORTA  = 150;
-    *   INTERMEDIA = 200;
-    *   LARAG = 225;
-    */
+    /*
+     * Grados de dificultad
+     * VACIA = 0;
+     * CORTA = 150;
+     * INTERMEDIA = 200;
+     * LARAG = 225;
+     */
     private EtapaDistancia distancia;
-    /*Grados de distancia
-    *   VACIA = 0;
-    *   SENCILLA = 0.9;
-    *   NORMAL = 1.0;
-    *   COMPLEJA = 1.1;
-    */
+    /*
+     * Grados de distancia
+     * VACIA = 0;
+     * SENCILLA = 0.9;
+     * NORMAL = 1.0;
+     * COMPLEJA = 1.1;
+     */
 
     /**
      * Constructor para la clase Etapa
      */
-    public Etapa(){
+    public Etapa() {
         this.nombre = "";
         setDificultad(EtapaDificultad.VACIA);
         setDistancia(EtapaDistancia.VACIA);
@@ -87,34 +89,34 @@ public class Etapa {
     }
 
     /**
-     * @param dificultad La dificultad de la etapa cambia por la insertada como parametro
+     * @param dificultad La dificultad de la etapa cambia por la insertada como
+     *                   parametro
      */
     public void setDificultad(EtapaDificultad dificultad) {
         this.dificultad = dificultad;
     }
-    
+
     /**
-     * @param distancia La distancia de la etapa cambia por la insertada como parametro
+     * @param distancia La distancia de la etapa cambia por la insertada como
+     *                  parametro
      */
     public void setDistancia(EtapaDistancia distancia) {
         this.distancia = distancia;
     }
-    
+
     /**
      * Muestra la información de la etapa
      */
-    public void mostrarTodo(BufferedWriter ficheroOut){
-        try{
-            System.out.println("<Etapa: "+nombre+">  "  + dificultad +"  "+ distancia );
-            ficheroOut.write("<Etapa: "+nombre+">  "  + dificultad +"  "+ distancia );
-         }
-         catch(IOException e){
+    public void mostrarTodo(BufferedWriter ficheroOut) {
+        try {
+            System.out.println("<Etapa: " + nombre + ">  " + dificultad + "  " + distancia);
+            ficheroOut.write("<Etapa: " + nombre + ">  " + dificultad + "  " + distancia + '\n');
+        } catch (IOException e) {
             System.err.println("There was a problem writing to ");
-        }  
+        }
     }
-    
-    @Override
-    public String toString(){
-        return this.getNombre();
+
+    public String toString() {
+        return "<Etapa: " + getNombre() + " dificultad: " + getDificultad() + " distancia: " + getDistancia();
     }
 }

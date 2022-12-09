@@ -1,3 +1,4 @@
+
 /**
  * Clase que representa a los Equipos que competirán
  * 
@@ -9,8 +10,7 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 import java.io.IOException;
-import java.nio.*; 
-
+import java.nio.*;
 
 public class Equipo {
     private String nombre;
@@ -36,16 +36,18 @@ public class Equipo {
 
     /**
      * Constructor parametrizado de objetos para la clase Equipo
-     * @param nombre Nombre del equipo
-     * @param ciclistas Ciclistas del equipo
+     * 
+     * @param nombre               Nombre del equipo
+     * @param ciclistas            Ciclistas del equipo
      * @param ciclistasAbandonados Ciclistas abandonados del equipo
-     * @param bicis Bicicletas del equipo
-     * @param tiempoMedio Tiempo medio del equipo
-     * @param ordenCiclista  indica el orden de los ciclistas
-     * @param ordenBicicleta indica el orden de las bicicletas
+     * @param bicis                Bicicletas del equipo
+     * @param tiempoMedio          Tiempo medio del equipo
+     * @param ordenCiclista        indica el orden de los ciclistas
+     * @param ordenBicicleta       indica el orden de las bicicletas
      */
     public Equipo(String nombre, ArrayList<Ciclista> ciclistas, ArrayList<Ciclista> ciclistasAbandonados,
-            ArrayList<Bicicleta> bicis, double tiempoMedio, Comparator<Ciclista> ordenCiclista, Comparator<Bicicleta> ordenBicicleta) {
+            ArrayList<Bicicleta> bicis, double tiempoMedio, Comparator<Ciclista> ordenCiclista,
+            Comparator<Bicicleta> ordenBicicleta) {
         this.nombre = nombre;
         this.ciclistas = ciclistas;
         this.ciclistasAbandonados = ciclistasAbandonados;
@@ -57,7 +59,8 @@ public class Equipo {
 
     /**
      * Constructor parametrizado de objetos para la clase Equipo
-     * @param nombre Nombre del equipo 
+     * 
+     * @param nombre         Nombre del equipo
      * @param ordenCiclista  indica el orden de los ciclistas
      * @param ordenBicicleta indica el orden de las bicicletas
      */
@@ -149,7 +152,7 @@ public class Equipo {
 
     /**
      * @param ordenCiclista Comparator según el que se va a ordenar
-     */ 
+     */
     public void setOrdenCiclista(Comparator<Ciclista> ordenCiclista) {
         this.ordenCiclista = ordenCiclista;
     }
@@ -168,24 +171,28 @@ public class Equipo {
      * Muestra la informacion del equipo y sus ciclistas
      */
     public void mostrarTodo(BufferedWriter ficheroOut) {
-        try{
-        System.out.println("%%% "+nombre.toUpperCase() + " %%% Media Minutos de Ciclistas sin abandonar: "
-                + String.format("%.2f", tiempoMedio)+" %%%"+'\n');
-        ficheroOut.write("%%% "+nombre.toUpperCase() + " %%% Media Minutos de Ciclistas sin abandonar: "
-                + String.format("%.2f", tiempoMedio)+" %%%"+'\n');
-        for (int i = 0; i < ciclistas.size(); i++) {
-            ciclistas.get(i).mostrarSinBici(ficheroOut);// <ciclista:VAN VLEUTEN> <energía: 50.92> <habilidad: 4.96> <tiempo
-                                              // acumulado sin abandonar: 1149.08> <abandonado:false>
-        }
-        for (int i = 0; i < ciclistasAbandonados.size(); i++) {
-            ciclistasAbandonados.get(i).mostrarSinBici(ficheroOut);
-        }
-        System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"+'\n'+
-        "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-        ficheroOut.write("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"+'\n'+
-        "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-        }
-        catch(IOException e){
+        try {
+            System.out.println("%%% " + nombre.toUpperCase() + " %%% Media Minutos de Ciclistas sin abandonar: "
+                    + String.format("%.2f", tiempoMedio) + " %%%" + '\n');
+            ficheroOut.write("%%% " + nombre.toUpperCase() + " %%% Media Minutos de Ciclistas sin abandonar: "
+                    + String.format("%.2f", tiempoMedio) + " %%%" + '\n');
+            for (int i = 0; i < ciclistas.size(); i++) {
+                ciclistas.get(i).mostrarSinBici(ficheroOut);// <ciclista:VAN VLEUTEN> <energía: 50.92> <habilidad: 4.96>
+                                                            // <tiempo
+                // acumulado sin abandonar: 1149.08> <abandonado:false>
+            }
+            for (int i = 0; i < ciclistasAbandonados.size(); i++) {
+                ciclistasAbandonados.get(i).mostrarSinBici(ficheroOut);
+            }
+            System.out.println(
+                    "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+                            + '\n' +
+                            "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+            ficheroOut.write(
+                    "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+                            + '\n' +
+                            "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+        } catch (IOException e) {
             System.err.println("There was a problem writing to ");
         }
 
@@ -202,6 +209,7 @@ public class Equipo {
 
     /**
      * Añade una bicilceta al vector de Bicicletas y ordena el vector
+     * 
      * @param b Bicicleta a añadir
      */
     public void addBicicleta(Bicicleta b) {
@@ -211,6 +219,7 @@ public class Equipo {
 
     /**
      * Añade un ciclista al vector de ciclistas y ordena el vector
+     * 
      * @param c Ciclista a añadir
      */
     public void addCiclista(Ciclista c) {
@@ -220,6 +229,7 @@ public class Equipo {
 
     /**
      * Reordena el vector de ciclistas
+     * 
      * @param ordenCiclista char que indica según que se va a ordenar
      */
     public void reOrdenCiclista(Comparator<Ciclista> ordenCiclista) {
@@ -228,14 +238,16 @@ public class Equipo {
 
     /**
      * Reordena el vector de Bicicletas
+     * 
      * @param ordenBicicleta char que indica según que se va a ordenar
      */
     public void reOrdenBicicleta(Comparator<Bicicleta> ordenBicicleta) {
-            Collections.sort(bicis, ordenBicicleta);
+        Collections.sort(bicis, ordenBicicleta);
     }
 
     /**
      * Quita un ciclista del vector de ciclistas y lo añade al de abandonados
+     * 
      * @param c Ciclista que abandona
      */
     public void addCiclistaAbandonado(Ciclista c) {
@@ -245,7 +257,8 @@ public class Equipo {
     }
 
     /**
-     * @return Suma de los tiempo totales acumulados en toda la carrera por todos los ciclistas del equipo
+     * @return Suma de los tiempo totales acumulados en toda la carrera por todos
+     *         los ciclistas del equipo
      */
     public double getTiempototal() {
         double result = 0;
@@ -259,6 +272,7 @@ public class Equipo {
 
     /**
      * Envia a todos los ciclistas a correr una etapa
+     * 
      * @param e Etapa a correr
      */
     public void enviarEtapa(Etapa e) {
@@ -269,4 +283,8 @@ public class Equipo {
         }
     }
 
+    @Override
+    public String toString() {
+        return "<Nombre: " + getNombre() + " tiempo medio: " + getTiempoMedio();
+    }
 }

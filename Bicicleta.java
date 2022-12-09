@@ -1,25 +1,25 @@
+
 /**
  * Superclase simple que almacena una bicicleta 
  * 
  * @author Alexeido, Thander y Natera
  * @version 1.0
  */
- 
+
 import java.io.*;
 import java.io.IOException;
-import java.nio.*; 
-
-
+import java.nio.*;
 
 public class Bicicleta {
     private String nombre;
 
-    /*Grados de peso
-    *   VACIA = 0;
-    *   LIGERA = 7.35
-    *   NORMAL = 7.50
-    *   PESADA = 7.85
-    */
+    /*
+     * Grados de peso
+     * VACIA = 0;
+     * LIGERA = 7.35
+     * NORMAL = 7.50
+     * PESADA = 7.85
+     */
     private BicicletaPeso peso;
 
     /**
@@ -32,8 +32,9 @@ public class Bicicleta {
 
     /**
      * Constructor parameterized for objects of class Bicicleta
+     * 
      * @param nombre Nombre de la bicicleta
-     * @param peso Peso de la bicicleta
+     * @param peso   Peso de la bicicleta
      */
     public Bicicleta(String nombre, BicicletaPeso peso) {
         this.nombre = nombre;
@@ -96,15 +97,18 @@ public class Bicicleta {
     }
 
     /**
-     *  Muestra los atributos de la bicicleta
+     * Muestra los atributos de la bicicleta
      */
-    public void mostrarTodo(BufferedWriter ficheroOut){
-        try{
-            System.out.println("<Bicicleta: "+ nombre + "> "+ peso +">");
-            ficheroOut.write("<Bicicleta: "+ nombre + "> "+ peso +">");
-        }
-        catch(IOException e){
+    public void mostrarTodo(BufferedWriter ficheroOut) {
+        try {
+            System.out.println("<Bicicleta: " + nombre + "> " + peso + ">");
+            ficheroOut.write("<Bicicleta: " + nombre + "> " + peso + ">");
+        } catch (IOException e) {
             System.err.println("There was a problem writing to ");
-        }  
+        }
+    }
+
+    public String toString() {
+        return "<Bicicleta: " + nombre + "> " + peso + ">";
     }
 }

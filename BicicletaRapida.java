@@ -1,37 +1,45 @@
+
 /**
  * Clase simple que almacena una bicicleta 
  * 
  * @author Alexeido, Thander y Natera
  * @version 1.0
  */
-public class BicicletaRapida extends Bicicleta
-{
-    private double velocidadextra;
 
+import java.io.*;
+import java.io.IOException;
+import java.nio.*;
+
+public class BicicletaRapida extends Bicicleta {
+    private double velocidadextra;
 
     /**
      * 
      * Constructor for object of subclass BicicletaRapida
-     * @param nombre            Nombre para la subclase
-     * @param peso              Peso para la subclase
-     * @param velocidadextra    Velocidad Extra para la bicicletaRapida
+     * 
+     * @param nombre         Nombre para la subclase
+     * @param peso           Peso para la subclase
+     * @param velocidadextra Velocidad Extra para la bicicletaRapida
      */
-    public BicicletaRapida(String nombre, BicicletaPeso peso,double velocidadextra)
-    {
+    public BicicletaRapida(String nombre, BicicletaPeso peso, double velocidadextra) {
         // initialise instance variables
-        super(nombre,peso);
-        this.velocidadextra =velocidadextra;
+        super(nombre, peso);
+        this.velocidadextra = velocidadextra;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see Bicicleta#getVelocidad(Etapa, Ciclista)
      */
     @Override
-        public double getVelocidad(Etapa e, Ciclista c){
-        return velocidadextra+super.getVelocidad(e,c);
+    public double getVelocidad(Etapa e, Ciclista c) {
+        return velocidadextra + super.getVelocidad(e, c);
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see Bicicleta#getETime(Etapa, Ciclista)
      */
     @Override
@@ -39,13 +47,23 @@ public class BicicletaRapida extends Bicicleta
         return (e.getDistancia() / this.getVelocidad(e, c) * 60);
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see Bicicleta#mostrarTodo()
      */
     @Override
-    public void mostrarTodo(){
-     System.out.println("<BicicletaRapida: "+ super.getNombre() + "> "+ super.getBicicletaPeso());
+    public void mostrarTodo(BufferedWriter ficheroOut) {
+        try {
+            System.out.println("<BicicletaRapida: " + super.getNombre() + "> " + super.getBicicletaPeso());
+            ficheroOut.write("<BicicletaRapida: " + super.getNombre() + "> " + super.getBicicletaPeso());
+        } catch (IOException e) {
+            System.err.println("There was a problem writing to ");
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "<BicicletaRapida: " + super.getNombre() + "> " + super.getBicicletaPeso();
     }
 }
-
-

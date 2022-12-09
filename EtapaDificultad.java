@@ -1,39 +1,40 @@
 /**
- * Clase simple que almacena una bicicleta 
+ * Clase simple que almacena una bicicleta
  * 
  * @author Alexeido, Thander y Natera
- * @version 
+ * @version
  */
 
-public enum EtapaDificultad{
-    VACIA ("VACIA", 0),
-    SENCILLA ("SENCILLA", 0.9),
-    NORMAL ("NORMAL", 1.0),
-    COMPLEJA ("COMPLEJA", 1.1);
+public enum EtapaDificultad {
+    VACIA("VACIA", 0),
+    SENCILLA("SENCILLA", 0.9),
+    NORMAL("NORMAL", 1.0),
+    COMPLEJA("COMPLEJA", 1.1);
 
     private String nombre;
     private double valor;
 
-    EtapaDificultad(){
-        this.nombre="";
-        this.valor=0;
+    EtapaDificultad() {
+        this.nombre = "";
+        this.valor = 0;
     }
 
-    EtapaDificultad(String nombre, double valor){
-        this.nombre=nombre;
-        this.valor=valor;
+    EtapaDificultad(String nombre, double valor) {
+        this.nombre = nombre;
+        this.valor = valor;
     }
- 
-    public String getNombre(){
+
+    public String getNombre() {
         return nombre;
     }
 
-    public double getValor(){
+    public double getValor() {
         return valor;
     }
+
     @Override
-    public String toString(){
-        return "<Dificultad: " + getNombre() + " (valor: "+ getValor()+ ")>";
+    public String toString() {
+        return "<Dificultad: " + getNombre() + " (valor: " + getValor() + ")>";
     }
 
 }
