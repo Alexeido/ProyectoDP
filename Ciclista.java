@@ -222,11 +222,12 @@ public abstract class Ciclista {
     /*
      * Muestra la información de un ciclista y de su bicicleta
      */
+    /*
     protected void mostrarTodo(BufferedWriter ficheroOut) {
         mostrarSinBici(ficheroOut);
         bici.mostrarTodo(ficheroOut);
     }
-
+    */
     /*
      * Muestra la información de un ciclista
      */
@@ -268,6 +269,7 @@ public abstract class Ciclista {
      * 
      *              Muestra el resultaddo del ciclista
      */
+
     public void mostrarResultadoEtapa(Etapa etapa, BufferedWriter ficheroOut) {
         try {
 
@@ -337,7 +339,26 @@ public abstract class Ciclista {
     public double getDestreza() {
         return this.destreza;
     }
-
+    public int getEtapasTerminadas(){
+        int result=0;
+        for (Etapa sitio : historial.keySet()) {
+            if(this.historial.get(sitio) > 0 ){
+                result++;
+            }
+        }
+        return result;
+    }
+    public Etapa getEtapabandonado(){
+        Etapa etapaabandonado=null;
+        boolean encontrado=false;
+        for (Etapa sitio : historial.keySet()) {
+            if(this.historial.get(sitio) < 0 && !encontrado ){
+                etapaabandonado=sitio;
+                encontrado=true;
+            } 
+        }
+        return etapaabandonado;
+    }
     /**
      * Muestra los resultados del ciclista en todas las etapas
      * Tambien está System.out.println(historial);
@@ -368,8 +389,8 @@ public abstract class Ciclista {
     }
 
     public String toString() {
-        return "<Nombre: " + getNombre() + " energia: " + getEnergia() + " equipo: " + getTeam() + " tiempo total: "
-                + getTotalTime() + getBicicleta();
+        return "<Nombre: " + getNombre() + " energia: " + String.format("%.2f", this.getEnergia()) +" tiempo total: "+"Habilidad:"+getCiclistaHabilidad()
+                +String.format("%.2f", getTotalTime()) + '\n'+ '\n' + getBicicleta();
     }
 
 
@@ -388,5 +409,4 @@ public abstract class Ciclista {
     public int hashCode() {
         return Objects.hash(nombre, bici, habilidad, energia, historial, team, Eorden, totalTime, destreza);
     }
-
 }

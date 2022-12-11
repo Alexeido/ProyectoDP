@@ -127,7 +127,7 @@ public class CiclistaEstrella extends Ciclista {
 
     @Override
     public String toString() {
-        return "<Nombre: " + super.getNombre() + " energia: " + super.getEnergia() + " equipo: " + super.getTeam()
-                + " tiempo total: " + super.getTotalTime() + " popularidad: " + getPopularidad() + super.getBicicleta();
+        return "<CiclistaEstrella: " + super.getNombre() + " energia: " +String.format("%.2f", super.getEnergia()) +super.getCiclistaHabilidad()
+                + " tiempo total: " + String.format("%.2f", super.getTotalTime()) + " popularidad: " + getPopularidad() + super.getBicicleta();
     }
 }

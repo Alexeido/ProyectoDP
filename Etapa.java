@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.nio.*;
 import java.util.*;
 
+
 public class Etapa {
     private String nombre;
     private EtapaDificultad dificultad;
@@ -108,6 +109,7 @@ public class Etapa {
     /**
      * Muestra la información de la etapa
      */
+    /* 
     public void mostrarTodo(BufferedWriter ficheroOut) {
         try {
             System.out.println("<Etapa: " + nombre + ">  " + dificultad + "  " + distancia);
@@ -116,7 +118,7 @@ public class Etapa {
             System.err.println("There was a problem writing to ");
         }
     }
-
+    */
     @Override
     public String toString() {
         return "<Etapa: " + getNombre() + " dificultad: " + getEtapaDificultad() + " distancia: " + getEtapaDistancia();
@@ -138,7 +140,4 @@ public class Etapa {
     public int hashCode() {
         return Objects.hash(nombre, dificultad, distancia);
     }
-
-
- 
 }

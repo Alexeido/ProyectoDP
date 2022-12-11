@@ -202,9 +202,15 @@ public class Equipo {
      * Muestra los ciclistas que han abandonado
      */
     public void mostrarAbandonos(BufferedWriter ficheroOut) {
-        for (Ciclista ciclista : ciclistasAbandonados) {
-            ciclista.mostrarTodo(ficheroOut);
+        try{
+            for (Ciclista ciclista : ciclistasAbandonados) {
+                System.out.println(ciclista);
+                ficheroOut.write(""+ciclista);
+            }
         }
+        catch (IOException e) {
+        System.err.println("There was a problem writing to ");
+    }
     }
 
     /**
@@ -303,7 +309,4 @@ public class Equipo {
     public int hashCode() {
         return Objects.hash(nombre, ciclistas, ciclistasAbandonados, bicis, tiempoMedio, ordenBicicleta, ordenCiclista);
     }
-
 }
-
-

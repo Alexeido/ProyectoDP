@@ -21,7 +21,7 @@ public class Organizacion {
 
     /**
      * Constructor para la calse Organizacion
-     */
+     */ 
     public Organizacion() {
         // initialise instance variables
         this.etapas = new TreeSet<Etapa>();
@@ -59,7 +59,7 @@ public class Organizacion {
         this.abandonadosCarrera = abandonadosCarrera;
 
     }
-
+    
     /**
      * Añade un equipo a la Arraylistis de equipos
      * 
@@ -68,7 +68,9 @@ public class Organizacion {
     public void anadirEquipo(Equipo equipo) {
         equipos.add(equipo);
     }
-
+    public ArrayList<Equipo> getEquipos() {
+        return this.equipos;
+    }
     /**
      * Anade los ciclistas de un equipo a la ArrayList de ciclistas que compiten
      * 
@@ -105,10 +107,10 @@ public class Organizacion {
      * Muestra los equipos que van a competir
      */
     public void mostrarEquipos() {
+    
         for (Equipo equipo : equipos) {
             equipo.mostrarTodo(ficheroOut);
         }
-        System.out.println('\n');
     }
 
     /**
@@ -120,20 +122,32 @@ public class Organizacion {
          * etapa.mostrarTodo(ficheroOut);
          * }
          */
+        try{
         for (Iterator<Etapa> it = etapas.iterator(); it.hasNext();) {
-            Etapa e = it.next();
-            e.mostrarTodo(ficheroOut);
+                Etapa e = it.next();
+                System.out.println(e);
+                ficheroOut.write(""+e+'\n');
+            }
         }
-
+        catch (IOException e) {
+        System.err.println("There was a problem writing to ");
+    }
     }
 
     /**
      * Muestra los ciclistas que estan participando en la carrera
      */
     public void mostrarCiclistas() {
-        for (Ciclista ciclista : ciclistasCarrera) {
-            ciclista.mostrarTodo(ficheroOut);
+        try{
+            for (Ciclista ciclista : ciclistasCarrera) {
+                System.out.println(ciclista);
+                ficheroOut.write(""+ciclista);            
+            }
         }
+        catch (IOException e) {
+            System.err.println("There was a problem writing to ");
+        }
+        
     }
 
     /**
@@ -154,7 +168,15 @@ public class Organizacion {
         }
 
     }
-
+    /*
+     * Comprueba si todos los ciclistas han abandonado
+     */
+    public boolean comprobarTodosCiclistasAbandonados(){
+        if(this.ciclistasCarrera.size()==0)
+            return true;
+        else
+            return false;
+    }
     /**
      * Presenta las etapas del campeonato, los equipos y sus ciclistas
      */
@@ -175,7 +197,6 @@ public class Organizacion {
             }
             Collections.sort(ciclistasCarrera, new NombreCComparatorDesc());
 
-            // asignarbici();
             mostrarEtapas();
             System.out.println("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||" + '\n' + '\n');
             System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%" + '\n'
@@ -201,8 +222,11 @@ public class Organizacion {
         try {
             Ciclista auxC;
             int eliminados;
-
+            
             for (Etapa etapa : etapas) {
+                if(!comprobarTodosCiclistasAbandonados()){
+                    
+                
                 System.out.println('\n'
                         + "**************************************************************************************************"
                         + '\n'
@@ -236,8 +260,14 @@ public class Organizacion {
                 for (int n = 0; n < ciclistasCarrera.size(); n++) {
                     auxC = ciclistasCarrera.get(n);
                     System.out.println("@@@ ciclista  " + (1 + n) + " de " + ciclistasCarrera.size());
-                    ficheroOut.write("@@@ ciclista  " + (1 + n) + " de " + ciclistasCarrera.size());
-                    auxC.mostrarTodo(ficheroOut);
+                    ficheroOut.write("@@@ ciclista  " + (1 + n) + " de " + ciclistasCarrera.size()+'\n');
+                    
+                    
+                    
+                    System.out.println(auxC);
+                    ficheroOut.write(""+auxC);
+                    
+                    
                     System.out.println("+++ Con estas condiciones el ciclista " + auxC.getNombre()
                             + " con la biciclceta " + auxC.getBicicleta().getNombre() + " alcanza una velocidad de "
                             + String.format("%.2f", auxC.getBicicleta().getVelocidad(etapa, auxC)) + " km/hora +++");
@@ -308,6 +338,7 @@ public class Organizacion {
 
                 Collections.sort(ciclistasCarrera, new TiempoDescComparator());
             }
+            }
             for (Equipo equipo : equipos) {
                 equipo.setTiempoMedio();
             }
@@ -325,7 +356,7 @@ public class Organizacion {
      */
     public void entregaPremios() {
         try {
-            if (ciclistasCarrera.size() > 0) {
+            if (!comprobarTodosCiclistasAbandonados()) {
                 Collections.sort(ciclistasCarrera, new TiempoAscComparator());
                 Collections.sort(abandonadosCarrera, new TiempoAscComparator());
 
@@ -392,7 +423,6 @@ public class Organizacion {
                     equipo.mostrarTodo(ficheroOut);
                     i++;
                 }
-                System.out.print("pekka 14 o 16 con espejo maxeado");
             } else {
                 System.out.print("No hay competidores o todos han abandonado");
 
@@ -418,8 +448,6 @@ public class Organizacion {
             System.err.println("There was a problem writing to ");
         }
     }
-
-
     @Override
     public boolean equals(Object o) {
         if (o == this)

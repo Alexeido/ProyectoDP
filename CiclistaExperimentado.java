@@ -46,7 +46,7 @@ public class CiclistaExperimentado extends Ciclista {
 
     @Override
     public String toString() {
-        return "<Nombre: " + super.getNombre() + " energia: " + super.getEnergia() + " equipo: " + super.getTeam()
-                + " tiempo total: " + super.getTotalTime() + super.getBicicleta();
+        return "<CiclistaExpetimentado: " + super.getNombre() + " energia: " + String.format("%.2f", super.getEnergia())+super.getCiclistaHabilidad()
+                + " tiempo acumulado sin abandonar: " + String.format("%.2f", super.getTotalTime()) + super.getBicicleta();
     }
 }

@@ -40,6 +40,7 @@ public class BicicletaPrototipo extends Bicicleta {
      * 
      * @see Bicicleta#mostrarTodo()
      */
+    /*
     @Override
     public void mostrarTodo(BufferedWriter ficheroOut) {
         try {
@@ -49,11 +50,9 @@ public class BicicletaPrototipo extends Bicicleta {
             System.err.println("There was a problem writing to ");
         }
     }
-
+    */
     @Override
     public String toString() {
-        return "<BicicletaPrototipo: " + super.getNombre() + "> " + super.getBicicletaPeso();
+        return '\n'+"<BicicletaPrototipo: " + super.getNombre() + "> " + super.getBicicletaPeso();
     }
-
-    
 }

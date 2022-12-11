@@ -8,8 +8,9 @@
 
 import java.io.*;
 import java.io.IOException;
-import java.util.*;
 import java.nio.*;
+import java.util.*;
+
 
 public class Bicicleta {
     private String nombre;
@@ -100,6 +101,7 @@ public class Bicicleta {
     /**
      * Muestra los atributos de la bicicleta
      */
+    /* 
     public void mostrarTodo(BufferedWriter ficheroOut) {
         try {
             System.out.println("<Bicicleta: " + nombre + "> " + peso + ">");
@@ -108,9 +110,9 @@ public class Bicicleta {
             System.err.println("There was a problem writing to ");
         }
     }
-    
+    */
     public String toString() {
-        return "<Bicicleta: " + getNombre() + "> " + getPeso() + ">";
+        return  '\n'+"<Bicicleta: " + getNombre() + "> " + getBicicletaPeso() + ">";
     }
 
     @Override
@@ -128,7 +130,4 @@ public class Bicicleta {
     public int hashCode() {
         return Objects.hash(nombre, peso);
     }
-    
-    
-
 }
