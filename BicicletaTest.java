@@ -1,5 +1,9 @@
-    
-
+/**
+ * Clase de pruebas de las bicicletas 
+ * 
+ * @author Alexeido, Thander y Natera
+ * @version 1.0
+ */
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

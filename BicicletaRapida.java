@@ -53,18 +53,22 @@ public class BicicletaRapida extends Bicicleta {
      * @see Bicicleta#mostrarTodo()
      */
     /*
-    @Override
-    public void mostrarTodo(BufferedWriter ficheroOut) {
-        try {
-            System.out.println("<BicicletaRapida: " + super.getNombre() + "> " + super.getBicicletaPeso());
-            ficheroOut.write("<BicicletaRapida: " + super.getNombre() + "> " + super.getBicicletaPeso());
-        } catch (IOException e) {
-            System.err.println("There was a problem writing to ");
-        }
-    }
-    */
+     * @Override
+     * public void mostrarTodo(BufferedWriter ficheroOut) {
+     * try {
+     * System.out.println("<BicicletaRapida: " + super.getNombre() + "> " +
+     * super.getBicicletaPeso());
+     * ficheroOut.write("<BicicletaRapida: " + super.getNombre() + "> " +
+     * super.getBicicletaPeso());
+     * } catch (IOException e) {
+     * System.err.println("There was a problem writing to ");
+     * }
+     * }
+     */
+
+    // toString de la subclase BicicletaRapida
     @Override
     public String toString() {
-        return '\n'+"<BicicletaRapida: " + super.getNombre() + "> " + super.getBicicletaPeso();
+        return '\n' + "<BicicletaRapida: " + super.getNombre() + "> " + super.getBicicletaPeso();
     }
 }

@@ -1,4 +1,10 @@
 
+/**
+ * Clase comparator de nombre de Bicicleta descendete
+ * 
+ * @author Alexeido, Thander y Natera
+ * @version 1.0
+ */
 import java.util.*;
 import java.lang.*;
 

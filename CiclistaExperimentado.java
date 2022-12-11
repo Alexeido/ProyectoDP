@@ -3,7 +3,7 @@
  * Subclase de ciclista 
  * 
  * @author Alexeido, Thander y Natera
- * @version 
+ * @version 1.0
  */
 import java.io.*;
 import java.io.IOException;
@@ -44,6 +44,7 @@ public class CiclistaExperimentado extends Ciclista {
         }
     }
 
+    //toString de la subclase CiclistaExperimentado
     @Override
     public String toString() {
         return "<CiclistaExpetimentado: " + super.getNombre() + " energia: " + String.format("%.2f", super.getEnergia())+super.getCiclistaHabilidad()

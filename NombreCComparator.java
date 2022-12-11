@@ -1,8 +1,9 @@
+
 /**
- * Clase simple que almacena una bicicleta 
+ * Clase comparator de nombre de Ciclistas ascendente
  * 
  * @author Alexeido, Thander y Natera
- * @version 
+ * @version 1.0
  */
 import java.util.*;
 import java.lang.*;
@@ -13,7 +14,3 @@ class NombreCComparator implements Comparator<Ciclista> {
         return b1.getNombre().compareTo(b2.getNombre());
     }
 }
-
-
-
-

@@ -2,7 +2,7 @@
  * Enum simple que almacena valores de la Habilidad
  * 
  * @author Alexeido, Thander y Natera
- * @version
+ * @version 1,0
  */
 
 public enum CiclistaHabilidad {
@@ -47,6 +47,7 @@ public enum CiclistaHabilidad {
         return valor;
     }
 
+    //toString del enum CiclistaHabilidad la clase Ciclista 
     @Override
     public String toString() {
         return "<Habilidad: " + getNombre() + " (valor: " + getValor() + ")>";

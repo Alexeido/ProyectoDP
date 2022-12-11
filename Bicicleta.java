@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.nio.*;
 import java.util.*;
 
-
 public class Bicicleta {
     private String nombre;
 
@@ -101,20 +100,23 @@ public class Bicicleta {
     /**
      * Muestra los atributos de la bicicleta
      */
-    /* 
-    public void mostrarTodo(BufferedWriter ficheroOut) {
-        try {
-            System.out.println("<Bicicleta: " + nombre + "> " + peso + ">");
-            ficheroOut.write("<Bicicleta: " + nombre + "> " + peso + ">");
-        } catch (IOException e) {
-            System.err.println("There was a problem writing to ");
-        }
-    }
-    */
+    /*
+     * public void mostrarTodo(BufferedWriter ficheroOut) {
+     * try {
+     * System.out.println("<Bicicleta: " + nombre + "> " + peso + ">");
+     * ficheroOut.write("<Bicicleta: " + nombre + "> " + peso + ">");
+     * } catch (IOException e) {
+     * System.err.println("There was a problem writing to ");
+     * }
+     * }
+     */
+
+    // toString de la superclase Bicicleta
     public String toString() {
-        return  '\n'+"<Bicicleta: " + getNombre() + "> " + getBicicletaPeso() + ">";
+        return '\n' + "<Bicicleta: " + getNombre() + "> " + getBicicletaPeso() + ">";
     }
 
+    // equals de la superclase Bicicleta
     @Override
     public boolean equals(Object o) {
         if (o == this)
@@ -126,6 +128,7 @@ public class Bicicleta {
         return Objects.equals(nombre, bicicleta.nombre) && Objects.equals(peso, bicicleta.peso);
     }
 
+    // hasCode de la superclase Bicicleta
     @Override
     public int hashCode() {
         return Objects.hash(nombre, peso);

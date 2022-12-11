@@ -119,12 +119,14 @@ public class Etapa {
         }
     }
     */
+
+    // toString de la clase Etapa
     @Override
     public String toString() {
         return "<Etapa: " + getNombre() + " dificultad: " + getEtapaDificultad() + " distancia: " + getEtapaDistancia();
     }
 
-
+    // equals de la clase Etapa
     @Override
     public boolean equals(Object o) {
         if (o == this)
@@ -136,6 +138,7 @@ public class Etapa {
         return Objects.equals(nombre, etapa.nombre) && Objects.equals(dificultad, etapa.dificultad) && Objects.equals(distancia, etapa.distancia);
     }
 
+    // hasCode de la clase Etapa
     @Override
     public int hashCode() {
         return Objects.hash(nombre, dificultad, distancia);

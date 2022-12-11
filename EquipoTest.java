@@ -1,3 +1,10 @@
+
+/**
+ * Clase de pruebas de los equipo
+ * 
+ * @author Alexeido, Thander y Natera
+ * @version 1,0
+ */
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,26 +16,25 @@ import org.junit.jupiter.api.Test;
  * @author Alexeido, Thander y Natera
  * @version 31-10-2022
  */
-public class EquipoTest
-{
+public class EquipoTest {
     Equipo dSMWomen;
-    
-    Ciclista ciclista1 = new CiclistaEstrella("WIEBES",CiclistaHabilidad.BUENA  , 1190,dSMWomen);
-    Ciclista ciclista2 = new CiclistaExperimentado("LIPPERT",CiclistaHabilidad.NORMAL, 1160,dSMWomen);
-    Ciclista ciclista3 = new CiclistaNovato("ALEXEIDO",CiclistaHabilidad.NORMAL, 1200,dSMWomen);
-    
+
+    Ciclista ciclista1 = new CiclistaEstrella("WIEBES", CiclistaHabilidad.BUENA, 1190, dSMWomen);
+    Ciclista ciclista2 = new CiclistaExperimentado("LIPPERT", CiclistaHabilidad.NORMAL, 1160, dSMWomen);
+    Ciclista ciclista3 = new CiclistaNovato("ALEXEIDO", CiclistaHabilidad.NORMAL, 1200, dSMWomen);
+
     Etapa etapa1 = new Etapa("sencilla larga", EtapaDificultad.NORMAL, EtapaDistancia.INTERMEDIA);
     Etapa etapa2 = new Etapa("compleja corta", EtapaDificultad.COMPLEJA, EtapaDistancia.LARGA);
-    
-    Bicicleta bicicleta1= new Bicicleta("TREK Madone SLR 9 eTap Gen 7",BicicletaPeso.LIGERA);
-    Bicicleta bicicleta2= new BicicletaRapida("TREK Emonda SLR 9 eTap",BicicletaPeso.PESADA,0.5); 
-    Bicicleta bicicleta3= new BicicletaPrototipo("TREK Domane SLR 9 eTap Gen 4",BicicletaPeso.PESADA);
+
+    Bicicleta bicicleta1 = new Bicicleta("TREK Madone SLR 9 eTap Gen 7", BicicletaPeso.LIGERA);
+    Bicicleta bicicleta2 = new BicicletaRapida("TREK Emonda SLR 9 eTap", BicicletaPeso.PESADA, 0.5);
+    Bicicleta bicicleta3 = new BicicletaPrototipo("TREK Domane SLR 9 eTap Gen 4", BicicletaPeso.PESADA);
+
     /**
      * Default constructor for test class EquipoTest
      */
-    public EquipoTest()
-    {
-        dSMWomen= new Equipo("DSM Women", new EnergiaComparatorAsc(), new PesoComparatorAsc());
+    public EquipoTest() {
+        dSMWomen = new Equipo("DSM Women", new EnergiaComparatorAsc(), new PesoComparatorAsc());
         dSMWomen.addCiclista(ciclista1);
         dSMWomen.addCiclista(ciclista2);
         dSMWomen.addCiclista(ciclista3);
@@ -51,8 +57,7 @@ public class EquipoTest
      * Called before every test case method.
      */
     @BeforeEach
-    public void setUp()
-    {
+    public void setUp() {
     }
 
     /**
@@ -61,43 +66,44 @@ public class EquipoTest
      * Called after every test case method.
      */
     @AfterEach
-    public void tearDown()
-    {
+    public void tearDown() {
     }
-    
+
     @Test
-    public void testSetTiempoMedio(){ 
-        assertEquals(String.format("%.2f",dSMWomen.getTiempoMedio()),"198,52");
+    public void testSetTiempoMedio() {
+        assertEquals(String.format("%.2f", dSMWomen.getTiempoMedio()), "198,52");
     }
-    
+
     @Test
-    public void testEnviarEtapa(){
+    public void testEnviarEtapa() {
         assertTrue(ciclista1.getEnergia() < 1190);
         assertTrue(ciclista2.getEnergia() < 1160);
     }
-        @Test 
-        void testOrdenCiclistas(){
-        Ciclista ciclistAux1=dSMWomen.getCiclistas().get(0);
-        Ciclista ciclistAux2=dSMWomen.getCiclistas().get(2);
+
+    @Test
+    void testOrdenCiclistas() {
+        Ciclista ciclistAux1 = dSMWomen.getCiclistas().get(0);
+        Ciclista ciclistAux2 = dSMWomen.getCiclistas().get(2);
         dSMWomen.reOrdenCiclista(new HabilidadComparatorDesc());
-        boolean correcto1=false;
-        boolean correcto2=false;
-        correcto1=ciclistAux2.equals(dSMWomen.getCiclistas().get(1));
-        correcto2=ciclistAux1.equals(dSMWomen.getCiclistas().get(2));
+        boolean correcto1 = false;
+        boolean correcto2 = false;
+        correcto1 = ciclistAux2.equals(dSMWomen.getCiclistas().get(1));
+        correcto2 = ciclistAux1.equals(dSMWomen.getCiclistas().get(2));
         assertTrue(correcto1);
-        assertTrue(correcto2); 
-        }
-    @Test 
-    void testOrdenBicis(){
-        Bicicleta biciAux1=dSMWomen.getBicis().get(0);
-        Bicicleta biciAux2=dSMWomen.getBicis().get(2);
+        assertTrue(correcto2);
+    }
+
+    @Test
+    void testOrdenBicis() {
+        Bicicleta biciAux1 = dSMWomen.getBicis().get(0);
+        Bicicleta biciAux2 = dSMWomen.getBicis().get(2);
         dSMWomen.reOrdenBicicleta(new PesoComparatorDesc());
-        boolean correcto1=false;
-        boolean correcto2=false;
-        correcto1=biciAux2.equals(dSMWomen.getBicis().get(1));
-        correcto2=biciAux1.equals(dSMWomen.getBicis().get(2));
+        boolean correcto1 = false;
+        boolean correcto2 = false;
+        correcto1 = biciAux2.equals(dSMWomen.getBicis().get(1));
+        correcto2 = biciAux1.equals(dSMWomen.getBicis().get(2));
         assertTrue(correcto1);
-        assertTrue(correcto2); 
- 
+        assertTrue(correcto2);
+
     }
 }

@@ -2,7 +2,7 @@
  * Enum para el peso de la Bicicleta
  * 
  * @author Alexeido, Thander y Natera
- * @version
+ * @version 1.0
  */
 
 public enum BicicletaPeso {
@@ -45,6 +45,7 @@ public enum BicicletaPeso {
         return valor;
     }
 
+    // toString del enum BicicletaPeso de la clase Biclieta
     @Override
     public String toString() {
         return "<Peso: " + getNombre() + " (valor: " + getValor() + ")>";

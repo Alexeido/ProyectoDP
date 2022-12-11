@@ -41,18 +41,22 @@ public class BicicletaPrototipo extends Bicicleta {
      * @see Bicicleta#mostrarTodo()
      */
     /*
-    @Override
-    public void mostrarTodo(BufferedWriter ficheroOut) {
-        try {
-            System.out.println("<BicicletaPrototipo: " + super.getNombre() + "> " + super.getBicicletaPeso());
-            ficheroOut.write("<BicicletaPrototipo: " + super.getNombre() + "> " + super.getBicicletaPeso());
-        } catch (IOException e) {
-            System.err.println("There was a problem writing to ");
-        }
-    }
-    */
+     * @Override
+     * public void mostrarTodo(BufferedWriter ficheroOut) {
+     * try {
+     * System.out.println("<BicicletaPrototipo: " + super.getNombre() + "> " +
+     * super.getBicicletaPeso());
+     * ficheroOut.write("<BicicletaPrototipo: " + super.getNombre() + "> " +
+     * super.getBicicletaPeso());
+     * } catch (IOException e) {
+     * System.err.println("There was a problem writing to ");
+     * }
+     * }
+     */
+
+    // toString de la subclase BicicletaPrototipo
     @Override
     public String toString() {
-        return '\n'+"<BicicletaPrototipo: " + super.getNombre() + "> " + super.getBicicletaPeso();
+        return '\n' + "<BicicletaPrototipo: " + super.getNombre() + "> " + super.getBicicletaPeso();
     }
 }

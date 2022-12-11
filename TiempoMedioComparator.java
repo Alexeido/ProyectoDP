@@ -1,9 +1,9 @@
 
 /**
- * Clase simple que almacena una bicicleta 
+ * Clase comparator de tiempo medio de Equipos
  * 
  * @author Alexeido, Thander y Natera
- * @version 
+ * @version 1.0
  */
 import java.util.*;
 import java.lang.*;

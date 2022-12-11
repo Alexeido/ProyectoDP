@@ -3,7 +3,7 @@
  * Clase que representa a los Equipos que competirán
  * 
  * @author Alexeido, Thander y Natera
- * @version 31-10-2022
+ * @version 1.0
  */
 
 import java.util.*;
@@ -202,15 +202,14 @@ public class Equipo {
      * Muestra los ciclistas que han abandonado
      */
     public void mostrarAbandonos(BufferedWriter ficheroOut) {
-        try{
+        try {
             for (Ciclista ciclista : ciclistasAbandonados) {
                 System.out.println(ciclista);
-                ficheroOut.write(""+ciclista);
+                ficheroOut.write("" + ciclista);
             }
+        } catch (IOException e) {
+            System.err.println("There was a problem writing to ");
         }
-        catch (IOException e) {
-        System.err.println("There was a problem writing to ");
-    }
     }
 
     /**
@@ -289,11 +288,13 @@ public class Equipo {
         }
     }
 
+    // toString de la clase Equipo
     @Override
     public String toString() {
         return "<Nombre: " + getNombre() + " tiempo medio: " + getTiempoMedio();
     }
 
+    // equals de la clase Equipo
     @Override
     public boolean equals(Object o) {
         if (o == this)
@@ -302,9 +303,14 @@ public class Equipo {
             return false;
         }
         Equipo equipo = (Equipo) o;
-        return Objects.equals(nombre, equipo.nombre) && Objects.equals(ciclistas, equipo.ciclistas) && Objects.equals(ciclistasAbandonados, equipo.ciclistasAbandonados) && Objects.equals(bicis, equipo.bicis) && tiempoMedio == equipo.tiempoMedio && Objects.equals(ordenBicicleta, equipo.ordenBicicleta) && Objects.equals(ordenCiclista, equipo.ordenCiclista);
+        return Objects.equals(nombre, equipo.nombre) && Objects.equals(ciclistas, equipo.ciclistas)
+                && Objects.equals(ciclistasAbandonados, equipo.ciclistasAbandonados)
+                && Objects.equals(bicis, equipo.bicis) && tiempoMedio == equipo.tiempoMedio
+                && Objects.equals(ordenBicicleta, equipo.ordenBicicleta)
+                && Objects.equals(ordenCiclista, equipo.ordenCiclista);
     }
 
+    // hasCode de la clase Equipo
     @Override
     public int hashCode() {
         return Objects.hash(nombre, ciclistas, ciclistasAbandonados, bicis, tiempoMedio, ordenBicicleta, ordenCiclista);

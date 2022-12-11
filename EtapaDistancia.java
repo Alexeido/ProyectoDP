@@ -1,8 +1,8 @@
 /**
- * Clase simple que almacena una bicicleta
+ * Enum para la distancia de la Etapa
  * 
  * @author Alexeido, Thander y Natera
- * @version
+ * @version 1.0
  */
 
 public enum EtapaDistancia {

@@ -1,4 +1,10 @@
 
+/**
+ * Clase de pruebas de las ciclistas
+ * 
+ * @author Alexeido, Thander y Natera
+ * @version 1,0
+ */
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.AfterEach;

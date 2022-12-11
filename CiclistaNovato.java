@@ -3,7 +3,7 @@
  * Subclase de ciclista
  * 
  * @author Alexeido, Thander y Natera
- * @version 
+ * @version 1,0
  */
 
 import java.io.*;
@@ -47,9 +47,11 @@ public class CiclistaNovato extends Ciclista {
 
     }
 
+    // toString de la subclase CiclistaNovato
     @Override
     public String toString() {
-        return "<CiclistaNovato: " + super.getNombre() + " energia: " + String.format("%.2f", super.getEnergia())+super.getCiclistaHabilidad()
-                + " tiempo total: " +String.format("%.2f", super.getTotalTime()) + super.getBicicleta();
+        return "<CiclistaNovato: " + super.getNombre() + " energia: " + String.format("%.2f", super.getEnergia())
+                + super.getCiclistaHabilidad()
+                + " tiempo total: " + String.format("%.2f", super.getTotalTime()) + super.getBicicleta();
     }
 }

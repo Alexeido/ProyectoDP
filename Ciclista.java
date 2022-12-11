@@ -3,7 +3,7 @@
  * Clase que almacena un ciclista y sus metodos para correr etapas y compararse entre otros ciclistas 
  * 
  * @author Alexeido, Thander y Natera
- * @version 31-10-2022
+ * @version 1.0
  */
 
 import java.util.*;
@@ -388,12 +388,13 @@ public abstract class Ciclista {
         }
     }
 
+    //toString de la superclase abstracta Ciclista
     public String toString() {
         return "<Nombre: " + getNombre() + " energia: " + String.format("%.2f", this.getEnergia()) +" tiempo total: "+"Habilidad:"+getCiclistaHabilidad()
                 +String.format("%.2f", getTotalTime()) + '\n'+ '\n' + getBicicleta();
     }
 
-
+    //equals de la superclase abstracta Ciclista
     @Override
     public boolean equals(Object o) {
         if (o == this)
@@ -405,6 +406,7 @@ public abstract class Ciclista {
         return Objects.equals(nombre, ciclista.nombre) && Objects.equals(bici, ciclista.bici) && Objects.equals(habilidad, ciclista.habilidad) && energia == ciclista.energia && Objects.equals(historial, ciclista.historial) && Objects.equals(team, ciclista.team) && Objects.equals(Eorden, ciclista.Eorden) && totalTime == ciclista.totalTime && destreza == ciclista.destreza;
     }
 
+    //hasCode de la superclase abstracta Ciclista
     @Override
     public int hashCode() {
         return Objects.hash(nombre, bici, habilidad, energia, historial, team, Eorden, totalTime, destreza);
